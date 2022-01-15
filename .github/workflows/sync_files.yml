@@ -17,3 +17,4 @@ jobs:
           BRANCH_PREFIX: custom-branch
           PR_LABELS: chore
           COMMIT_PREFIX: "chore: "
+          OVERWRITE_EXISTING_PR: true

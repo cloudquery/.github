@@ -28,7 +28,7 @@ group:
         dest: .github/workflows/golang_lint.yml
       - source: workflows/provider_lint.yml
         dest: .github/workflows/provider_lint.yml
-      - source: /workflows/provider_mock_test.yml
+      - source: workflows/provider_mock_test.yml
         dest: .github/workflows/provider_mock_test.yml
       - .github/release.yml
     repos: |
