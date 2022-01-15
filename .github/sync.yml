@@ -19,39 +19,40 @@ cloudquery/cq-provider-sdk:
 
 group:
   # providers
-  repos: |
-    cloudquery/cq-provider-template
-    cloudquery/cq-provider-aws
-    cloudquery/cq-provider-gcp
-    cloudquery/cq-provider-azure
-    cloudquery/cq-provider-k8s
-    cloudquery/cq-provider-digitalocean
-    cloudquery/cq-provider-okta
-    cloudquery/cq-provider-terraform
-  files:
-    - source: workflows/pr_title.yml
-      dest: .github/workflows/pr_title.yml
-    - source: workflows/add_tags.yml
-      dest: .github/workflows/add_tags.yml
-    - source: workflows/golang_lint.yml
-      dest: .github/workflows/golang_lint.yml
-    - source: workflows/provider_lint.yml
-      dest: .github/workflows/provider_lint.yml
-    - source: /workflows/provider_mock_test.yml
-      dest: .github/workflows/provider_mock_test.yml
-    - .github/release.yml
+  - files:
+      - source: workflows/pr_title.yml
+        dest: .github/workflows/pr_title.yml
+      - source: workflows/add_tags.yml
+        dest: .github/workflows/add_tags.yml
+      - source: workflows/golang_lint.yml
+        dest: .github/workflows/golang_lint.yml
+      - source: workflows/provider_lint.yml
+        dest: .github/workflows/provider_lint.yml
+      - source: /workflows/provider_mock_test.yml
+        dest: .github/workflows/provider_mock_test.yml
+      - .github/release.yml
+    repos: |
+      cloudquery/cq-provider-template
+      cloudquery/cq-provider-aws
+      cloudquery/cq-provider-gcp
+      cloudquery/cq-provider-azure
+      cloudquery/cq-provider-k8s
+      cloudquery/cq-provider-digitalocean
+      cloudquery/cq-provider-okta
+      cloudquery/cq-provider-terraform
+
 
   # policies
-  repos: |
-    cloudquery-policies/aws@main
-    cloudquery-policies/gcp@main
-    cloudquery-policies/azure@main
-    cloudquery-policies/k8s@main
-  files:
-    - source: workflows/pr_title.yml
-      dest: .github/workflows/pr_title.yml
-    - source: workflows/add_tags.yml
-      dest: .github/workflows/add_tags.yml
-    - source: workflows/policy_lint.yml
-      dest: .github/workflows/policy_lint.yml
-    - .github/release.yml
+  - files:
+      - source: workflows/pr_title.yml
+        dest: .github/workflows/pr_title.yml
+      - source: workflows/add_tags.yml
+        dest: .github/workflows/add_tags.yml
+      - source: workflows/policy_lint.yml
+        dest: .github/workflows/policy_lint.yml
+      - .github/release.yml
+    repos: |
+      cloudquery-policies/aws@main
+      cloudquery-policies/gcp@main
+      cloudquery-policies/azure@main
+      cloudquery-policies/k8s@main
