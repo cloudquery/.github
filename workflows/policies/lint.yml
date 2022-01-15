@@ -1,5 +1,5 @@
 # DONT EDIT. This file is synced from https://github.com/cloudquery/.github/.github
-name: Policy Lint
+name: Lint
 on:
   push:
     branches:

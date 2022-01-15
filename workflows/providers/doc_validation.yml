@@ -1,5 +1,5 @@
 # DONT EDIT. This file is synced from https://github.com/cloudquery/.github/.github
-name: Provider Lint
+name: Provider Doc Validation
 on:
   push:
     branches:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   docs:
-    name: Provider Docs Verification
+    name: Provider Docs Validation
     runs-on: ubuntu-latest
     steps:
       - name: Set up Go 1.x

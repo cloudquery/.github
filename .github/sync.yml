@@ -1,36 +1,24 @@
 # core
 cloudquery/cloudquery:
-  - source: workflows/pr_title.yml
-    dest: .github/workflows/pr_title.yml
-  - source: workflows/add_tags.yml
-    dest: .github/workflows/add_tags.yml
-  - source: workflows/golang_lint.yml
-    dest: .github/workflows/golang_lint.yml
+  - source: workflows/common
+    dest: .github/workflows/
   - .github/release.yml
 
 cloudquery/cq-provider-sdk:
-  - source: workflows/pr_title.yml
-    dest: .github/workflows/pr_title.yml
-  - source: workflows/add_tags.yml
-    dest: .github/workflows/add_tags.yml
-  - source: workflows/golang_lint.yml
-    dest: .github/workflows/golang_lint.yml
+  - source: workflows/common
+    dest: .github/workflows/
   - .github/release.yml
 
 group:
   # providers
   - files:
-      - source: workflows/pr_title.yml
-        dest: .github/workflows/pr_title.yml
-      - source: workflows/add_tags.yml
-        dest: .github/workflows/add_tags.yml
-      - source: workflows/golang_lint.yml
-        dest: .github/workflows/golang_lint.yml
-      - source: workflows/provider_lint.yml
-        dest: .github/workflows/provider_lint.yml
-      - source: workflows/provider_mock_test.yml
-        dest: .github/workflows/provider_mock_test.yml
+      - source: workflows/common
+        dest: .github/workflows/
+      - source: workflows/providers
+        dest: .github/workflows/
       - .github/release.yml
+      - source: providers.golangci.yml
+        dest: .golangci.yml
     repos: |
       cloudquery/cq-provider-template
       cloudquery/cq-provider-aws
@@ -44,15 +32,18 @@ group:
 
   # policies
   - files:
-      - source: workflows/pr_title.yml
-        dest: .github/workflows/pr_title.yml
-      - source: workflows/add_tags.yml
-        dest: .github/workflows/add_tags.yml
-      - source: workflows/policy_lint.yml
-        dest: .github/workflows/policy_lint.yml
+      - source: workflows/common
+        dest: .github/workflows/
+        exclude: |
+          golang_lint.yml
+      - source: workflows/policies
+        dest: .github/workflows
+        # until this will be merged https://github.com/cloudquery/cloudquery/pull/414
+        exclude: |
+          schema_validation.yml
       - .github/release.yml
     repos: |
-      cloudquery-policies/aws@main
-      cloudquery-policies/gcp@main
-      cloudquery-policies/azure@main
-      cloudquery-policies/k8s@main
+      cloudquery-policies/aws
+      cloudquery-policies/gcp
+      cloudquery-policies/azure
+      cloudquery-policies/k8s
