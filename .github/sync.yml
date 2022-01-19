@@ -38,9 +38,6 @@ group:
           golang_lint.yml
       - source: workflows/policies
         dest: .github/workflows
-        # until this will be merged https://github.com/cloudquery/cloudquery/pull/414
-        exclude: |
-          schema_validation.yml
       - source: policies.sqlfluff
         dest: .sqlfluff
       - .github/release.yml
