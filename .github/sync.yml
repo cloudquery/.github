@@ -35,7 +35,7 @@ group:
       - source: workflows/common
         dest: .github/workflows/
         exclude: |
-          golang_lint.yml
+          lint_golang.yml
       - source: workflows/policies
         dest: .github/workflows
       - source: policies.sqlfluff
