@@ -3,6 +3,8 @@ cloudquery/cloudquery:
   - source: workflows/common
     dest: .github/workflows/
   - .github/release.yml
+  - source: dependabot.yml
+    dest: .github/dependabot.yml
 
 cloudquery/cq-provider-sdk:
   - source: workflows/common
@@ -19,6 +21,8 @@ group:
       - .github/release.yml
       - source: providers.golangci.yml
         dest: .golangci.yml
+      - source: dependabot.yml
+        dest: .github/dependabot.yml
     repos: |
       cloudquery/cq-provider-template
       cloudquery/cq-provider-aws
