@@ -6,6 +6,12 @@ cloudquery/cloudquery:
   - source: dependabot.yml
     dest: .github/dependabot.yml
 
+cloudquery/helm-charts:
+  - source: workflows/common
+    dest: .github/workflows/
+    exclude: |
+      lint_golang.yml
+
 cloudquery/cq-provider-sdk:
   - source: workflows/common
     dest: .github/workflows/
