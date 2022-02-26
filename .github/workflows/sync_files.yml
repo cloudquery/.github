@@ -11,7 +11,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@main
       - name: Run GitHub File Sync
-        uses: cloudquery/repo-file-sync-action@751ebc62d2aaff3b84514dd3203d20c968d945ed
+        uses: cloudquery/repo-file-sync-action@610fe99837f7050d125e6e47914181b6001893d8
         with:
           GH_PAT: ${{ secrets.GH_PAT }}
           BRANCH_PREFIX: custom-branch
