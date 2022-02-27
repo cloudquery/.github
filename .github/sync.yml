@@ -47,7 +47,6 @@ group:
           lint_golang.yml
       - source: workflows/policies
         dest: .github/workflows
-        deleteOrphaned: true
       - .github/release.yml
     repos: |
       cloudquery-policies/aws
