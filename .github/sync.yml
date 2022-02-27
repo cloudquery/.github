@@ -22,10 +22,8 @@ group:
   - files:
       - source: workflows/common
         dest: .github/workflows/
-        deleteOrphaned: true
       - source: workflows/providers
         dest: .github/workflows/
-        deleteOrphaned: true
       - .github/release.yml
       - source: providers.golangci.yml
         dest: .golangci.yml
