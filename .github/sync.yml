@@ -1,21 +1,21 @@
 # core
-cloudquery/cloudquery:
-  - source: workflows/common
-    dest: .github/workflows/
-  - .github/release.yml
-  - source: dependabot.yml
-    dest: .github/dependabot.yml
+# cloudquery/cloudquery:
+#   - source: workflows/common
+#     dest: .github/workflows/
+#   - .github/release.yml
+#   - source: dependabot.yml
+#     dest: .github/dependabot.yml
 
-cloudquery/helm-charts:
-  - source: workflows/common
-    dest: .github/workflows/
-    exclude: |
-      lint_golang.yml
+# cloudquery/helm-charts:
+#   - source: workflows/common
+#     dest: .github/workflows/
+#     exclude: |
+#       lint_golang.yml
 
-cloudquery/cq-provider-sdk:
-  - source: workflows/common
-    dest: .github/workflows/
-  - .github/release.yml
+# cloudquery/cq-provider-sdk:
+#   - source: workflows/common
+#     dest: .github/workflows/
+#   - .github/release.yml
 
 group:
   # providers
@@ -24,35 +24,28 @@ group:
         dest: .github/workflows/
       - source: workflows/providers
         dest: .github/workflows/
-      - .github/release.yml
-      - source: providers.golangci.yml
-        dest: .golangci.yml
-      - source: dependabot.yml
-        dest: .github/dependabot.yml
+      # - .github/release.yml
+      # - source: providers.golangci.yml
+      #   dest: .golangci.yml
+      # - source: dependabot.yml
+      #   dest: .github/dependabot.yml
     repos: |
-      cloudquery/cq-provider-template
       cloudquery/cq-provider-aws
-      cloudquery/cq-provider-gcp
-      cloudquery/cq-provider-azure
-      cloudquery/cq-provider-k8s
-      cloudquery/cq-provider-digitalocean
-      cloudquery/cq-provider-okta
-      cloudquery/cq-provider-terraform
 
 
   # policies
-  - files:
-      - source: workflows/common
-        dest: .github/workflows/
-        exclude: |
-          lint_golang.yml
-      - source: workflows/policies
-        dest: .github/workflows
-      - source: policies.sqlfluff
-        dest: .sqlfluff
-      - .github/release.yml
-    repos: |
-      cloudquery-policies/aws
-      cloudquery-policies/gcp
-      cloudquery-policies/azure
-      cloudquery-policies/k8s
+  # - files:
+  #     - source: workflows/common
+  #       dest: .github/workflows/
+  #       exclude: |
+  #         lint_golang.yml
+  #     - source: workflows/policies
+  #       dest: .github/workflows
+  #     - source: policies.sqlfluff
+  #       dest: .sqlfluff
+  #     - .github/release.yml
+  #   repos: |
+  #     cloudquery-policies/aws
+  #     cloudquery-policies/gcp
+  #     cloudquery-policies/azure
+  #     cloudquery-policies/k8s
