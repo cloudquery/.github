@@ -30,8 +30,14 @@ group:
       - source: dependabot.yml
         dest: .github/dependabot.yml
     repos: |
+      cloudquery/cq-provider-template
       cloudquery/cq-provider-aws
-
+      cloudquery/cq-provider-gcp
+      cloudquery/cq-provider-azure
+      cloudquery/cq-provider-k8s
+      cloudquery/cq-provider-digitalocean
+      cloudquery/cq-provider-okta
+      cloudquery/cq-provider-terraform
 
   # policies
   - files:
