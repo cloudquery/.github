@@ -72,12 +72,12 @@ jobs:
           ref: ${{github.event.pull_request.head.ref}}
           repository: ${{github.event.pull_request.head.repo.full_name}}
 
-      <% auth_step %>
+      <%> auth_step %>
 
       - name: Integration Test
         run: |
           go test -run=TestIntegration -tags=integration ./...
-        <% env %>
+        <%> env %>
 
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
