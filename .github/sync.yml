@@ -38,6 +38,14 @@ group:
       cloudquery/cq-provider-digitalocean
       cloudquery/cq-provider-okta
       cloudquery/cq-provider-terraform
+  # providers with terraform
+    - files:
+      - source: workflows/terraform
+        dest: .github/workflows/
+    repos: |
+      cloudquery/cq-provider-aws
+      cloudquery/cq-provider-gcp
+      cloudquery/cq-provider-azure
 
   # policies
   - files:
