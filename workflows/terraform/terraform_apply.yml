@@ -8,6 +8,9 @@ on:
 
 jobs:
   terrafrom_apply:
+    permissions:
+        id-token: write
+        contents: read    # This is required for actions/checkout@v2
     name: Terrafrom Apply
     runs-on: ubuntu-latest
     defaults:

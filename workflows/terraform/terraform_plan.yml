@@ -11,6 +11,9 @@ on:
 
 jobs:
   terrafrom_plan:
+    permissions:
+        id-token: write
+        contents: read    # This is required for actions/checkout@v2
     name: Terrafrom Plan
     runs-on: ubuntu-latest
     defaults:
