@@ -3,6 +3,7 @@ auth_step: |
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@master
       with:
-        project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
-        service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        token_format: 'id_token'
+        workload_identity_provider: 'projects/163549298763/locations/global/workloadIdentityPools/cq-provider-gcp-github-action/providers/github-action-provider'
+        service_account: 'cq-provider-gcp-github@cq-provider-gcp.iam.gserviceaccount.com'
         export_default_credentials: true
