@@ -1,7 +1,7 @@
 group:
   # providers
   - files:
-      - source: workflows/plain
+      - source: workflows/empty
         dest: .github/workflows/
         deleteOrphaned: true
     repos: |
@@ -9,6 +9,7 @@ group:
       cloudquery-policies/azure
       cloudquery-policies/gcp
       cloudquery-policies/k8s
+      cloudquery/cloudquery
       cloudquery/cq-provider-aws
       cloudquery/cq-provider-azure
       cloudquery/cq-provider-digitalocean
@@ -17,6 +18,8 @@ group:
       cloudquery/cq-provider-okta
       cloudquery/cq-provider-template
       cloudquery/cq-provider-terraform
+      cloudquery/helm-charts
+
 
 
 
@@ -40,6 +43,23 @@ cloudquery/cq-provider-sdk:
   - .github/release.yml
 
 group:
+  - files:
+    - source: CODEOWNERS
+      dest: CODEOWNERS
+    repos: |
+      cloudquery/cloudquery
+      cloudquery/cq-provider-aws
+      cloudquery/cq-provider-azure
+      cloudquery/cq-provider-digitalocean
+      cloudquery/cq-provider-gcp
+      cloudquery/cq-provider-gcp
+      cloudquery/cq-provider-k8s
+      cloudquery/cq-provider-okta
+      cloudquery/cq-provider-template
+      cloudquery/cq-provider-terraform
+      cloudquery/helm-charts
+
+
   # providers
   - files:
       - source: workflows/common
