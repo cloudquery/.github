@@ -7,7 +7,7 @@ cloudquery/cloudquery:
     dest: .github/dependabot.yml
 
 cloudquery/helm-charts:
-  - source: workflows/common
+  - source: workflows/common/
     dest: .github/workflows/
     exclude: |
       lint_golang.yml
@@ -69,7 +69,7 @@ group:
 
   # policies
   - files:
-      - source: workflows/common
+      - source: workflows/common/
         dest: .github/workflows/
         exclude: |
           lint_golang.yml
