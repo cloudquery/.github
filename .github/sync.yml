@@ -1,5 +1,6 @@
 group:
-  # providers
+  # This will empty the workflows file
+  # This needs to be the first thing that is synced
   - files:
       - source: workflows/empty
         dest: .github/workflows/
@@ -19,30 +20,7 @@ group:
       cloudquery/cq-provider-template
       cloudquery/cq-provider-terraform
       cloudquery/helm-charts
-
-
-
-
-# core
-cloudquery/cloudquery:
-  - source: workflows/common
-    dest: .github/workflows/
-  - .github/release.yml
-  - source: dependabot.yml
-    dest: .github/dependabot.yml
-
-cloudquery/helm-charts:
-  - source: workflows/common/
-    dest: .github/workflows/
-    exclude: |
-      lint_golang.yml
-
-cloudquery/cq-provider-sdk:
-  - source: workflows/common
-    dest: .github/workflows/
-  - .github/release.yml
-
-group:
+  # All repos in cloudquery org
   - files:
     - source: CODEOWNERS
       dest: CODEOWNERS
@@ -106,3 +84,22 @@ group:
       cloudquery-policies/gcp
       cloudquery-policies/azure
       cloudquery-policies/k8s
+
+# core
+cloudquery/cloudquery:
+  - source: workflows/common
+    dest: .github/workflows/
+  - .github/release.yml
+  - source: dependabot.yml
+    dest: .github/dependabot.yml
+
+cloudquery/helm-charts:
+  - source: workflows/common/
+    dest: .github/workflows/
+    exclude: |
+      lint_golang.yml
+
+cloudquery/cq-provider-sdk:
+  - source: workflows/common
+    dest: .github/workflows/
+  - .github/release.yml
