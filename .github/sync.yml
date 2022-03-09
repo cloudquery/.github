@@ -7,7 +7,7 @@ cloudquery/cloudquery:
     dest: .github/dependabot.yml
 
 cloudquery/helm-charts:
-  - source: workflows/common
+  - source: workflows/common/
     dest: .github/workflows/
     exclude: |
       lint_golang.yml
@@ -18,6 +18,25 @@ cloudquery/cq-provider-sdk:
   - .github/release.yml
 
 group:
+  # All Repos
+  - files:
+    - source: CODEOWNERS
+      dest: CODEOWNERS
+    repos: |
+      cloudquery-policies/aws
+      cloudquery-policies/azure
+      cloudquery-policies/gcp
+      cloudquery-policies/k8s
+      cloudquery/cq-provider-aws
+      cloudquery/cq-provider-azure
+      cloudquery/cq-provider-digitalocean
+      cloudquery/cq-provider-gcp
+      cloudquery/cq-provider-gcp
+      cloudquery/cq-provider-k8s
+      cloudquery/cq-provider-okta
+      cloudquery/cq-provider-template
+      cloudquery/cq-provider-terraform
+
   # providers
   - files:
       - source: workflows/common
@@ -50,7 +69,7 @@ group:
 
   # policies
   - files:
-      - source: workflows/common
+      - source: workflows/common/
         dest: .github/workflows/
         exclude: |
           lint_golang.yml
