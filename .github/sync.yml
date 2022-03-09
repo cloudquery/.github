@@ -1,32 +1,31 @@
-# core
-cloudquery/cloudquery:
-  - source: workflows/common
-    dest: .github/workflows/
-  - .github/release.yml
-  - source: dependabot.yml
-    dest: .github/dependabot.yml
-
-cloudquery/helm-charts:
-  - source: workflows/common/
-    dest: .github/workflows/
-    exclude: |
-      lint_golang.yml
-
-cloudquery/cq-provider-sdk:
-  - source: workflows/common
-    dest: .github/workflows/
-  - .github/release.yml
-
 group:
-  # All Repos
+  # This will empty the workflows file
+  # This needs to be the first thing that is synced
   - files:
-    - source: CODEOWNERS
-      dest: CODEOWNERS
+      - source: workflows/empty
+        dest: .github/workflows/
+        deleteOrphaned: true
     repos: |
       cloudquery-policies/aws
       cloudquery-policies/azure
       cloudquery-policies/gcp
       cloudquery-policies/k8s
+      cloudquery/cloudquery
+      cloudquery/cq-provider-aws
+      cloudquery/cq-provider-azure
+      cloudquery/cq-provider-digitalocean
+      cloudquery/cq-provider-gcp
+      cloudquery/cq-provider-k8s
+      cloudquery/cq-provider-okta
+      cloudquery/cq-provider-template
+      cloudquery/cq-provider-terraform
+      cloudquery/helm-charts
+  # All repos in cloudquery org
+  - files:
+    - source: CODEOWNERS
+      dest: CODEOWNERS
+    repos: |
+      cloudquery/cloudquery
       cloudquery/cq-provider-aws
       cloudquery/cq-provider-azure
       cloudquery/cq-provider-digitalocean
@@ -36,6 +35,8 @@ group:
       cloudquery/cq-provider-okta
       cloudquery/cq-provider-template
       cloudquery/cq-provider-terraform
+      cloudquery/helm-charts
+
 
   # providers
   - files:
@@ -48,14 +49,16 @@ group:
         dest: .golangci.yml
       - source: dependabot.yml
         dest: .github/dependabot.yml
+      - source: CODEOWNERS
+        dest: CODEOWNERS
     repos: |
-      cloudquery/cq-provider-template
       cloudquery/cq-provider-aws
-      cloudquery/cq-provider-gcp
       cloudquery/cq-provider-azure
-      cloudquery/cq-provider-k8s
       cloudquery/cq-provider-digitalocean
+      cloudquery/cq-provider-gcp
+      cloudquery/cq-provider-k8s
       cloudquery/cq-provider-okta
+      cloudquery/cq-provider-template
       cloudquery/cq-provider-terraform
 
   # providers with terraform
@@ -81,3 +84,22 @@ group:
       cloudquery-policies/gcp
       cloudquery-policies/azure
       cloudquery-policies/k8s
+
+# core
+cloudquery/cloudquery:
+  - source: workflows/common
+    dest: .github/workflows/
+  - .github/release.yml
+  - source: dependabot.yml
+    dest: .github/dependabot.yml
+
+cloudquery/helm-charts:
+  - source: workflows/common/
+    dest: .github/workflows/
+    exclude: |
+      lint_golang.yml
+
+cloudquery/cq-provider-sdk:
+  - source: workflows/common
+    dest: .github/workflows/
+  - .github/release.yml
