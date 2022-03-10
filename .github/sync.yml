@@ -89,6 +89,8 @@ group:
 cloudquery/cloudquery:
   - source: workflows/common
     dest: .github/workflows/
+  - source: workflows/repo-specific/cloudquery
+    dest: .github/workflows/
   - .github/release.yml
   - source: dependabot.yml
     dest: .github/dependabot.yml
@@ -106,5 +108,5 @@ cloudquery/cq-provider-sdk:
 
 
 cloudquery/cq-provider-aws:
-  - source: workflows/provider-specific/aws
+  - source: workflows/repo-specific/cq-provider-aws
     dest: .github/workflows/
