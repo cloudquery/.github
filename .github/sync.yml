@@ -103,3 +103,8 @@ cloudquery/cq-provider-sdk:
   - source: workflows/common
     dest: .github/workflows/
   - .github/release.yml
+
+
+cloudquery/cq-provider-aws:
+  - source: workflows/provider-specific/aws
+    dest: .github/workflows/
