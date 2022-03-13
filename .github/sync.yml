@@ -51,6 +51,8 @@ group:
         dest: .github/dependabot.yml
       - source: CODEOWNERS
         dest: CODEOWNERS
+      - source: CODE_OF_CONDUCT.md
+        dest: CODE_OF_CONDUCT.md
     repos: |
       cloudquery/cq-provider-aws
       cloudquery/cq-provider-azure

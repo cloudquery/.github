@@ -1,0 +1,34 @@
+# DONT EDIT. This file is synced from https://github.com/cloudquery/.github/.github
+name: terraform_apply
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'terraform/**'
+
+jobs:
+  terrafrom_apply:
+    <%> env %>
+    name: Terrafrom Apply
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Go 1.x
+        uses: actions/setup-go@v2
+        with:
+          go-version: ^1.17
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      <%> auth_step %>
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Terraform Apply
+        id: apply
+        run: ./scripts/terraform-apply-changes-only.sh
+
