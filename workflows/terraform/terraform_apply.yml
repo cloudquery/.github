@@ -5,9 +5,12 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'terraform/**'
 
 jobs:
   terrafrom_apply:
+    <%> env %>
     permissions:
         id-token: write
         contents: read    # This is required for actions/checkout@v2
@@ -32,20 +35,6 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
 
-      - name: Terraform fmt
-        id: fmt
-        run: terraform fmt -check
-        continue-on-error: true
-
-      - name: Terraform Init
-        id: init
-        run: terraform init
-
-      - name: Terraform Validate
-        id: validate
-        run: terraform validate -no-color
-
       - name: Terraform Apply
-        id: plan
-        run: terraform apply -no-color
-
+        id: apply
+        run: ./scripts/terraform-apply-changes-only.sh
