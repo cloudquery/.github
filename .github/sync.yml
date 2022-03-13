@@ -67,6 +67,8 @@ group:
   - files:
       - source: workflows/terraform
         dest: .github/workflows/
+      - source: workflows/scripts
+        dest: .github/scripts/
     repos: |
       cloudquery/cq-provider-aws
       cloudquery/cq-provider-gcp
