@@ -13,8 +13,10 @@ jobs:
   terrafrom_plan:
     <%> env %>
     permissions:
-        id-token: write
+        id-token: write # This required for OIDC
         contents: read    # This is required for actions/checkout@v2
+        issues: write
+        pull-requests: write
     name: Terrafrom Plan
     runs-on: ubuntu-latest
     steps:
