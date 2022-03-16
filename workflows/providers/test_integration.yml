@@ -41,7 +41,7 @@ jobs:
     strategy:
       matrix:
         dbversion: [ "postgres:latest" ]
-        go: [ "1.17" ]
+        go: [ "1.18" ]
         platform: [ ubuntu-latest ] # can not run in macOS and windowsOS
     runs-on: ${{ matrix.platform }}
     services:
@@ -63,8 +63,7 @@ jobs:
       - name: Set up Go 1.x
         uses: actions/setup-go@v2
         with:
-          go-version: ^1.16
-
+          go-version: ^1.18
 
       - name: Check out code into the Go module directory
         if: github.event_name != 'pull_request_target'
