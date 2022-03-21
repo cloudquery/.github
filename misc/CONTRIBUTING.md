@@ -27,4 +27,4 @@ Unsure where to begin contributing to CloudQuery? There are few key labels that 
 * `resource` - This is usually support for a new resource that was requested.
 
 
-If you don't see any issues that you think you can help with reach out to the community on Discord and we would be happy to work with you!
+If you don't see any issues that you think you can help with reach out to the community on [Discord](https://cloudquery.io/discord) and we would be happy to work with you!
