@@ -12,7 +12,7 @@ The following is a set of guidelines for contributing to this repository.
 * [Adding a new Resource](./docs/contributing/adding_a_new_resource.md)
 
 ## Process
-* [Code of Conduct](./CODE_OF_CONDUCT.md)
+* [Code of Conduct](https://github.com/cloudquery/.github/blob/main/CODE_OF_CONDUCT.md)
 * [Issue Reporting](./docs/contributing/issue_reporting.md)
 
 
