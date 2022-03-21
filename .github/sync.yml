@@ -51,6 +51,10 @@ group:
         dest: .github/dependabot.yml
       - source: CODEOWNERS
         dest: CODEOWNERS
+      - source: misc/CONTRIBUTING.md
+        dest: CONTRIBUTING.md
+      - source: misc/issue_reporting.md
+        dest: docs/contributing/issue_reporting.md
     repos: |
       cloudquery/cq-provider-aws
       cloudquery/cq-provider-azure
