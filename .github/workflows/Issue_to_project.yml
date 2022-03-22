@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Assign to One Project
     steps:
-    - name: Assign all issuesz project
-      uses: srggrs/assign-one-project-github-action@1.2.1
+    - name: Assign all issues to project
+      uses: srggrs/assign-one-project-github-action@1.3.1
       with:
         project: 'https://github.com/orgs/cloudquery/projects/2'
         column_name: 'Triage'
