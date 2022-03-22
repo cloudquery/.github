@@ -8,4 +8,4 @@ auth_step: |
 
     # Install gcloud, `setup-gcloud` automatically picks up authentication from `auth`.
     - name: 'Set up Cloud SDK'
-      uses: 'google-github-actions/setup-gcloud@master'
+      uses: 'google-github-actions/setup-gcloud@v0.6.0'
