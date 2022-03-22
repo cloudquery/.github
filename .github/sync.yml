@@ -49,10 +49,10 @@ group:
         dest: .golangci.yml
       - source: dependabot.yml
         dest: .github/dependabot.yml
-      - source: CODEOWNERS
-        dest: CODEOWNERS
       - source: misc/CONTRIBUTING.md
         dest: CONTRIBUTING.md
+      - source: misc/Makefile
+        dest: Makefile
       - source: misc/issue_reporting.md
         dest: docs/contributing/issue_reporting.md
     repos: |
