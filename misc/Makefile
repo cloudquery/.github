@@ -26,7 +26,7 @@ pg-connect:
 build:
 	go build -o cq-provider
 
-# build and run the cq aws provider
+# build and run the cq provider
 .PHONY: run
 run: build
 	CQ_REATTACH_PROVIDERS=.cq_reattach ./cq-provider
