@@ -13,7 +13,7 @@ jobs:
       - name: Run GitHub File Sync
         uses: cloudquery/repo-file-sync-action@feat/templating
         with:
-          GH_PAT: ${{ secrets.GH_PAT }}
+          GH_PAT: ${{ secrets.GH_CQ_BOT }}
           BRANCH_PREFIX: custom-branch
           PR_LABELS: chore
           COMMIT_PREFIX: "chore: "
