@@ -82,9 +82,9 @@ jobs:
       <%> auth_step %>
 
       - name: Integration Test
-        run: |
-          go test -run=TestIntegration -tags=integration ./...
-        <%> env %>
+        run: go test -run=TestIntegration -tags=integration ./...
+        env:
+          CGO_ENABLED: 0
 
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
