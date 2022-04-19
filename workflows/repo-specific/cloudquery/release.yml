@@ -25,11 +25,15 @@ jobs:
         with:
           version: latest
           args: release --rm-dist --skip-validate --skip-publish
+        env:
+          CGO_ENABLED: 0
       -
         name: Login to Docker Registry
         run: |
           echo "${{ secrets.GITHUB_TOKEN }}" | \
           docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
+        env:
+          CGO_ENABLED: 0
       -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v2
@@ -38,3 +42,4 @@ jobs:
           args: release --rm-dist
         env:
           GITHUB_TOKEN: ${{ secrets.GORELEASER_GITHUB_TOKEN }}
+          CGO_ENABLED: 0
