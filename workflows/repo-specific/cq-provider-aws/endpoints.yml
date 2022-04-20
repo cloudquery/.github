@@ -27,8 +27,8 @@ jobs:
         with:
           # required so the PR triggers workflow runs
           token: ${{ secrets.GH_CQ_BOT }}
-          branch: fix/update_endpoints
+          branch: chore/update_endpoints
           base: main
-          title: "fix: Update endpoints"
+          title: "chore: Update endpoints"
           commit-message: "fix: Update endpoints"
           body: This PR was created by a scheduled workflow to sync endpoint changes
