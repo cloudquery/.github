@@ -68,6 +68,8 @@ group:
         dest: .github/workflows/
       - source: workflows/scripts
         dest: scripts/
+      - source: misc/PULL_REQUEST_TEMPLATE.md
+        dest: .github/PULL_REQUEST_TEMPLATE.md
     repos: |
       cloudquery/cq-provider-aws
       cloudquery/cq-provider-gcp
