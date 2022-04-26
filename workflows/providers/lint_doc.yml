@@ -21,9 +21,10 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: ^1.17
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
+          token: ${{ secrets.GH_CQ_BOT }}
       - uses: actions/cache@v3
         with:
           path: |
@@ -38,6 +39,5 @@ jobs:
       - name: build-docs
         run: |
           go run ./docs/docs.go
-      - name: Fail if docs are changed
-        run: |
-          test "$(git status -s ./docs/tables | wc -l)" -eq 0
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        commit_message: "feat(docs): Sync docs changes"
