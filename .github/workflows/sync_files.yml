@@ -11,10 +11,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@main
       - name: Run GitHub File Sync
-        uses: cloudquery/repo-file-sync-action@feat/templating
+        uses: cloudquery/repo-file-sync-action@feat/templating_v2
         with:
           GH_PAT: ${{ secrets.GH_CQ_BOT }}
-          BRANCH_PREFIX: custom-branch
           PR_LABELS: chore
           COMMIT_PREFIX: "chore: "
           OVERWRITE_EXISTING_PR: true
+          # Groups all changes into a single commit
+          COMMIT_EACH_FILE: false
