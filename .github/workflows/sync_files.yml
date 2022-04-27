@@ -19,3 +19,4 @@ jobs:
           OVERWRITE_EXISTING_PR: true
           # Groups all changes into a single commit
           COMMIT_EACH_FILE: false
+          ENABLE_TEMPLATING: true
