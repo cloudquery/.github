@@ -1,6 +1,7 @@
 auth_step: |
   {{=<% %>=}}
   - name: 'Az CLI login'
+    if: steps.changes.outputs.src == 'true' || github.event_name != 'pull_request_target'
     uses: azure/login@v1
     with:
       client-id: ${{ secrets.AZURE_CLIENT_ID }}
