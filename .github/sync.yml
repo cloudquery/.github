@@ -53,6 +53,8 @@ group:
         dest: Makefile
       - source: misc/issue_reporting.md
         dest: docs/contributing/issue_reporting.md
+      - source: misc/PULL_REQUEST_TEMPLATE.md
+        dest: .github/PULL_REQUEST_TEMPLATE.md
     repos: |
       cloudquery/cq-provider-aws
       cloudquery/cq-provider-azure
@@ -68,7 +70,7 @@ group:
         dest: .github/workflows/
       - source: workflows/scripts
         dest: scripts/
-      - source: misc/PULL_REQUEST_TEMPLATE.md
+      - source: misc/PULL_REQUEST_TEMPLATE_terraform.md
         dest: .github/PULL_REQUEST_TEMPLATE.md
     repos: |
       cloudquery/cq-provider-aws
