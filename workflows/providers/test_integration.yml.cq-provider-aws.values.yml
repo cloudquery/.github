@@ -1,6 +1,7 @@
 auth_step: |
     {{=<% %>=}}
     - name: Configure AWS credentials
+      if: steps.changes.outputs.src == 'true' || github.event_name != 'pull_request_target'
       uses: aws-actions/configure-aws-credentials@v1
       with:
         role-to-assume: arn:aws:iam::707066037989:role/cq-provider-aws-github-action
