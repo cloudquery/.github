@@ -20,4 +20,4 @@ jobs:
           # Groups all changes into a single commit
           COMMIT_EACH_FILE: false
           ENABLE_TEMPLATING: true
-          ASSIGNEES: $${{ github.actor }}
+          ASSIGNEES: ${{ github.actor }}
