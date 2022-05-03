@@ -1,0 +1,18 @@
+{
+  extends: ["config:base", "schedule:weekly"],
+  postUpdateOptions: ["gomodTidy"],
+  rebaseWhen: "conflicted",
+  ignorePresets: [":prHourlyLimit2"],
+  automerge: false,
+  semanticCommits: false,
+  dependencyDashboard: true,
+  packageRules: [
+    { packagePatterns: ["*"], enabled: false },
+    {
+      matchPackageNames: ["github.com/cloudquery/cq-provider-sdk"],
+      enabled: true,
+      schedule: null,
+    },
+  ],
+  commitMessagePrefix: "fix(deps): ",
+}

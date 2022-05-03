@@ -45,8 +45,8 @@ group:
       - .github/release.yml
       - source: providers.golangci.yml
         dest: .golangci.yml
-      - source: dependabot.yml
-        dest: .github/dependabot.yml
+      - source: .github/renovate.json5
+        dest: .github/renovate.json5
       - source: misc/CONTRIBUTING.md
         dest: CONTRIBUTING.md
       - source: misc/Makefile
@@ -99,8 +99,8 @@ cloudquery/cloudquery:
   - source: workflows/repo-specific/cloudquery
     dest: .github/workflows/
   - .github/release.yml
-  - source: dependabot.yml
-    dest: .github/dependabot.yml
+  - source: .github/renovate.json5
+    dest: .github/renovate.json5
 
 cloudquery/helm-charts:
   - source: workflows/common/
