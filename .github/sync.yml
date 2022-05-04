@@ -17,6 +17,7 @@ group:
       cloudquery/cq-provider-gcp
       cloudquery/cq-provider-k8s
       cloudquery/cq-provider-okta
+      cloudquery/cq-provider-terraform
       cloudquery/cq-provider-template
       cloudquery/helm-charts
   # All repos in cloudquery org
