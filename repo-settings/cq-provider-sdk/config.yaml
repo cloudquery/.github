@@ -1,0 +1,13 @@
+rebaseMergeAllowed: false
+squashMergeAllowed: true
+mergeCommitAllowed: false
+deleteBranchOnMerge: true
+branchProtectionRules:
+- pattern: main
+  isAdminEnforced: main
+  requiredApprovingReviewCount: 1
+  requiresCodeOwnerReviews: false
+  requiresStrictStatusChecks: false
+  requiredStatusCheckContexts:
+    - Validate PR title
+    - Lint with GolangCI

@@ -1,0 +1,16 @@
+rebaseMergeAllowed: false
+squashMergeAllowed: true
+mergeCommitAllowed: false
+deleteBranchOnMerge: true
+branchProtectionRules:
+- pattern: main
+  isAdminEnforced: main
+  requiredApprovingReviewCount: 1
+  requiresCodeOwnerReviews: false
+  requiresStrictStatusChecks: false
+  requiredStatusCheckContexts:
+    - Validate PR title
+    - Lint with GolangCI
+    - checks (postgres:latest, 1.17, ubuntu-latest) (pull_request)
+    - unitests (postgres:latest, 1.17, ubuntu-latest) (pull_request)
+    - unitests (timescale/timescaledb:latest-pg13, 1.17, ubuntu-latest)
