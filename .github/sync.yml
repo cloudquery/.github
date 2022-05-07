@@ -59,6 +59,8 @@ group:
         dest: docs/contributing/issue_reporting.md
       - source: misc/providers/PULL_REQUEST_TEMPLATE.md
         dest: .github/PULL_REQUEST_TEMPLATE.md
+      - source: misc/providers/.goreleaser.yaml
+        dest: .goreleaser.yaml
     repos: |
       cloudquery/cq-provider-aws
       cloudquery/cq-provider-azure
@@ -106,6 +108,8 @@ cloudquery/cloudquery:
   - .github/release.yml
   - source: .github/renovate.json5
     dest: .github/renovate.json5
+  - source: misc/repo-specific/cloudquery/.goreleaser.yaml
+    dest: .goreleaser.yaml
 
 cloudquery/helm-charts:
   - source: workflows/common/
