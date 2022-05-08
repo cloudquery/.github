@@ -92,7 +92,6 @@ group:
           lint_golang.yml
       - source: workflows/policies
         dest: .github/workflows
-      - .github/release.yml
     repos: |
       cloudquery-policies/aws
       cloudquery-policies/gcp
@@ -105,7 +104,6 @@ cloudquery/cloudquery:
     dest: .github/workflows/
   - source: workflows/repo-specific/cloudquery
     dest: .github/workflows/
-  - .github/release.yml
   - source: .github/renovate.json5
     dest: .github/renovate.json5
   - source: misc/repo-specific/cloudquery/.goreleaser.yaml
@@ -120,7 +118,9 @@ cloudquery/helm-charts:
 cloudquery/cq-provider-sdk:
   - source: workflows/common
     dest: .github/workflows/
-  - .github/release.yml
+cloudquery/cq-provider-sdk:
+  - source: workflows/repo-specific/cq-provider-sdk
+    dest: .github/workflows/
 
 
 cloudquery/cq-provider-aws:
