@@ -118,7 +118,6 @@ cloudquery/helm-charts:
 cloudquery/cq-provider-sdk:
   - source: workflows/common
     dest: .github/workflows/
-cloudquery/cq-provider-sdk:
   - source: workflows/repo-specific/cq-provider-sdk
     dest: .github/workflows/
 
