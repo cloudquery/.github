@@ -89,6 +89,7 @@ group:
         dest: .github/workflows/
         exclude: |
           lint_golang.yml
+          issue_to_project.yml
       - source: workflows/policies
         dest: .github/workflows
     repos: |
