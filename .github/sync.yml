@@ -44,6 +44,8 @@ group:
         dest: .github/workflows/
       - source: workflows/providers
         dest: .github/workflows/
+        exclude: |
+          test_integration.yml.generated-cq-provider-k8s.yml
       - .github/release.yml
       - source: providers.golangci.yml
         dest: .golangci.yml
