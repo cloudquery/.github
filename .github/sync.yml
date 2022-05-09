@@ -19,6 +19,7 @@ group:
       cloudquery/cq-provider-okta
       cloudquery/cq-provider-terraform
       cloudquery/cq-provider-template
+      cloudquery/cq-provider-test
       cloudquery/helm-charts
   # All repos in cloudquery org
   - files:
@@ -35,6 +36,7 @@ group:
       cloudquery/cq-provider-okta
       cloudquery/cq-provider-terraform
       cloudquery/cq-provider-template
+      cloudquery/cq-provider-test
       cloudquery/helm-charts
 
 
@@ -69,6 +71,7 @@ group:
       cloudquery/cq-provider-okta
       cloudquery/cq-provider-terraform
       cloudquery/cq-provider-template
+      cloudquery/cq-provider-test
 
   # providers with terraform
   - files:
