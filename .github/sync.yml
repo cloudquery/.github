@@ -111,6 +111,8 @@ cloudquery/cloudquery:
     dest: .github/renovate.json5
   - source: misc/repo-specific/cloudquery/.goreleaser.yaml
     dest: .goreleaser.yaml
+  - source: misc/repo-specific/cloudquery/.goreleaser.prerelease.yaml
+    dest: .goreleaser.prerelease.yaml
 
 cloudquery/helm-charts:
   - source: workflows/common/
