@@ -15,4 +15,9 @@
     },
   ],
   commitMessagePrefix: "fix(deps): ",
+  vulnerabilityAlerts: {
+    enabled: "true",
+    labels: ["security"],
+    schedule: null,
+  },
 }
