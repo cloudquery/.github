@@ -71,7 +71,6 @@ group:
       cloudquery/cq-provider-okta
       cloudquery/cq-provider-terraform
       cloudquery/cq-provider-template
-      cloudquery/cq-provider-test
 
   # providers with terraform
   - files:
@@ -132,3 +131,25 @@ cloudquery/cq-provider-sdk:
 cloudquery/cq-provider-aws:
   - source: workflows/repo-specific/cq-provider-aws
     dest: .github/workflows/
+
+cloudquery/cq-provider-test:
+  - source: workflows/common
+    dest: .github/workflows/
+  - source: workflows/providers
+    dest: .github/workflows
+    exclude: |
+      lint_doc.yml
+  - source: providers.golangci.yml
+    dest: .golangci.yml
+  - source: .github/renovate.json5
+    dest: .github/renovate.json5
+  - source: misc/providers/CONTRIBUTING.md
+    dest: CONTRIBUTING.md
+  - source: misc/providers/Makefile
+    dest: Makefile
+  - source: misc/providers/issue_reporting.md
+    dest: docs/contributing/issue_reporting.md
+  - source: misc/providers/PULL_REQUEST_TEMPLATE.md
+    dest: .github/PULL_REQUEST_TEMPLATE.md
+  - source: misc/providers/.goreleaser.yaml
+    dest: .goreleaser.yaml
