@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - chore/repo_settings_sync
   schedule:
     # once a day at 8am
     - cron:  "0 8 * * *"
