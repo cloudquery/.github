@@ -117,6 +117,8 @@ cloudquery/helm-charts:
     dest: .github/workflows/
     exclude: |
       lint_golang.yml
+  - source: workflows/repo-specific/helm-charts
+    dest: .github/workflows/
 
 cloudquery/cq-provider-sdk:
   - source: workflows/common
