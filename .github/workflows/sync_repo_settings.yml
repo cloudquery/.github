@@ -34,10 +34,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_REPO_SYNC_SETTINGS_TOKEN }}
         run: |
-          # core and sdk
           shopt -s expand_aliases
           alias sync-repo-settings='node repo-automation-bots/packages/sync-repo-settings/build/src/cli.js'
 
+          # core and sdk
           sync-repo-settings --repo=cloudquery/cloudquery --file=repo-settings/cloudquery/config.yaml
           sync-repo-settings --repo=cloudquery/cq-provider-sdk --file=repo-settings/cq-provider-sdk/config.yaml
 
