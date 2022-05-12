@@ -42,13 +42,15 @@ jobs:
           sync-repo-settings --repo=cloudquery/cq-provider-sdk --file=repo-settings/cq-provider-sdk/config.yaml
 
           # providers
-          sync-repo-settings --repo=cloudquery/cq-provider-aws --file=repo-settings/providers/config.yaml
-          sync-repo-settings --repo=cloudquery/cq-provider-azure --file=repo-settings/providers/config.yaml
           sync-repo-settings --repo=cloudquery/cq-provider-digitalocean --file=repo-settings/providers/config.yaml
-          sync-repo-settings --repo=cloudquery/cq-provider-gcp --file=repo-settings/providers/config.yaml
           sync-repo-settings --repo=cloudquery/cq-provider-k8s --file=repo-settings/providers/config.yaml
           sync-repo-settings --repo=cloudquery/cq-provider-okta --file=repo-settings/providers/config.yaml
           sync-repo-settings --repo=cloudquery/cq-provider-template --file=repo-settings/providers/config.yaml
+
+          # providers with terraform
+          sync-repo-settings --repo=cloudquery/cq-provider-aws --file=repo-settings/providers-with-terraform/config.yaml
+          sync-repo-settings --repo=cloudquery/cq-provider-azure --file=repo-settings/providers-with-terraform/config.yaml
+          sync-repo-settings --repo=cloudquery/cq-provider-gcp --file=repo-settings/providers-with-terraform/config.yaml
 
           # policies
           sync-repo-settings --repo=cloudquery-policies/aws --file=repo-settings/policies/config.yaml
