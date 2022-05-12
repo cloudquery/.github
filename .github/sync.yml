@@ -94,6 +94,10 @@ group:
           issue_to_project.yml
       - source: workflows/policies
         dest: .github/workflows
+      - source: .github/.kodiak.toml
+        dest: .github/.kodiak.toml
+      - source: misc/policies/CODEOWNERS
+        dest: CODEOWNERS
     repos: |
       cloudquery-policies/aws
       cloudquery-policies/gcp
