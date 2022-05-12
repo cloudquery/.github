@@ -11,6 +11,10 @@ branchProtectionRules:
   requiredStatusCheckContexts:
     - Validate PR title
     - Lint with GolangCI
-    - checks (postgres:latest, 1.17, ubuntu-latest) (pull_request)
-    - unitests (postgres:latest, 1.17, ubuntu-latest) (pull_request)
+    - checks (postgres:latest, 1.17, ubuntu-latest)
+    - unitests (postgres:latest, 1.17, ubuntu-latest)
     - unitests (timescale/timescaledb:latest-pg13, 1.17, ubuntu-latest)
+    - release-dry-run
+    - policy-tests (postgres:latest, 1.17, ubuntu-latest, gcp)
+    - policy-tests (postgres:latest, 1.17, ubuntu-latest, azure)
+    - policy-tests (postgres:latest, 1.17, ubuntu-latest, k8s)
