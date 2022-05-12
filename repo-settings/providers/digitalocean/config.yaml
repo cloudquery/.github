@@ -1,0 +1,18 @@
+rebaseMergeAllowed: false
+squashMergeAllowed: true
+mergeCommitAllowed: false
+deleteBranchOnMerge: true
+branchProtectionRules:
+- pattern: main
+  isAdminEnforced: false
+  requiredApprovingReviewCount: 1
+  requiresCodeOwnerReviews: false
+  requiresStrictStatusChecks: false
+  requiredStatusCheckContexts:
+    - Validate PR title
+    - Lint with GolangCI
+    - Lint Provider Doc
+    - test_unit (postgres:latest, 1.17, ubuntu-latest)
+    - test_unit (postgres:12, 1.17, ubuntu-latest)
+    - test_unit (postgres:11, 1.17, ubuntu-latest)
+    - release-dry-run

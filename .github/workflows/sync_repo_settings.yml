@@ -49,6 +49,9 @@ jobs:
           # k8s has policy tests, but no integration tests
           sync-repo-settings --repo=cloudquery/cq-provider-k8s --file=repo-settings/providers/k8s/config.yaml
 
+          # digitalocean doesn't have integration tests
+          sync-repo-settings --repo=cloudquery/cq-provider-digitalocean --file=repo-settings/providers/digitalocean/config.yaml
+
           # providers with terraform and policy tests
           sync-repo-settings --repo=cloudquery/cq-provider-aws --file=repo-settings/providers/with-terraform-and-policy-tests/config.yaml
           sync-repo-settings --repo=cloudquery/cq-provider-azure --file=repo-settings/providers/with-terraform-and-policy-tests/config.yaml
