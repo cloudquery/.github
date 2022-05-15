@@ -136,6 +136,10 @@ cloudquery/cq-provider-aws:
   - source: workflows/repo-specific/cq-provider-aws
     dest: .github/workflows/
 
+cloudquery/cloudquery-issues:
+  - source: workflows/common/issue_to_project.yml
+    dest: .github/workflows/issue_to_project.yml
+
 cloudquery/cq-provider-test:
   - source: workflows/common
     dest: .github/workflows/
