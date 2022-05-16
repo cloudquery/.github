@@ -106,6 +106,8 @@ group:
 
 # core
 cloudquery/cloudquery:
+  - source: misc/repo-specific/cloudquery/ISSUE_TEMPLATE
+    dest: .github/ISSUE_TEMPLATE/
   - source: workflows/common
     dest: .github/workflows/
   - source: workflows/repo-specific/cloudquery
