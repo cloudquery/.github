@@ -118,6 +118,10 @@ cloudquery/cloudquery:
     dest: .goreleaser.yaml
   - source: misc/repo-specific/cloudquery/.goreleaser.prerelease.yaml
     dest: .goreleaser.prerelease.yaml
+  - source: misc/common/CONTRIBUTING.md
+    dest: .github/CONTRIBUTING.md
+  - source: misc/common/PULL_REQUEST_TEMPLATE.md
+    dest: .github/PULL_REQUEST_TEMPLATE.md
 
 cloudquery/helm-charts:
   - source: workflows/common/
@@ -132,7 +136,10 @@ cloudquery/cq-provider-sdk:
     dest: .github/workflows/
   - source: workflows/repo-specific/cq-provider-sdk
     dest: .github/workflows/
-
+  - source: misc/common/CONTRIBUTING.md.md
+    dest: .github/CONTRIBUTING.md.md
+  - source: misc/common/PULL_REQUEST_TEMPLATE.md
+    dest: .github/PULL_REQUEST_TEMPLATE.md
 
 cloudquery/cq-provider-aws:
   - source: workflows/repo-specific/cq-provider-aws
