@@ -76,7 +76,6 @@ linters:
     - gci
     - gocritic
     - gofmt
-    - goimports
     - gosimple
     - govet
     - ineffassign
@@ -92,9 +91,3 @@ linters:
     - unused
     - varcheck
 
-issues:
-  exclude-rules:
-    # Exclude some linters from running on tests files.
-    - path: _test\.go
-      linters:
-        - dupl

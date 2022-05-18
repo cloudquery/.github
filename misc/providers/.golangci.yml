@@ -80,7 +80,6 @@ linters:
     - gci
     - gocritic
     - gofmt
-    - goimports
     - gosimple
     - govet
     - ineffassign
