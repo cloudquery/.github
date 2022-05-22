@@ -161,7 +161,7 @@ cloudquery/cq-provider-test:
     dest: .github/workflows
     exclude: |
       lint_doc.yml
-  - source: providers.golangci.yml
+  - source: misc/providers/.golangci.yml
     dest: .golangci.yml
   - source: .github/renovate.json5
     dest: .github/renovate.json5

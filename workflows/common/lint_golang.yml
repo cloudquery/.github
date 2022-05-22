@@ -1,13 +1,12 @@
 # DONT EDIT. This file is synced from https://github.com/cloudquery/.github/.github
 name: lint_golang
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
-
-permissions:
-  contents: read
-  pull-requests: read
 
 jobs:
   golangci:
@@ -33,5 +32,3 @@ jobs:
         with:
           version: v1.46.1
           args: --timeout 5m
-          # This only works for pull request events
-          only-new-issues: true
