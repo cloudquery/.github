@@ -102,4 +102,12 @@ jobs:
         if: steps.changes.outputs.src == 'true' || github.event_name != 'pull_request_target'
         run: go test -run=TestIntegration -tags=integration ./...
 
-      <%> post_test_step %>
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        if: ${{  github.event_name != 'pull_request_target' && failure() }}
+        env:
+          SLACK_CHANNEL: oss-tests
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: '<%> name %> - E2E tests failed'
+          SLACK_TITLE: <%> name %> - E2E tests failed
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
