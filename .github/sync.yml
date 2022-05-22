@@ -48,7 +48,7 @@ group:
         dest: .github/workflows/
       - source: workflows/providers
         dest: .github/workflows/
-      - source: providers.golangci.yml
+      - source: misc/providers/.golangci.yml
         dest: .golangci.yml
       - source: .github/renovate.json5
         dest: .github/renovate.json5
@@ -122,6 +122,8 @@ cloudquery/cloudquery:
     dest: .github/CONTRIBUTING.md
   - source: misc/common/PULL_REQUEST_TEMPLATE.md
     dest: .github/PULL_REQUEST_TEMPLATE.md
+  - source: misc/common/.golangci.yml
+    dest: .golangci.yml
 
 cloudquery/helm-charts:
   - source: workflows/common/
@@ -140,6 +142,9 @@ cloudquery/cq-provider-sdk:
     dest: .github/CONTRIBUTING.md
   - source: misc/common/PULL_REQUEST_TEMPLATE.md
     dest: .github/PULL_REQUEST_TEMPLATE.md
+  - source: misc/common/.golangci.yml
+    dest: .golangci.yml
+
 
 cloudquery/cq-provider-aws:
   - source: workflows/repo-specific/cq-provider-aws
