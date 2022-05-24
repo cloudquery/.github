@@ -12,6 +12,11 @@ on:
         required: false
         default: false
         type: boolean
+      releasePrs:
+        description: "Add to release PRs"
+        required: false
+        default: false
+        type: boolean
 jobs:
   add-automerge-labels:
     runs-on: ubuntu-latest
@@ -44,3 +49,8 @@ jobs:
         if: github.event.inputs.dependenciesPrs == 'true'
         run: |
           npm run repo -- "tag" "--title" "Update module" "automerge"
+
+      - name: Add to release PRs
+        if: github.event.inputs.releasePrs == 'true'
+        run: |
+          npm run repo -- "tag" "--title" "Release" "automerge"
