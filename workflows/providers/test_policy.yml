@@ -50,8 +50,6 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
 
-          steps:
-
       - uses: actions/cache@v3
         with:
           # In order:
