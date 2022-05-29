@@ -50,6 +50,8 @@ group:
         dest: .github/workflows/
       - source: misc/providers/.golangci.yml
         dest: .golangci.yml
+      - source: misc/providers/.gitignore
+        dest: .gitignore
       - source: .github/renovate.json5
         dest: .github/renovate.json5
       - source: misc/providers/CONTRIBUTING.md
@@ -163,6 +165,8 @@ cloudquery/cq-provider-test:
       lint_doc.yml
   - source: misc/providers/.golangci.yml
     dest: .golangci.yml
+  - source: misc/providers/.gitignore
+    dest: .gitignore
   - source: .github/renovate.json5
     dest: .github/renovate.json5
   - source: misc/providers/CONTRIBUTING.md
