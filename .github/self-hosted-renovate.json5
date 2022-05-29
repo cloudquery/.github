@@ -2,4 +2,5 @@
   extends: ["github>cloudquery/.github//.github/renovate-go-default.json5"],
   autodiscover: true,
   onboarding: false,
+  packageRules: [{ packagePatterns: ["*"], enabled: true }],
 }
