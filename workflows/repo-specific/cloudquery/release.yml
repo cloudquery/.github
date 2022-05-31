@@ -31,7 +31,7 @@ jobs:
 
       -
         name: Run GoReleaser Dry-Run
-        uses: goreleaser/goreleaser-action@v2
+        uses: goreleaser/goreleaser-action@v3
         with:
           version: latest
           args: release --rm-dist --skip-validate --skip-publish
@@ -44,7 +44,7 @@ jobs:
         # Publish to GitHub and Homebrew
         name: Run GoReleaser Release
         if: steps.semver_parser.outputs.prerelease == ''
-        uses: goreleaser/goreleaser-action@v2
+        uses: goreleaser/goreleaser-action@v3
         with:
           version: latest
           args: release --rm-dist
@@ -55,7 +55,7 @@ jobs:
         # Publish only to GitHub
         name: Run GoReleaser PreRelease
         if: steps.semver_parser.outputs.prerelease != ''
-        uses: goreleaser/goreleaser-action@v2
+        uses: goreleaser/goreleaser-action@v3
         with:
           version: latest
           args: release --rm-dist --config .goreleaser.prerelease.yaml
