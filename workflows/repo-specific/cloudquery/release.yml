@@ -15,7 +15,7 @@ jobs:
       - 
         name: Parse semver string
         id: semver_parser
-        uses: booxmedialtd/ws-action-parse-semver@4f8784f912407f85ba53b686fe2cf85d4ee11a20
+        uses: booxmedialtd/ws-action-parse-semver@966a26512c94239a00aa10b1b0c196906f7e1909
         with:
           input_string: ${{github.ref_name}}
       -
