@@ -18,7 +18,7 @@ jobs:
         with:
           input_string: ${{github.ref_name}}
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Set up Go
