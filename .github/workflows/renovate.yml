@@ -14,6 +14,8 @@ jobs:
         with:
           configurationFile: .github/self-hosted-renovate.json5
           token: ${{ secrets.GH_CQ_BOT }}
+        env:
+          LOG_LEVEL: 'debug'
       - uses: actions/upload-artifact@v3
         if: always()
         with:

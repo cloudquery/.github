@@ -5,8 +5,6 @@
   ],
   autodiscover: true,
   onboarding: false,
-  logFile: "renovate.log",
-  logFileLevel: "debug",
   "github-actions": {
     fileMatch: ["^workflows/.+.ya?ml$"],
   },
