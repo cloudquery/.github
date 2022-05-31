@@ -52,7 +52,7 @@ group:
         dest: .golangci.yml
       - source: misc/providers/.gitignore
         dest: .gitignore
-      - source: .github/renovate.json5
+      - source: misc/common/renovate.json5
         dest: .github/renovate.json5
       - source: misc/providers/CONTRIBUTING.md
         dest: CONTRIBUTING.md
@@ -114,7 +114,7 @@ cloudquery/cloudquery:
     dest: .github/workflows/
   - source: workflows/repo-specific/cloudquery
     dest: .github/workflows/
-  - source: .github/renovate.json5
+  - source: misc/common/renovate.json5
     dest: .github/renovate.json5
   - source: misc/repo-specific/cloudquery/.goreleaser.yaml
     dest: .goreleaser.yaml
@@ -167,7 +167,7 @@ cloudquery/cq-provider-test:
     dest: .golangci.yml
   - source: misc/providers/.gitignore
     dest: .gitignore
-  - source: .github/renovate.json5
+  - source: misc/common/renovate.json5
     dest: .github/renovate.json5
   - source: misc/providers/CONTRIBUTING.md
     dest: CONTRIBUTING.md

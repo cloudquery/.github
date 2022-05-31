@@ -7,7 +7,7 @@
   dependencyDashboard: true,
   commitMessagePrefix: "fix(deps): ",
   vulnerabilityAlerts: {
-    enabled: "true",
+    enabled: true,
     labels: ["security"],
     schedule: ["at any time"],
   },
