@@ -1,2 +1,2 @@
 githubToken: GITHUB_TOKEN_VALUE
-repoSearch: org:cloudquery is:public archived:false
+repoSearch: org:cloudquery org:cloudquery-policies is:public archived:false
