@@ -1,6 +1,12 @@
 {
-  extends: ["github>cloudquery/.github//.github/renovate-go-default.json5"],
+  extends: [
+    "github>cloudquery/.github//.github/renovate-go-default.json5",
+    "helpers:pinGitHubActionDigests",
+  ],
   autodiscover: true,
   onboarding: false,
-  packageRules: [{ packagePatterns: ["*"], enabled: true }],
+  packageRules: [{ matchPackagePatterns: ["*"], enabled: true }],
+  "github-actions": {
+    fileMatch: ["^(workflows)/[^/]+.ya?ml$(^|/)action.ya?ml$"],
+  },
 }
