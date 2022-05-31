@@ -14,3 +14,8 @@ jobs:
         with:
           configurationFile: .github/self-hosted-renovate.json5
           token: ${{ secrets.GH_CQ_BOT }}
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: 'renovate.log'
+          path: 'renovate.log'

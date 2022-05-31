@@ -1,12 +1,14 @@
 {
   extends: [
-    "github>cloudquery/.github//.github/renovate-go-default.json5",
+    "github>cloudquery/.github//.github/renovate-default.json5",
     "helpers:pinGitHubActionDigests",
   ],
   autodiscover: true,
   onboarding: false,
-  packageRules: [{ matchPackagePatterns: ["*"], enabled: true, schedule: null }],
+  logFile: "renovate.log",
+  logFileLevel: "debug",
   "github-actions": {
     fileMatch: ["^workflows/.+.ya?ml$"],
   },
+  schedule: ["at any time"],
 }
