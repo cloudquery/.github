@@ -7,6 +7,6 @@
   onboarding: false,
   packageRules: [{ matchPackagePatterns: ["*"], enabled: true }],
   "github-actions": {
-    fileMatch: ["^(workflows)/[^/]+.ya?ml$(^|/)action.ya?ml$"],
+    fileMatch: ["^workflows/.+.ya?ml$"],
   },
 }
