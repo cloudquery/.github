@@ -1,23 +1,12 @@
 {
-  extends: ["config:base", "schedule:weekly"],
+  extends: ["github>cloudquery/.github//.github/renovate-default.json5"],
   postUpdateOptions: ["gomodTidy"],
-  rebaseWhen: "conflicted",
-  ignorePresets: [":prHourlyLimit2"],
-  automerge: false,
-  semanticCommits: false,
-  dependencyDashboard: true,
   packageRules: [
-    { packagePatterns: ["*"], enabled: false },
+    { matchPackagePatterns: ["*"], enabled: false },
     {
       matchPackageNames: ["github.com/cloudquery/cq-provider-sdk"],
       enabled: true,
-      schedule: null,
+      schedule: ["at any time"],
     },
   ],
-  commitMessagePrefix: "fix(deps): ",
-  vulnerabilityAlerts: {
-    enabled: "true",
-    labels: ["security"],
-    schedule: null,
-  },
 }

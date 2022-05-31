@@ -1,0 +1,14 @@
+{
+  extends: ["config:base", "schedule:weekly"],
+  rebaseWhen: "conflicted",
+  ignorePresets: [":prHourlyLimit2"],
+  automerge: false,
+  semanticCommits: false,
+  dependencyDashboard: true,
+  commitMessagePrefix: "fix(deps): ",
+  vulnerabilityAlerts: {
+    enabled: "true",
+    labels: ["security"],
+    schedule: ["at any time"],
+  },
+}
