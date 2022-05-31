@@ -1,12 +1,4 @@
 {
-  extends: [
-    "github>cloudquery/.github//.github/renovate-default.json5",
-    "helpers:pinGitHubActionDigests",
-  ],
   autodiscover: true,
   onboarding: false,
-  "github-actions": {
-    fileMatch: ["^workflows/.+.ya?ml$"],
-  },
-  schedule: ["at any time"],
 }
