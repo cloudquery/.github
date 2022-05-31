@@ -5,7 +5,7 @@
   ],
   autodiscover: true,
   onboarding: false,
-  packageRules: [{ matchPackagePatterns: ["*"], enabled: true }],
+  packageRules: [{ matchPackagePatterns: ["*"], enabled: true, schedule: null }],
   "github-actions": {
     fileMatch: ["^workflows/.+.ya?ml$"],
   },
