@@ -40,6 +40,8 @@ group:
       cloudquery/cq-provider-template
       cloudquery/cq-provider-test
       cloudquery/helm-charts
+      cloudquery/docs
+      cloudquery/cq-website
 
 
   # providers
@@ -105,6 +107,14 @@ group:
       cloudquery-policies/gcp
       cloudquery-policies/azure
       cloudquery-policies/k8s
+
+  # docs and website
+  - files:
+      - source: misc/common/renovate.json5
+        dest: .github/renovate.json5
+    repos: |
+      cloudquery/docs
+      cloudquery/cq-website   
 
 # core
 cloudquery/cloudquery:
