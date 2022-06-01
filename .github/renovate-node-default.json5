@@ -1,0 +1,11 @@
+{
+  extends: ["github>cloudquery/.github//.github/renovate-default.json5"],
+  packageRules: [
+    {
+      matchPackagePatterns: ["*"],
+      matchManagers: ["npm"],
+      enabled: true,
+      schedule: ["at any time"],
+    },
+  ],
+}
