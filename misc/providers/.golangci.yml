@@ -15,8 +15,11 @@ linters-settings:
     check-blank: false
     ignore: fmt:.*,[rR]ead|[wW]rite|[cC]lose,io:Copy
   gocritic:
-    disabled-checks:
-      - commentFormatting
+    enabled-checks:
+      - ruleguard
+    settings:
+      ruleguard:
+        rules: '${configDir}/ruleguard/rules.go'
   dupl:
     # tokens count to trigger issue, 150 by default
     threshold: 500
