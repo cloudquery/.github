@@ -12,10 +12,8 @@ branchProtectionRules:
     - Validate PR title
     - Lint with GolangCI
     - Lint Provider Doc
-    - test_unit (postgres:latest, 1.17, ubuntu-latest)
-    - test_unit (postgres:12, 1.17, ubuntu-latest)
-    - test_unit (postgres:11, 1.17, ubuntu-latest)
+    - test_unit (postgres:10, 1.17, ubuntu-latest)
     - release-dry-run
-    - test_integration (postgres:latest, 1.17, ubuntu-latest)
+    - test_integration (postgres:10, 1.17, ubuntu-latest)
     - Terrafrom Plan
-    - PolicyTest (postgres:latest, 1.17, ubuntu-latest)
+    - PolicyTest (postgres:10, 1.17, ubuntu-latest)
