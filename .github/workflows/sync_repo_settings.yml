@@ -44,6 +44,7 @@ jobs:
           # providers
           sync-repo-settings --repo=cloudquery/cq-provider-digitalocean --file=repo-settings/providers/config.yaml
           sync-repo-settings --repo=cloudquery/cq-provider-okta --file=repo-settings/providers/config.yaml
+          sync-repo-settings --repo=cloudquery/cq-provider-terraform --file=repo-settings/providers/config.yaml
 
           # k8s has policy tests, but no integration tests
           sync-repo-settings --repo=cloudquery/cq-provider-k8s --file=repo-settings/providers/k8s/config.yaml
