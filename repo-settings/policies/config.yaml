@@ -10,6 +10,6 @@ branchProtectionRules:
   requiresStrictStatusChecks: false
   requiredStatusCheckContexts:
     - Validate PR title
-    - SchemaValidation (postgres:latest, 1.17, ubuntu-latest)
+    - SchemaValidation (postgres:10, 1.17, ubuntu-latest)
     - LintHCL
     - NoSlashes
