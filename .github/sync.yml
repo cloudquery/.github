@@ -115,7 +115,7 @@ group:
         dest: .github/renovate.json5
     repos: |
       cloudquery/docs
-      cloudquery/cq-website   
+      cloudquery/cq-website
 
 # core
 cloudquery/cloudquery:
@@ -190,3 +190,7 @@ cloudquery/cq-provider-test:
     dest: .github/PULL_REQUEST_TEMPLATE.md
   - source: misc/providers/.goreleaser.yaml
     dest: .goreleaser.yaml
+
+cloudquery/cq-website:
+  - source: misc/repo-specific/cq-website/CODEOWNERS
+    dest: CODEOWNERS
