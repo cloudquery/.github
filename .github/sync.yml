@@ -11,6 +11,7 @@ group:
       cloudquery-policies/gcp
       cloudquery-policies/k8s
       cloudquery/cloudquery
+      cloudquery/cq-provider-sdk
       cloudquery/cq-provider-aws
       cloudquery/cq-provider-azure
       cloudquery/cq-provider-digitalocean
