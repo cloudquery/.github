@@ -9,14 +9,14 @@ See code [here](./.github/workflows/sync_files.yml) and configuration [here](./.
 
 We sync the following files
 
-- GitHub Actions workflows under `workflows` directory
-- Pull request templates, linting configurations, release configurations, code owners files, renovate configuration, etc. under `misc` directory.
+- GitHub Actions workflows under [`workflows`](./workflows) directory
+- Pull request templates, linting configurations, release configurations, code owners files, renovate configuration, etc. under [`misc`](./misc) directory.
 
 ### Sync files templating
 
 We use a [customized version](https://github.com/cloudquery/repo-file-sync-action/tree/feat/templating_v2) of a [GitHub Action](https://github.com/BetaHuhn/repo-file-sync-action) to sync files between repositories. The customized version adds templating support when syncing files.
 
-To create a template file prefix the file content with `{{=<% %>=}}` and then create template values files with the following naming convention:
+To create a template file prefix a file's content with `{{=<% %>=}}` and then create template values files with the following naming convention:
 `<filename-with-extension>.<target-repo-name>.values.yml`. The template values file should be a key value configuration of template values to replace.
 For example, given the following template file:
 ```yaml
@@ -30,7 +30,7 @@ and values file
 name: "aws"
 ```
 
-When syncing files to the `cq-provider-aws` repositories, they synced file will have the content of:
+When syncing files to the `cq-provider-aws` repositories, the synced file will have the content of:
 ```yml
 # template.yml
 name: example provider workflow aws
@@ -52,11 +52,13 @@ See [here](./repo-settings/providers/config.yaml) for the default settings we us
 We use [renovate](https://github.com/renovatebot/renovate) for dependency updates via a [GitHub Action](./.github/workflows/renovate.yml).
 All repositories (except this one) use a [common file](./misc/common/renovate.json5) that extends [various configurations](./.github).
 
+As renovate runs in the context of this repository, it uses a [self hosted renovate configuration](./.github/self-hosted-renovate.json5) file to generate the dependencies updates.
+
 ## Auto-merging PRs
 
 We use a GitHub application called [Kodiak](https://kodiakhq.com/) to allow auto-merging of PRs.
-The app will automatically merge any PRs that has the `automerge` label and all required conditions are met (e.g. review approved, status checks passes).
-The configuration for the application is synced to all repos from [this file](./.github/.kodiak.toml).
+The application will automatically merge any PRs that has the `automerge` label and all required conditions are met (e.g. review approved, status checks passed).
+The configuration for the application is synced to all repositories from [this file](./.github/.kodiak.toml).
 
-We provider a [manually triggered GitHub Action workflow](./.github/workflows/add_automerge_labels.yml) to add the `automerge` label to PRs based on their title.
+We provide a [manually triggered GitHub Action workflow](./.github/workflows/add_automerge_labels.yml) to add the `automerge` label to PRs based on their title.
 You can trigger the workflow from [here](https://github.com/cloudquery/.github/actions/workflows/add_automerge_labels.yml):
