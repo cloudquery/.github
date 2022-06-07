@@ -4,7 +4,6 @@
   ignorePresets: [":prHourlyLimit2"],
   automerge: false,
   semanticCommits: false,
-  dependencyDashboard: true,
   commitMessagePrefix: "fix(deps): ",
   vulnerabilityAlerts: {
     enabled: true,
