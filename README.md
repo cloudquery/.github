@@ -62,3 +62,4 @@ The configuration for the application is synced to all repositories from [this f
 
 We provide a [manually triggered GitHub Action workflow](./.github/workflows/add_automerge_labels.yml) to add the `automerge` label to PRs based on their title.
 You can trigger the workflow from [here](https://github.com/cloudquery/.github/actions/workflows/add_automerge_labels.yml):
+![image](https://user-images.githubusercontent.com/26760571/172339434-133a0c0f-c474-4852-8f3c-69b13303df3c.png)
