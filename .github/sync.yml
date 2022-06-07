@@ -79,8 +79,6 @@ group:
 
   # providers with terraform
   - files:
-      - source: workflows/terraform
-        dest: .github/workflows/
       - source: workflows/scripts
         dest: scripts/
       - source: misc/providers/PULL_REQUEST_TEMPLATE_terraform.md
