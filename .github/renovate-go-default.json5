@@ -2,11 +2,7 @@
   extends: ["github>cloudquery/.github//.github/renovate-default.json5"],
   postUpdateOptions: ["gomodTidy"],
   packageRules: [
-    {
-      matchSourceUrlPrefixes: ["https://github.com/aws/aws-sdk-go-v2"],
-      enabled: true,
-      groupName: "aws-sdk",
-    },
+    { matchPackagePatterns: ["*"], enabled: false },
     {
       matchPackagePatterns: [
         "github.com/cloudquery/*",
