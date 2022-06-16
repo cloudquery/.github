@@ -24,4 +24,10 @@
       versioningTemplate: "loose",
     },
   ],
+  packageRules: [
+    {
+      matchManagers: ["github-actions"],
+      groupName: "github-action",
+    },
+  ],
 }
