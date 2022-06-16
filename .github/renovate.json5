@@ -27,7 +27,7 @@
   packageRules: [
     {
       matchManagers: ["github-actions"],
-      groupName: "github-action",
+      groupName: "github-actions",
     },
   ],
 }
