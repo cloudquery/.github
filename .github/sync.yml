@@ -23,6 +23,7 @@ group:
       cloudquery/cq-provider-test
       cloudquery/cq-provider-fuzz
       cloudquery/helm-charts
+      cloudquery/dashboards
   # All repos in cloudquery org
   - files:
     - source: CODEOWNERS
@@ -45,6 +46,7 @@ group:
       cloudquery/helm-charts
       cloudquery/docs
       cloudquery/cq-website
+      cloudquery/dashboards
 
 
   # providers
@@ -144,6 +146,16 @@ group:
     repos: |
       cloudquery/docs
       cloudquery/cq-website
+  
+  # dashboards and helm-charts
+  - files:
+      - source: workflows/common/
+        dest: .github/workflows/
+        exclude: |
+          lint_golang.yml
+    repos: |
+      cloudquery/dashboards
+      cloudquery/helm-charts
 
 # core
 cloudquery/cloudquery:
@@ -166,11 +178,11 @@ cloudquery/cloudquery:
   - source: misc/common/.golangci.yml
     dest: .golangci.yml
 
-cloudquery/helm-charts:
-  - source: workflows/common/
+cloudquery/dashboards:
+  - source: workflows/repo-specific/dashboards
     dest: .github/workflows/
-    exclude: |
-      lint_golang.yml
+
+cloudquery/helm-charts:
   - source: workflows/repo-specific/helm-charts
     dest: .github/workflows/
 
