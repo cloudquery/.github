@@ -16,13 +16,13 @@ jobs:
         with:
           path: terraform-aws-cloudquery
           repository: cloudquery/terraform-aws-cloudquery
-          token: ${{ secrets.GH_PAT }}
+          token: ${{ secrets.GH_CQ_BOT }}
       - name: 'Checkout terraform-gcp-cloudquery source code'
         uses: 'actions/checkout@v3'
         with:
           path: terraform-gcp-cloudquery
           repository: cloudquery/terraform-gcp-cloudquery
-          token: ${{ secrets.GH_PAT }}
+          token: ${{ secrets.GH_CQ_BOT }}
       - name: Bump Versions if required
         run: |
           # Bump Versions if required
@@ -58,15 +58,15 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.GH_CQ_BOT }}
-          commit-message: 'chore: Bump CloudQuery helm chart version'
+          commit-message: 'feat: Bump CloudQuery helm chart version'
           committer: GitHub <noreply@github.com>
           author: CloudQuery Bot <102256036+cq-bot@users.noreply.github.com>
           signoff: false
-          branch: chore/bump-terraform-chart-version-${{ env.HELM_CHART_VERSION }}
+          branch: feat/bump-terraform-chart-version-${{ env.HELM_CHART_VERSION }}
           delete-branch: true
-          title: 'chore: Bump CloudQuery helm chart version'
+          title: 'feat: Bump CloudQuery helm chart version'
           labels: |
-            chore
+            feat
             automerge
           assignees: cq-bot
           reviewers: cq-bot
@@ -76,15 +76,15 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.GH_CQ_BOT }}
-          commit-message: 'chore: Bump CloudQuery helm chart version'
+          commit-message: 'feat: Bump CloudQuery helm chart version'
           committer: GitHub <noreply@github.com>
           author: CloudQuery Bot <102256036+cq-bot@users.noreply.github.com>
           signoff: false
-          branch: chore/bump-terraform-chart-version-${{ env.HELM_CHART_VERSION }}
+          branch: feat/bump-terraform-chart-version-${{ env.HELM_CHART_VERSION }}
           delete-branch: true
-          title: 'chore: Bump CloudQuery helm chart version'
+          title: 'feat: Bump CloudQuery helm chart version'
           labels: |
-            chore
+            feat
             automerge
           assignees: cq-bot
           reviewers: cq-bot
