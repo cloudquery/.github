@@ -25,9 +25,7 @@
     },
   ],
   packageRules: [
-    {
-      matchManagers: ["github-actions"],
-      groupName: "github-actions",
-    },
+    { matchPackagePatterns: ["*"], addLabels: ["no automerge"] },
+    { matchManagers: ["github-actions"], groupName: "github-actions" },
   ],
 }
