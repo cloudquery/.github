@@ -16,4 +16,5 @@ usernames = ["cq-bot"]
 versions = ["patch"]
 
 [merge]
+blocking_labels = ["wip", "no auto merge"]
 notify_on_conflict = false
