@@ -1,1 +1,12 @@
-*       @cloudquery/cq-frontend
+* @cloudquery/cq-frontend
+
+# blogs
+website/contents/ @nkabardin @yevgenypats
+website/public/blog_covers/ @nkabardin @yevgenypats
+website/public/imgs/ @nkabardin @yevgenypats
+
+# indexer (backend team)
+backend/ @cloudquery/cloudquery-opensource
+
+# ignored files
+.github/.kodiak.toml

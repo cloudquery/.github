@@ -172,7 +172,7 @@ cloudquery/cloudquery:
   - source: misc/repo-specific/cloudquery/.goreleaser.prerelease.yaml
     dest: .goreleaser.prerelease.yaml
   - source: misc/common/CONTRIBUTING.md
-    dest: .github/CONTRIBUTING.md
+    dest: CONTRIBUTING.md
   - source: misc/common/PULL_REQUEST_TEMPLATE.md
     dest: .github/PULL_REQUEST_TEMPLATE.md
   - source: misc/common/.golangci.yml
@@ -194,7 +194,7 @@ cloudquery/cq-provider-sdk:
   - source: misc/repo-specific/cq-provider-sdk/renovate.json5
     dest: .github/renovate.json5
   - source: misc/common/CONTRIBUTING.md
-    dest: .github/CONTRIBUTING.md
+    dest: CONTRIBUTING.md
   - source: misc/common/PULL_REQUEST_TEMPLATE.md
     dest: .github/PULL_REQUEST_TEMPLATE.md
   - source: misc/common/.golangci.yml
