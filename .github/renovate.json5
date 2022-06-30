@@ -28,5 +28,4 @@
     { matchPackagePatterns: ["*"], addLabels: ["no automerge"] },
     { matchManagers: ["github-actions"], groupName: "github-actions" },
   ],
-  allowedPostUpgradeCommands: ["^grep"],
 }
