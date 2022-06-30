@@ -1,5 +1,5 @@
 {
   autodiscover: true,
   onboarding: false,
-  allowedPostUpgradeCommands: ["^grep"],
+  allowedPostUpgradeCommands: ["^sed"],
 }
