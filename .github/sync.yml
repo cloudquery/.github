@@ -47,7 +47,7 @@ group:
       cloudquery/docs
       cloudquery/cq-website
       cloudquery/dashboards
-
+      cloudquery/setup-cloudquery
 
   # providers
   - files:
@@ -139,13 +139,14 @@ group:
       cloudquery-policies/azure
       cloudquery-policies/k8s
 
-  # docs and website
+  # Renovate configurations
   - files:
       - source: misc/common/renovate.json5
         dest: .github/renovate.json5
     repos: |
       cloudquery/docs
       cloudquery/cq-website
+      cloudquery/setup-cloudquery
   
   # dashboards and helm-charts
   - files:
