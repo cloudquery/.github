@@ -166,7 +166,7 @@ cloudquery/cloudquery:
     dest: .github/workflows/
   - source: workflows/repo-specific/cloudquery
     dest: .github/workflows/
-  - source: misc/repo-specific/cloudquery/renovate.json5
+  - source: misc/common/renovate.json5
     dest: .github/renovate.json5
   - source: misc/repo-specific/cloudquery/.goreleaser.yaml
     dest: .goreleaser.yaml
@@ -192,7 +192,7 @@ cloudquery/cq-provider-sdk:
     dest: .github/workflows/
   - source: workflows/repo-specific/cq-provider-sdk
     dest: .github/workflows/
-  - source: misc/repo-specific/cq-provider-sdk/renovate.json5
+  - source: misc/common/renovate.json5
     dest: .github/renovate.json5
   - source: misc/common/CONTRIBUTING.md
     dest: CONTRIBUTING.md
