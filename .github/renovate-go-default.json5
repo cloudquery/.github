@@ -2,7 +2,6 @@
   extends: ["github>cloudquery/.github//.github/renovate-default.json5"],
   postUpdateOptions: ["gomodTidy1.17"],
   packageRules: [
-    { matchManagers: ["golang"], enabled: false },
     {
       matchPackagePatterns: [
         "github.com/cloudquery/*",
