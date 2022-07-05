@@ -71,6 +71,8 @@ group:
         dest: .github/PULL_REQUEST_TEMPLATE.md
       - source: misc/providers/.goreleaser.yaml
         dest: .goreleaser.yaml
+      - source: misc/providers/.pre-commit-config.yaml
+        dest: .pre-commit-config.yaml
     repos: |
       cloudquery/cq-provider-aws
       cloudquery/cq-provider-azure
