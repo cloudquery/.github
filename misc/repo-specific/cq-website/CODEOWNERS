@@ -5,8 +5,8 @@ website/contents/ @nkabardin @yevgenypats
 website/public/blog_covers/ @nkabardin @yevgenypats
 website/public/imgs/ @nkabardin @yevgenypats
 
-# indexer (backend team)
-backend/ @cloudquery/cloudquery-opensource
+# hub-indexer
+backend/ @nkabardin @dj-stormtrooper
 
 # ignored files
 .github/.kodiak.toml
