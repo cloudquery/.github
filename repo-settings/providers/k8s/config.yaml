@@ -15,3 +15,4 @@ branchProtectionRules:
     - test_unit (postgres:10, 1.17, ubuntu-latest)
     - release-dry-run
     - PolicyTest (postgres:10, 1.17, ubuntu-latest)
+    - SQLPolicyTest (postgres:10, 1.17, ubuntu-latest)
