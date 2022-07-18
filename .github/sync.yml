@@ -147,7 +147,6 @@ group:
         dest: .github/renovate.json5
     repos: |
       cloudquery/docs
-      cloudquery/cq-website
       cloudquery/setup-cloudquery
   
   # dashboards and helm-charts
@@ -215,3 +214,5 @@ cloudquery/cloudquery-issues:
 cloudquery/cq-website:
   - source: misc/repo-specific/cq-website/CODEOWNERS
     dest: CODEOWNERS
+  - source: misc/repo-specific/cq-website/renovate.json5
+    dest: .github/renovate.json5
