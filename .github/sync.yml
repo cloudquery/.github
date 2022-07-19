@@ -45,7 +45,6 @@ group:
       cloudquery/cq-provider-fuzz
       cloudquery/helm-charts
       cloudquery/docs
-      cloudquery/cq-website
       cloudquery/dashboards
       cloudquery/setup-cloudquery
 
@@ -210,9 +209,3 @@ cloudquery/cq-provider-aws:
 cloudquery/cloudquery-issues:
   - source: workflows/common/issue_to_project.yml
     dest: .github/workflows/issue_to_project.yml
-
-cloudquery/cq-website:
-  - source: misc/repo-specific/cq-website/CODEOWNERS
-    dest: CODEOWNERS
-  - source: misc/repo-specific/cq-website/renovate.json5
-    dest: .github/renovate.json5
