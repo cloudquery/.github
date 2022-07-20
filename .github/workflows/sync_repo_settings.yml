@@ -57,8 +57,3 @@ jobs:
           sync-repo-settings --repo=cloudquery/cq-provider-azure --file=repo-settings/providers/with-terraform-and-policy-tests/config.yaml
           sync-repo-settings --repo=cloudquery/cq-provider-gcp --file=repo-settings/providers/with-terraform-and-policy-tests/config.yaml
 
-          # policies
-          sync-repo-settings --repo=cloudquery-policies/aws --file=repo-settings/policies/config.yaml
-          sync-repo-settings --repo=cloudquery-policies/gcp --file=repo-settings/policies/config.yaml
-          sync-repo-settings --repo=cloudquery-policies/azure --file=repo-settings/policies/config.yaml
-          sync-repo-settings --repo=cloudquery-policies/k8s --file=repo-settings/policies/config.yaml
