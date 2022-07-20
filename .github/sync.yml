@@ -6,10 +6,6 @@ group:
         dest: .github/workflows/
         deleteOrphaned: true
     repos: |
-      cloudquery-policies/aws
-      cloudquery-policies/azure
-      cloudquery-policies/gcp
-      cloudquery-policies/k8s
       cloudquery/cloudquery
       cloudquery/cq-provider-sdk
       cloudquery/cq-provider-aws
@@ -121,25 +117,6 @@ group:
       cloudquery/cq-provider-aws
       cloudquery/cq-provider-gcp
       cloudquery/cq-provider-azure
-
-  # policies
-  - files:
-      - source: workflows/common/
-        dest: .github/workflows/
-        exclude: |
-          lint_golang.yml
-          issue_to_project.yml
-      - source: workflows/policies
-        dest: .github/workflows
-      - source: .github/.kodiak.toml
-        dest: .github/.kodiak.toml
-      - source: misc/policies/CODEOWNERS
-        dest: CODEOWNERS
-    repos: |
-      cloudquery-policies/aws
-      cloudquery-policies/gcp
-      cloudquery-policies/azure
-      cloudquery-policies/k8s
 
   # Renovate configurations
   - files:
