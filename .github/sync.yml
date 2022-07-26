@@ -27,8 +27,6 @@ group:
     - source: .github/.kodiak.toml
       dest: .github/.kodiak.toml
     repos: |
-      cloudquery/cloudquery
-      cloudquery/cq-provider-sdk
       cloudquery/cq-provider-aws
       cloudquery/cq-provider-azure
       cloudquery/cq-provider-digitalocean
