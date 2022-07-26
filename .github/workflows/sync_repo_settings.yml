@@ -53,7 +53,7 @@ jobs:
           sync-repo-settings --repo=cloudquery/cq-provider-template --file=repo-settings/providers/no-integration-tests/config.yaml
 
           # providers with terraform and policy tests
-          sync-repo-settings --repo=cloudquery/cq-provider-aws --file=repo-settings/providers/with-terraform-and-policy-tests/config.yaml
-          sync-repo-settings --repo=cloudquery/cq-provider-azure --file=repo-settings/providers/with-terraform-and-policy-tests/config.yaml
-          sync-repo-settings --repo=cloudquery/cq-provider-gcp --file=repo-settings/providers/with-terraform-and-policy-tests/config.yaml
+          sync-repo-settings --repo=cloudquery/cq-provider-aws --file=repo-settings/providers/with-terraform-tests/config.yaml
+          sync-repo-settings --repo=cloudquery/cq-provider-azure --file=repo-settings/providers/with-terraform-tests/config.yaml
+          sync-repo-settings --repo=cloudquery/cq-provider-gcp --file=repo-settings/providers/with-terraform-tests/config.yaml
 

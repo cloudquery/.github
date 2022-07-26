@@ -16,4 +16,3 @@ branchProtectionRules:
     - release-dry-run
     - test_integration (postgres:10, 1.17, ubuntu-latest)
     - Terrafrom Plan
-    - PolicyTest (postgres:10, 1.17, ubuntu-latest)
