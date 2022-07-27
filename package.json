@@ -14,6 +14,6 @@
   },
   "homepage": "https://github.com/cloudquery/.github#readme",
   "dependencies": {
-    "@google/repo": "4.8.1"
+    "@google/repo": "6.0.0"
   }
 }
