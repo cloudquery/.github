@@ -12,5 +12,5 @@ branchProtectionRules:
     - Validate PR title
     - Lint with GolangCI
     - Lint Provider Doc
-    - test_unit (postgres:10, 1.17, ubuntu-latest)
+    - test_unit (postgres:10, 1.18, ubuntu-latest)
     - release-dry-run
