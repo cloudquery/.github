@@ -14,7 +14,3 @@ branchProtectionRules:
     - checks (postgres:10, 1.18, ubuntu-latest)
     - unitests (postgres:10, 1.18, ubuntu-latest)
     - release-dry-run
-    - policy-tests (postgres:10, 1.18, ubuntu-latest, aws)
-    - policy-tests (postgres:10, 1.18, ubuntu-latest, gcp)
-    - policy-tests (postgres:10, 1.18, ubuntu-latest, azure)
-    - policy-tests (postgres:10, 1.18, ubuntu-latest, k8s)
