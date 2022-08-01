@@ -38,6 +38,10 @@ name: example provider workflow aws
 
 >If a repository doesn't have a matching template values file, the file will not be synced.
 
+#### Empty template placeholders
+
+Some templates don't use any placeholders (values) but we still use an empty template placeholder `{{=<% %>=}}` in the file. With this, it's possible to enable/disable workflows depending on the existence of a template values file. 
+
 ## Repositories settings automation
 
 See code [here](./.github/workflows/sync_repo_settings.yml) and configuration [here](./repo-settings).
