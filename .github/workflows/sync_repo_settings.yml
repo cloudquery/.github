@@ -44,16 +44,9 @@ jobs:
           # providers
           sync-repo-settings --repo=cloudquery/cq-provider-okta --file=repo-settings/providers/config.yaml
           sync-repo-settings --repo=cloudquery/cq-provider-terraform --file=repo-settings/providers/config.yaml
-
-          # k8s has policy tests, but no integration tests
-          sync-repo-settings --repo=cloudquery/cq-provider-k8s --file=repo-settings/providers/k8s/config.yaml
-
-          # digitalocean and the template don't have integration tests
-          sync-repo-settings --repo=cloudquery/cq-provider-digitalocean --file=repo-settings/providers/no-integration-tests/config.yaml
-          sync-repo-settings --repo=cloudquery/cq-provider-template --file=repo-settings/providers/no-integration-tests/config.yaml
-
-          # providers with terraform and policy tests
-          sync-repo-settings --repo=cloudquery/cq-provider-aws --file=repo-settings/providers/with-terraform-tests/config.yaml
-          sync-repo-settings --repo=cloudquery/cq-provider-azure --file=repo-settings/providers/with-terraform-tests/config.yaml
-          sync-repo-settings --repo=cloudquery/cq-provider-gcp --file=repo-settings/providers/with-terraform-tests/config.yaml
-
+          sync-repo-settings --repo=cloudquery/cq-provider-aws --file=repo-settings/providers/config.yaml
+          sync-repo-settings --repo=cloudquery/cq-provider-azure --file=repo-settings/providers/config.yaml
+          sync-repo-settings --repo=cloudquery/cq-provider-gcp --file=repo-settings/providers/config.yaml
+          sync-repo-settings --repo=cloudquery/cq-provider-digitalocean --file=repo-settings/providers/config.yaml
+          sync-repo-settings --repo=cloudquery/cq-provider-template --file=repo-settings/providers/config.yaml
+          sync-repo-settings --repo=cloudquery/cq-provider-k8s --file=repo-settings/providers/config.yaml
