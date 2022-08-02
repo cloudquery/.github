@@ -10,8 +10,10 @@ group:
       cloudquery/cq-provider-sdk
       cloudquery/cq-provider-aws
       cloudquery/cq-provider-azure
+      cloudquery/cq-provider-cloudflare
       cloudquery/cq-provider-digitalocean
       cloudquery/cq-provider-gcp
+      cloudquery/cq-provider-github
       cloudquery/cq-provider-k8s
       cloudquery/cq-provider-okta
       cloudquery/cq-provider-terraform
@@ -29,8 +31,10 @@ group:
     repos: |
       cloudquery/cq-provider-aws
       cloudquery/cq-provider-azure
+      cloudquery/cq-provider-cloudflare
       cloudquery/cq-provider-digitalocean
       cloudquery/cq-provider-gcp
+      cloudquery/cq-provider-github
       cloudquery/cq-provider-k8s
       cloudquery/cq-provider-okta
       cloudquery/cq-provider-terraform
@@ -69,8 +73,10 @@ group:
     repos: |
       cloudquery/cq-provider-aws
       cloudquery/cq-provider-azure
+      cloudquery/cq-provider-cloudflare
       cloudquery/cq-provider-digitalocean
       cloudquery/cq-provider-gcp
+      cloudquery/cq-provider-github
       cloudquery/cq-provider-k8s
       cloudquery/cq-provider-okta
       cloudquery/cq-provider-terraform
