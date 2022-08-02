@@ -50,3 +50,5 @@ jobs:
           sync-repo-settings --repo=cloudquery/cq-provider-digitalocean --file=repo-settings/providers/config.yaml
           sync-repo-settings --repo=cloudquery/cq-provider-template --file=repo-settings/providers/config.yaml
           sync-repo-settings --repo=cloudquery/cq-provider-k8s --file=repo-settings/providers/config.yaml
+          sync-repo-settings --repo=cloudquery/cq-provider-github --file=repo-settings/providers/config.yaml
+          sync-repo-settings --repo=cloudquery/cq-provider-cloudflare --file=repo-settings/providers/config.yaml
