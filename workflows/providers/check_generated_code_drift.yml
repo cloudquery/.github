@@ -12,7 +12,7 @@ on:
     paths:
       - 'resources/services/**/*'
 jobs:
-  lint_doc:
+  check_generated_code_drift:
     name: Check Generated Code for Drift
     runs-on: ubuntu-latest
     steps:
