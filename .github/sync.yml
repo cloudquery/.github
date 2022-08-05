@@ -52,6 +52,8 @@ group:
         dest: .github/workflows/
       - source: workflows/providers
         dest: .github/workflows/
+      - source: workflows/scripts
+        dest: scripts/
       - source: misc/providers/.golangci.yml
         dest: .golangci.yml
       - source: misc/providers/.gitignore
@@ -108,18 +110,6 @@ group:
     repos: |
       cloudquery/cq-provider-test
       cloudquery/cq-provider-fuzz
-
-
-  # providers with terraform
-  - files:
-      - source: workflows/scripts
-        dest: scripts/
-      - source: misc/providers/PULL_REQUEST_TEMPLATE_terraform.md
-        dest: .github/PULL_REQUEST_TEMPLATE.md
-    repos: |
-      cloudquery/cq-provider-aws
-      cloudquery/cq-provider-gcp
-      cloudquery/cq-provider-azure
 
   # Renovate configurations
   - files:
