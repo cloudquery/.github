@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - check-cq-gen
     paths:
       - 'resources/services/**/*'
   pull_request:
