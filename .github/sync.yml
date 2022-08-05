@@ -52,6 +52,8 @@ group:
         dest: .github/workflows/
       - source: workflows/providers
         dest: .github/workflows/
+      - source: workflows/providers/check_generated_code_drift.yml # force this file to be copied
+        dest: .github/workflows/check_generated_code_drift.yml
       - source: workflows/scripts
         dest: scripts/
       - source: misc/providers/.golangci.yml
