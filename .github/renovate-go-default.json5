@@ -1,6 +1,6 @@
 {
   extends: ["github>cloudquery/.github//.github/renovate-default.json5"],
-  postUpdateOptions: ["gomodTidy1.17"],
+  postUpdateOptions: ["gomodTidy"],
   packageRules: [
     { matchManagers: ["gomod"], enabled: true },
     {
