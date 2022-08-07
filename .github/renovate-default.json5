@@ -1,5 +1,5 @@
 {
-  extends: ["config:base", "schedule:weekly"],
+  extends: ["config:base", "schedule:monthly"],
   rebaseWhen: "conflicted",
   ignorePresets: [":prHourlyLimit2"],
   automerge: false,

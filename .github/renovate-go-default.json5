@@ -2,6 +2,7 @@
   extends: ["github>cloudquery/.github//.github/renovate-default.json5"],
   postUpdateOptions: ["gomodTidy1.17"],
   packageRules: [
+    { matchManagers: ["gomod"], enabled: true },
     {
       matchPackagePatterns: [
         "github.com/cloudquery/*",
