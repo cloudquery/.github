@@ -23,7 +23,7 @@ jobs:
       # GoReleaser will upload the binaries to GitHub and mark the release as ready
       - name: Mark as pre-release
         if: steps.release.outputs.release_created
-        uses: tubone24/update_release@93bc26bdc5a1f9659d88a2a497d00c605db71e23
+        uses: tubone24/update_release@c624103da4d093b6d980e20e239caa9a09838176
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG_NAME: ${{ steps.release.outputs.tag_name }}
