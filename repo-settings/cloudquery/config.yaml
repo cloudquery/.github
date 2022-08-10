@@ -33,6 +33,7 @@ branchProtectionRules:
     - Linter (plugins/source/azure)
     - Unit Tests (plugins/source/azure)
 
+    - SQLPolicyTest (plugins/cloudflare, postgres:10, 1.18, ubuntu-latest)
     - Linter (plugins/source/cloudflare)
     - Unit Tests (plugins/source/cloudflare)
 
@@ -46,6 +47,7 @@ branchProtectionRules:
     - Linter (plugins/source/gcp)
     - Unit Tests (plugins/source/gcp)
 
+    - SQLPolicyTest (plugins/github, postgres:10, 1.18, ubuntu-latest)
     - Linter (plugins/source/github)
     - Unit Tests (plugins/source/github)
 
