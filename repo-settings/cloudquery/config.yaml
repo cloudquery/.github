@@ -1,6 +1,6 @@
-rebaseMergeAllowed: false
+rebaseMergeAllowed: true
 squashMergeAllowed: true
-mergeCommitAllowed: false
+mergeCommitAllowed: true
 deleteBranchOnMerge: true
 branchProtectionRules:
 - pattern: main
@@ -14,3 +14,43 @@ branchProtectionRules:
     - checks (postgres:10, 1.18, ubuntu-latest)
     - unitests (postgres:10, 1.18, ubuntu-latest)
     - release-dry-run
+- pattern: monorepo
+  isAdminEnforced: false
+  requiredApprovingReviewCount: 1
+  requiresCodeOwnerReviews: false
+  requiresStrictStatusChecks: false
+  requiredStatusCheckContexts:
+    - Validate PR title
+    
+    - Linter (cli)
+    - Unit Tests (cli)
+
+    - Linter (plugins/aws)
+    - Unit Tests (plugins/aws)
+
+    - Linter (plugins/azure)
+    - Unit Tests (plugins/azure)
+
+    - Linter (plugins/cloudflare)
+    - Unit Tests (plugins/cloudflare)
+
+    - Linter (plugins/digitalocean)
+    - Unit Tests (plugins/digitalocean)
+
+    - Linter (plugins/fuzz)
+    - Unit Tests (plugins/fuzz)
+
+    - Linter (plugins/gcp)
+    - Unit Tests (plugins/gcp)
+
+    - Linter (plugins/github)
+    - Unit Tests (plugins/github)
+
+    - Linter (plugins/k8s)
+    - Unit Tests (plugins/k8s)
+
+    - Linter (plugins/okta)
+    - Unit Tests (plugins/okta)
+
+    - Linter (plugins/terraform)
+    - Unit Tests (plugins/terraform)
