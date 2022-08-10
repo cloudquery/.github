@@ -25,32 +25,32 @@ branchProtectionRules:
     - Linter (cli)
     - Unit Tests (cli)
 
-    - Linter (plugins/aws)
-    - Unit Tests (plugins/aws)
+    - Linter (plugins/source/aws)
+    - Unit Tests (plugins/source/aws)
 
-    - Linter (plugins/azure)
-    - Unit Tests (plugins/azure)
+    - Linter (plugins/source/azure)
+    - Unit Tests (plugins/source/azure)
 
-    - Linter (plugins/cloudflare)
-    - Unit Tests (plugins/cloudflare)
+    - Linter (plugins/source/cloudflare)
+    - Unit Tests (plugins/source/cloudflare)
 
-    - Linter (plugins/digitalocean)
-    - Unit Tests (plugins/digitalocean)
+    - Linter (plugins/source/digitalocean)
+    - Unit Tests (plugins/source/digitalocean)
 
-    - Linter (plugins/fuzz)
-    - Unit Tests (plugins/fuzz)
+    - Linter (plugins/source/fuzz)
+    - Unit Tests (plugins/source/fuzz)
 
-    - Linter (plugins/gcp)
-    - Unit Tests (plugins/gcp)
+    - Linter (plugins/source/gcp)
+    - Unit Tests (plugins/source/gcp)
 
-    - Linter (plugins/github)
-    - Unit Tests (plugins/github)
+    - Linter (plugins/source/github)
+    - Unit Tests (plugins/source/github)
 
-    - Linter (plugins/k8s)
-    - Unit Tests (plugins/k8s)
+    - Linter (plugins/source/k8s)
+    - Unit Tests (plugins/source/k8s)
 
-    - Linter (plugins/okta)
-    - Unit Tests (plugins/okta)
+    - Linter (plugins/source/okta)
+    - Unit Tests (plugins/source/okta)
 
-    - Linter (plugins/terraform)
-    - Unit Tests (plugins/terraform)
+    - Linter (plugins/source/terraform)
+    - Unit Tests (plugins/source/terraform)
