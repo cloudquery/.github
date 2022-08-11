@@ -40,6 +40,7 @@ jobs:
           # core and sdk
           sync-repo-settings --repo=cloudquery/cloudquery --file=repo-settings/cloudquery/config.yaml
           sync-repo-settings --repo=cloudquery/cq-provider-sdk --file=repo-settings/cq-provider-sdk/config.yaml
+          sync-repo-settings --repo=cloudquery/plugin-sdk --file=repo-settings/plugin-sdk/config.yaml
 
           # providers
           sync-repo-settings --repo=cloudquery/cq-provider-okta --file=repo-settings/providers/config.yaml
