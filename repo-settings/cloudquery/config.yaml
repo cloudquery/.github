@@ -29,7 +29,7 @@ branchProtectionRules:
     - Linter (plugins/source/aws)
     - Unit Tests (plugins/source/aws)
 
-    - SQLPolicyTest / SQLPolicyTest (plugins/source/azure, postgres:10, 1.18, ubuntu-latest)
+    - SQLPolicyTest (plugins/source/azure, postgres:10, 1.18, ubuntu-latest)
     - Linter (plugins/source/azure)
     - Unit Tests (plugins/source/azure)
 
