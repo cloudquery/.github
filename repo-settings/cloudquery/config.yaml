@@ -48,7 +48,6 @@ branchProtectionRules:
 
     - Linter (plugins/source/fuzz)
     - Unit Tests (plugins/source/fuzz)
-    - Lint Provider Doc (plugins/source/fuzz)
 
     - SQLPolicyTest (plugins/source/gcp, postgres:10, 1.18, ubuntu-latest)
     - Check Generated Code for Drift (gcp)
