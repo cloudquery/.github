@@ -10,7 +10,8 @@ branchProtectionRules:
   requiresStrictStatusChecks: false
   requiredStatusCheckContexts:
     - Validate PR title
-    
+    - release-dry-run
+
     - Linter (cli)
     - Unit Tests (cli)
 
