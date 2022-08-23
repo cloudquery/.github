@@ -21,12 +21,12 @@ jobs:
       - name: Parse semver string
         if: steps.release.outputs.release_created
         id: semver_parser
-        uses: booxmedialtd/ws-action-parse-semver@966a26512c94239a00aa10b1b0c196906f7e1909
+        uses: booxmedialtd/ws-action-parse-semver@e4a833cf5d612066a210bd9b62d1c3b20be3b325
         with:
           input_string: ${{ steps.release.outputs.tag_name }}
       - name: Mark as pre-release
         if: steps.semver_parser.outputs.prerelease != ''
-        uses: tubone24/update_release@860fbb2aba7afb3351e621b4936715132dd12d11
+        uses: tubone24/update_release@5d9ddea4eb3ec98931433151ac68b4a674b7097e
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG_NAME: ${{ steps.release.outputs.tag_name }}
