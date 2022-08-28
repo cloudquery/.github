@@ -13,7 +13,7 @@ title = "pull_request_title"
 
 [merge.automerge_dependencies]
 usernames = ["cq-bot"]
-versions = ["patch"]
+versions = ["minor", "patch"]
 
 [merge]
 blocking_labels = ["wip", "no automerge"]
