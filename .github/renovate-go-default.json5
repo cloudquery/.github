@@ -6,7 +6,6 @@
     {
       matchPackagePatterns: [
         "github.com/cloudquery/*",
-        "github.com/cloudquery-policies/*",
       ],
       enabled: true,
       schedule: ["at any time"],
