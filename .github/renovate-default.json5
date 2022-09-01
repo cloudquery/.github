@@ -45,6 +45,9 @@
     {
       matchPackageNames: ["go", "golangci/golangci-lint"],
       groupName: "go version and linter",
+    },
+    {
+      matchPackageNames: ["go"],
       postUpgradeTasks: {
         commands: ["gofmt -s -w ."],
       },
