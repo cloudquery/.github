@@ -34,6 +34,7 @@
   packageRules: [
     { matchManagers: ["regex"], addLabels: ["no automerge"], commitMessagePrefix: "chore(deps): " },
     { matchManagers: ["github-actions"], groupName: "github-actions", commitMessagePrefix: "chore(deps): " },
+    { matchPackageNames: ["go", "golangci/golangci-lint"], groupName: "go version and linter" },
     {
       matchManagers: ["github-actions"],
       matchPackageNames: ["postgres"],
