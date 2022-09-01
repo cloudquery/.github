@@ -1,12 +1,10 @@
 {
   extends: ["github>cloudquery/.github//.github/renovate-default.json5"],
-  postUpdateOptions: ["gomodTidy"],
+  postUpdateOptions: ["gomodTidy", "gomodUpdateImportPaths"],
   packageRules: [
     { matchManagers: ["gomod"], enabled: true },
     {
-      matchPackagePatterns: [
-        "github.com/cloudquery/*",
-      ],
+      matchPackagePatterns: ["github.com/cloudquery/*"],
       enabled: true,
       schedule: ["at any time"],
     },
