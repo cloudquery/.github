@@ -1,4 +1,7 @@
 {
   extends: ["github>cloudquery/.github//.github/renovate-default.json5"],
-  packageRules: [{ matchManagers: ["node", "js"], enabled: true }],
+  packageRules: [
+    { matchManagers: ["node", "js"], enabled: true },
+    { matchPackagePatterns: ["nextra"], groupName: "nextra" },
+  ],
 }
