@@ -32,8 +32,8 @@
     },
   ],
   packageRules: [
-    { matchManagers: ["regex"], addLabels: ["no automerge"] },
-    { matchManagers: ["github-actions"], groupName: "github-actions" },
+    { matchManagers: ["regex"], addLabels: ["no automerge"], commitMessagePrefix: "chore(deps): " },
+    { matchManagers: ["github-actions"], groupName: "github-actions", commitMessagePrefix: "chore(deps): " },
     {
       matchManagers: ["github-actions"],
       matchPackageNames: ["postgres"],
