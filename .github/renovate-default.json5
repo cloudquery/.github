@@ -46,12 +46,13 @@
       matchPackageNames: ["go", "golangci/golangci-lint"],
       groupName: "go version and linter",
     },
-    {
-      matchPackageNames: ["go"],
-      postUpgradeTasks: {
-        commands: ["gofmt -s -w ."],
-      },
-    },
+    // TODO: Enable when https://github.com/renovatebot/github-action/issues/625 is fixed
+    // {
+    //   matchPackageNames: ["go"],
+    //   postUpgradeTasks: {
+    //     commands: ["gofmt -s -w ."],
+    //   },
+    // },
     {
       matchManagers: ["github-actions"],
       matchPackageNames: ["postgres"],
