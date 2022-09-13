@@ -8,6 +8,12 @@
       datasourceTemplate: "github-releases",
       versioningTemplate: "loose",
     },
+    {
+      fileMatch: ["^.github/workflows/.+.ya?ml$"],
+      matchStrings: ["terraform-docs-version\\: (?<currentValue>.*)"],
+      depNameTemplate: "terraform-docs/terraform-docs",
+      datasourceTemplate: "github-releases",
+    },
   ],
   packageRules: [
     {
