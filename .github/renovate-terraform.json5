@@ -10,7 +10,7 @@
     },
     {
       fileMatch: ["^.github/workflows/.+.ya?ml$"],
-      matchStrings: ["terraform-docs-version\\: (?<currentValue>.*)"],
+      matchStrings: ["terraform\\-docs\\-version\\: (?<currentValue>.*)"],
       depNameTemplate: "terraform-docs/terraform-docs",
       datasourceTemplate: "github-releases",
     },
