@@ -8,5 +8,9 @@
       enabled: true,
       schedule: ["at any time"],
     },
+    {
+      matchPackagePatterns: ["github.com/cloudquery/plugin-sdk"],
+      additionalBranchPrefix: "{{baseDir}}-",
+    },
   ],
 }
