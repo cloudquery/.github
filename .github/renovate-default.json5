@@ -33,8 +33,11 @@
   ],
   packageRules: [
     {
+      matchUpdateTypes: ["minor", "patch", "digest"],
+      addLabels: ["automerge"],
+    },
+    {
       matchManagers: ["regex"],
-      addLabels: ["no automerge"],
       commitMessagePrefix: "chore(deps): ",
     },
     {
@@ -46,13 +49,6 @@
       matchPackageNames: ["go", "golangci/golangci-lint"],
       groupName: "go version and linter",
     },
-    // TODO: Enable when https://github.com/renovatebot/github-action/issues/625 is fixed
-    // {
-    //   matchPackageNames: ["go"],
-    //   postUpgradeTasks: {
-    //     commands: ["gofmt -s -w ."],
-    //   },
-    // },
     {
       matchManagers: ["github-actions"],
       matchPackageNames: ["postgres"],
