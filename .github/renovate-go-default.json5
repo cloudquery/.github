@@ -11,6 +11,7 @@
     {
       matchPackagePatterns: ["github.com/cloudquery/plugin-sdk"],
       additionalBranchPrefix: "{{baseDir}}-",
+      commitMessageTopic: "plugin-sdk for {{parentDir}}",
     },
   ],
 }
