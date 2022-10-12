@@ -1,7 +1,7 @@
 {
   extends: ["config:base", "schedule:monthly"],
   rebaseWhen: "conflicted",
-  ignorePresets: [":prHourlyLimit2"],
+  ignorePresets: [":prHourlyLimit2", ":ignoreModulesAndTests"],
   automerge: false,
   semanticCommits: false,
   commitMessagePrefix: "fix(deps): ",
