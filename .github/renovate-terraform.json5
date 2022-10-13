@@ -21,7 +21,6 @@
       extractVersion: "^cloudquery\\-(?<version>.+)$",
       schedule: ["at any time"],
       commitMessagePrefix: "fix(deps): ",
-      labels: ["automerge"],
     },
   ],
 }
