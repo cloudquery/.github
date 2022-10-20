@@ -31,7 +31,7 @@
       versioningTemplate: "loose",
     },
     {
-      fileMatch: ["*.yml", "*.yaml"],
+      fileMatch: ["\\.ya?ml$$"],
       matchStrings: [
         'version: "(?<currentValue>.*)" # latest version of aws plugin',
       ],
@@ -40,7 +40,7 @@
       extractVersionTemplate: "^plugins-source-aws-(?<version>.+)$",
     },
     {
-      fileMatch: ["*.yml", "*.yaml"],
+      fileMatch: ["\\.ya?ml$$"],
       matchStrings: [
         'version: "(?<currentValue>.*)" # latest version of azure plugin',
       ],
@@ -49,7 +49,7 @@
       extractVersionTemplate: "^plugins-source-azure-(?<version>.+)$",
     },
     {
-      fileMatch: ["*.yml", "*.yaml"],
+      fileMatch: ["\\.ya?ml$$"],
       matchStrings: [
         'version: "(?<currentValue>.*)" # latest version of gcp plugin',
       ],
@@ -58,7 +58,7 @@
       extractVersionTemplate: "^plugins-source-gcp-(?<version>.+)$",
     },
     {
-      fileMatch: ["*.yml", "*.yaml"],
+      fileMatch: ["\\.ya?ml$$"],
       matchStrings: [
         'version: "(?<currentValue>.*)" # latest version of postgresql plugin',
       ],
