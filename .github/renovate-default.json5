@@ -30,6 +30,42 @@
       datasourceTemplate: "golang-version",
       versioningTemplate: "loose",
     },
+    {
+      fileMatch: ["*.yml", "*.yaml"],
+      matchStrings: [
+        'version: "(?<currentValue>.*)" # latest version of aws plugin',
+      ],
+      depNameTemplate: "cloudquery/cloudquery",
+      datasourceTemplate: "github-releases",
+      extractVersionTemplate: "^plugins-source-aws-(?<version>.+)$",
+    },
+    {
+      fileMatch: ["*.yml", "*.yaml"],
+      matchStrings: [
+        'version: "(?<currentValue>.*)" # latest version of azure plugin',
+      ],
+      depNameTemplate: "cloudquery/cloudquery",
+      datasourceTemplate: "github-releases",
+      extractVersionTemplate: "^plugins-source-azure-(?<version>.+)$",
+    },
+    {
+      fileMatch: ["*.yml", "*.yaml"],
+      matchStrings: [
+        'version: "(?<currentValue>.*)" # latest version of gcp plugin',
+      ],
+      depNameTemplate: "cloudquery/cloudquery",
+      datasourceTemplate: "github-releases",
+      extractVersionTemplate: "^plugins-source-gcp-(?<version>.+)$",
+    },
+    {
+      fileMatch: ["*.yml", "*.yaml"],
+      matchStrings: [
+        'version: "(?<currentValue>.*)" # latest version of postgresql plugin',
+      ],
+      depNameTemplate: "cloudquery/cloudquery",
+      datasourceTemplate: "github-releases",
+      extractVersionTemplate: "^plugins-destination-postgresql-(?<version>.+)$",
+    },
   ],
   packageRules: [
     {
@@ -53,6 +89,12 @@
       matchManagers: ["github-actions"],
       matchPackageNames: ["postgres"],
       allowedVersions: ["11"],
+    },
+    {
+      matchPackagePatterns: ["github.com/cloudquery/*"],
+      enabled: true,
+      schedule: ["at any time"],
+      commitMessagePrefix: "fix(deps): ",
     },
   ],
 }

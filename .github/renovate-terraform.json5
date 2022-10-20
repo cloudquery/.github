@@ -15,48 +15,5 @@
       depNameTemplate: "terraform-docs/terraform-docs",
       datasourceTemplate: "github-releases",
     },
-    {
-      fileMatch: ["^examples/complete/config.yml$"],
-      matchStrings: [
-        'version: "(?<currentValue>.*)" # latest version of aws plugin',
-      ],
-      depNameTemplate: "cloudquery/cloudquery",
-      datasourceTemplate: "github-releases",
-      extractVersionTemplate: "^plugins-source-aws-(?<version>.+)$",
-    },
-    {
-      fileMatch: ["^examples/complete/config.yml$"],
-      matchStrings: [
-        'version: "(?<currentValue>.*)" # latest version of azure plugin',
-      ],
-      depNameTemplate: "cloudquery/cloudquery",
-      datasourceTemplate: "github-releases",
-      extractVersionTemplate: "^plugins-source-azure-(?<version>.+)$",
-    },
-    {
-      fileMatch: ["^examples/complete/config.yml$"],
-      matchStrings: [
-        'version: "(?<currentValue>.*)" # latest version of gcp plugin',
-      ],
-      depNameTemplate: "cloudquery/cloudquery",
-      datasourceTemplate: "github-releases",
-      extractVersionTemplate: "^plugins-source-gcp-(?<version>.+)$",
-    },
-    {
-      fileMatch: ["^examples/complete/config.yml$"],
-      matchStrings: [
-        'version: "(?<currentValue>.*)" # latest version of postgresql plugin',
-      ],
-      depNameTemplate: "cloudquery/cloudquery",
-      datasourceTemplate: "github-releases",
-      extractVersionTemplate: "^plugins-destination-postgresql-(?<version>.+)$",
-    },
-  ],
-  packageRules: [
-    {
-      matchPackageNames: ["cloudquery/helm-charts"],
-      schedule: ["at any time"],
-      commitMessagePrefix: "fix(deps): ",
-    },
   ],
 }
