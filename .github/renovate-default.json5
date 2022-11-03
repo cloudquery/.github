@@ -98,7 +98,7 @@
     },
     {
       matchPackagePatterns: ["cloudquery/cloudquery"],
-      groupName: "cloudquery monorepo modules",
+      groupName: "CloudQuery monorepo modules",
     },
   ],
 }
