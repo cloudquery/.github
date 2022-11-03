@@ -33,7 +33,7 @@
     {
       fileMatch: ["\\.ya?ml$$"],
       matchStrings: [
-        'version: "(?<currentValue>.*)" # latest version of aws plugin',
+        "version: [\"'](?<currentValue>.*)[\"'] # latest version of aws plugin",
       ],
       depNameTemplate: "cloudquery/cloudquery",
       datasourceTemplate: "github-releases",
@@ -42,7 +42,7 @@
     {
       fileMatch: ["\\.ya?ml$$"],
       matchStrings: [
-        'version: "(?<currentValue>.*)" # latest version of azure plugin',
+        "version: [\"'](?<currentValue>.*)[\"'] # latest version of azure plugin",
       ],
       depNameTemplate: "cloudquery/cloudquery",
       datasourceTemplate: "github-releases",
@@ -51,7 +51,7 @@
     {
       fileMatch: ["\\.ya?ml$$"],
       matchStrings: [
-        'version: "(?<currentValue>.*)" # latest version of gcp plugin',
+        "version: [\"'](?<currentValue>.*)[\"'] # latest version of gcp plugin",
       ],
       depNameTemplate: "cloudquery/cloudquery",
       datasourceTemplate: "github-releases",
@@ -60,7 +60,7 @@
     {
       fileMatch: ["\\.ya?ml$$"],
       matchStrings: [
-        'version: "(?<currentValue>.*)" # latest version of postgresql plugin',
+        "version: [\"'](?<currentValue>.*)[\"'] # latest version of postgresql plugin",
       ],
       depNameTemplate: "cloudquery/cloudquery",
       datasourceTemplate: "github-releases",
