@@ -96,5 +96,9 @@
       schedule: ["at any time"],
       commitMessagePrefix: "fix(deps): ",
     },
+    {
+      matchPackagePatterns: ["cloudquery/cloudquery"],
+      groupName: "CloudQuery monorepo modules",
+    },
   ],
 }
