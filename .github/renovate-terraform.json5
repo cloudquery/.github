@@ -16,4 +16,10 @@
       datasourceTemplate: "github-releases",
     },
   ],
+  packageRules: [
+    {
+      matchPackagePatterns: ["cloudquery/helm-charts"],
+      commitMessagePrefix: "fix(deps): ",
+    },
+  ],
 }
