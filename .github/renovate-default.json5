@@ -110,10 +110,9 @@
       allowedVersions: ["11"],
     },
     {
-      matchPackagePatterns: ["github.com/cloudquery/*"],
+      matchPackagePatterns: ["github.com/cloudquery/*", "cloudquery/*"],
       enabled: true,
       schedule: ["at any time"],
-      commitMessagePrefix: "fix(deps): ",
     },
     {
       matchPackagePatterns: ["cloudquery/cloudquery"],
