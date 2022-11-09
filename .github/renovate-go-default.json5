@@ -8,5 +8,9 @@
       additionalBranchPrefix: "{{baseDir}}-",
       commitMessageTopic: "plugin-sdk for {{parentDir}}",
     },
+    {
+      matchPackagePatterns: ["github.com/aws/*"],
+      schedule: ["before 2am"],
+    },
   ],
 }
