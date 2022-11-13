@@ -13,7 +13,7 @@
   },
   regexManagers: [
     {
-      fileMatch: ["^.github/workflows/lint_golang.yml$"],
+      fileMatch: ["^.github/workflows/.+.ya?ml$"],
       matchStrings: [
         "golangci\\-lint\\-action[\\s\\S]+?version\\: (?<currentValue>.*)",
       ],
