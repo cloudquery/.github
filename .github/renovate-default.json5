@@ -70,20 +70,11 @@
     {
       fileMatch: ["\\.ya?ml$$"],
       matchStrings: [
-        "version: [\"'](?<currentValue>.*)[\"'] # latest version of source test plugin",
+        "version: [\"'](?<currentValue>.*)[\"'] # latest version of (?<type>.*) (?<name>.*) plugin",
       ],
       depNameTemplate: "cloudquery/cloudquery",
       datasourceTemplate: "github-releases",
-      extractVersionTemplate: "^plugins-source-test-(?<version>.+)$",
-    },
-    {
-      fileMatch: ["\\.ya?ml$$"],
-      matchStrings: [
-        "version: [\"'](?<currentValue>.*)[\"'] # latest version of destination test plugin",
-      ],
-      depNameTemplate: "cloudquery/cloudquery",
-      datasourceTemplate: "github-releases",
-      extractVersionTemplate: "^plugins-destination-test-(?<version>.+)$",
+      extractVersionTemplate: "^plugins-{{{ type }}}-{{{ name }}}-(?<version>.+)$",
     },
   ],
   packageRules: [
