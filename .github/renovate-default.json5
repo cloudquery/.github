@@ -70,6 +70,15 @@
     {
       fileMatch: ["\\.ya?ml$$"],
       matchStrings: [
+        "version: [\"'](?<currentValue>.*)[\"'] # latest version of sqlite plugin",
+      ],
+      depNameTemplate: "cloudquery/cloudquery",
+      datasourceTemplate: "github-releases",
+      extractVersionTemplate: "^plugins-destination-sqlite-(?<version>.+)$",
+    },
+    {
+      fileMatch: ["\\.ya?ml$$"],
+      matchStrings: [
         "version: [\"'](?<currentValue>.*)[\"'] # latest version of (?<type>.*) (?<name>.*) plugin",
       ],
       depNameTemplate: "cloudquery/cloudquery",
