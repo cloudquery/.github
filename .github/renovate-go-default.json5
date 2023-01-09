@@ -5,7 +5,7 @@
     { matchManagers: ["gomod"], enabled: true },
     {
       matchPackagePatterns: ["github.com/aws/*"],
-      schedule: ["before 2am"],
+      schedule: ["before 3am on Monday"],
     },
   ],
 }
