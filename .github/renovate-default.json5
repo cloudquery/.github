@@ -116,12 +116,12 @@
       allowedVersions: ["11"],
     },
     {
-      matchPackagePatterns: ["github.com/cloudquery/*", "cloudquery/*"],
+      matchSourceUrlPrefixes: ["https://github.com/cloudquery/"],
       enabled: true,
       schedule: ["at any time"],
     },
     {
-      matchPackagePatterns: ["cloudquery/cloudquery"],
+      matchSourceUrls: ["https://github.com/cloudquery/cloudquery"],
       groupName: "CloudQuery monorepo modules",
     },
   ],
