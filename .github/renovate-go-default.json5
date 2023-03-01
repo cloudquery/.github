@@ -4,6 +4,10 @@
   packageRules: [
     { matchManagers: ["gomod"], enabled: true },
     {
+      matchDatasources: ["golang-version"],
+      rangeStrategy: "bump",
+    },
+    {
       matchPackagePatterns: ["github.com/aws/*"],
       schedule: ["before 3am on Monday"],
     },
