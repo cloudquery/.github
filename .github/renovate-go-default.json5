@@ -13,7 +13,7 @@
     },
     {
       matchPackagePatterns: ["github.com/cloudquery/arrow/*"],
-      enabled: true,
+      enabled: false,
     },
   ],
 }
