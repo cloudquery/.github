@@ -6,6 +6,8 @@
     {
       matchDatasources: ["golang-version"],
       rangeStrategy: "bump",
+      addLabels: ["no automerge"],
+      stabilityDays: 60,
     },
     {
       matchPackagePatterns: ["github.com/aws/*"],
