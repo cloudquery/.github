@@ -103,6 +103,7 @@
     },
     {
       matchManagers: ["github-actions"],
+      matchUpdateTypes: ["minor", "patch", "digest"],
       groupName: "github-actions",
       commitMessagePrefix: "chore(deps): ",
     },
