@@ -1,0 +1,30 @@
+name: Sync cloudquery/arrow with apache/arrow
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  track_pr:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh repo sync cloudquery/arrow -b main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_CQ_BOT }}
+
+      - uses: actions/checkout@v3
+        with:
+          repository: cloudquery/arrow
+          ref: 'cqmain'
+          token: ${{ secrets.GH_CQ_BOT }}
+          depth: 0
+
+      - name: Set Git config
+        run: |
+            git config --local user.email "actions@github.com"
+            git config --local user.name "Github Actions"
+            
+      - name: Merge arrow main to cqmain
+        run: |
+          git checkout cqmain
+          git merge --no-edit main
+          git push
