@@ -16,7 +16,7 @@ jobs:
           repository: cloudquery/arrow
           ref: 'cqmain'
           token: ${{ secrets.GH_CQ_BOT }}
-          depth: 0
+          fetch-depth: 0
 
       - name: Set Git config
         run: |
