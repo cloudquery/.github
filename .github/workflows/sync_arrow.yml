@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '0 0 * * *'
 jobs:
-  track_pr:
+  sync_arrow:
     runs-on: ubuntu-latest
     steps:
       - run: gh repo sync cloudquery/arrow -b main
