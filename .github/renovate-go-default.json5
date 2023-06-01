@@ -15,9 +15,5 @@
       matchPackagePatterns: ["github.com/aws/*"],
       schedule: ["before 3am on Monday"],
     },
-    {
-      matchPackagePatterns: ["github.com/cloudquery/arrow/*", "github.com/apache/arrow/*"],
-      enabled: false,
-    },
   ],
 }
