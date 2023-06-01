@@ -26,5 +26,5 @@ jobs:
       - name: Merge arrow main to cqmain
         run: |
           git checkout cqmain
-          git merge --no-edit main
+          git merge --no-edit origin/main
           git push
