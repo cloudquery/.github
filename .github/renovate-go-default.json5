@@ -13,7 +13,7 @@
     },
     {
       matchPackagePatterns: ["github.com/aws/*"],
-      schedule: ["before 3am on Monday"],
+      schedule: ["before 3am on Saturday"],
     },
   ],
 }
