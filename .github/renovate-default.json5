@@ -118,6 +118,10 @@
       schedule: ["at any time"],
     },
     {
+      matchPackagePatterns: ["github.com/cloudquery/arrow/*"],
+      schedule: ["before 3am on Monday"],
+    },
+    {
       matchSourceUrls: ["https://github.com/cloudquery/cloudquery"],
       groupName: "CloudQuery monorepo modules",
     },
