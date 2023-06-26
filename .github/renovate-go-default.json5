@@ -16,10 +16,6 @@
       schedule: ["before 3am on Saturday"],
     },
     {
-      matchPackagePatterns: ["github.com/cloudquery/arrow/*"],
-      schedule: ["before 3am on Monday"],
-    },
-    {
       matchPackagePatterns: ["github.com/marcboeker/go-duckdb"],
       schedule: null,
     },
