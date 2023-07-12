@@ -3,6 +3,11 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 * * * *'
+
+concurrency:
+  group: renovate-main
+  cancel-in-progress: true
+
 jobs:
   renovate:
     runs-on: ubuntu-latest
