@@ -15,6 +15,7 @@
       matchPackagePatterns: ["github.com/aws/*"],
       schedule: ["before 3am on Saturday"],
       groupName: "AWS modules",
+      additionalBranchPrefix: "{{parentDir}}-",
     },
     {
       matchPackagePatterns: ["github.com/marcboeker/go-duckdb"],
