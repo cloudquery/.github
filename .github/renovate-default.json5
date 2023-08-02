@@ -5,7 +5,7 @@
   automerge: false,
   semanticCommits: false,
   commitMessagePrefix: "fix(deps): ",
-  prConcurrentLimit: 40,
+  prConcurrentLimit: 120,
   vulnerabilityAlerts: {
     enabled: true,
     labels: ["security"],
