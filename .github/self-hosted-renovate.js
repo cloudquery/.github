@@ -6,8 +6,7 @@ module.exports = {
   hostRules: [
     {
       matchHost: "maven.pkg.github.com",
-      username: process.env.RENOVATE_GITHUB_ACTOR,
-      password: process.env.RENOVATE_GITHUB_TOKEN,
+      token: process.env.RENOVATE_GITHUB_TOKEN,
     },
   ],
 };
