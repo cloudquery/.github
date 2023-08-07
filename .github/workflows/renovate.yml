@@ -2,7 +2,7 @@ name: Renovate
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 * * * *'
+    - cron: "0 * * * *"
 
 concurrency:
   group: renovate-main
@@ -17,8 +17,10 @@ jobs:
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v39.0.1
         with:
-          renovate-version: '36'
-          configurationFile: .github/self-hosted-renovate.json5
+          renovate-version: "36"
+          configurationFile: .github/self-hosted-renovate.js
           token: ${{ secrets.GH_CQ_BOT }}
         env:
-          LOG_LEVEL: 'debug'
+          LOG_LEVEL: "debug"
+          RENOVATE_GITHUB_ACTOR: cq-bot
+          RENOVATE_GITHUB_TOKEN: ${{ secrets.GH_CQ_BOT }}

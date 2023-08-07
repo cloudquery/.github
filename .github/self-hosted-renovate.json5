@@ -1,6 +1,0 @@
-{
-  autodiscover: true,
-  onboarding: false,
-  allowPostUpgradeCommandTemplating: true,
-  allowedPostUpgradeCommands: ["^sed", "^docker", "^go"],
-}
