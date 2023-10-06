@@ -23,7 +23,7 @@
     {
       fileMatch: ["^.github/workflows/.+.ya?ml$"],
       matchStrings: [
-        'cloudquery/setup\\-cloudquery[\\s\\S]+?version\\:\\s?"?(?<currentValue>.*)"?',
+        'cloudquery/setup\\-cloudquery[\\s\\S]+?version\\:\\s?(?<currentValue>.*)',
       ],
       packageNameTemplate: "cloudquery/cloudquery",
       depNameTemplate: "cli",
