@@ -1,8 +1,9 @@
 name: Sync labels
 on:
+  workflow_dispatch:
   push:
     branches:
-      - master
+      - main
     paths:
       - path/to/manifest/labels.yml
 jobs:
