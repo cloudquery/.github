@@ -15,6 +15,7 @@ jobs:
         with:
           manifest: .github/labels.yml
           repository: |
+              cloudquery/plugin-sdk
               cloudquery/cloud
               cloudquery/cloudquery
               cloudquery/cloudquery-issues
