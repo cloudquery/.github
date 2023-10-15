@@ -27,6 +27,8 @@
   color: 0052CC
 - name: kind/sentry
   color: 0052CC
+- name: kind/performance
+  color: 0052CC
 
 - name: size/xs
   color: 2C8604
