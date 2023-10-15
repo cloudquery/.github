@@ -84,6 +84,8 @@
 - name: area/cloud/frontend
   color: F9D0C4
 
+- name: area/new-plugin
+  color: d73a4a
 - name: area/plugin/source/other
   color: 006B75
 - name: area/plugin/source/aws
@@ -182,6 +184,33 @@
   color: 006B75
 - name: area/plugin/source/vault
   color: 006B75
+
+- name: area/plugin/destination/gcs
+  color: FEF2C0
+- name: area/plugin/destination/gremlin
+  color: FEF2C0
+- name: area/plugin/destination/kafka
+  color: FEF2C0
+- name: area/plugin/destination/meilsearch
+  color: FEF2C0
+- name: area/plugin/destination/mongodb
+  color: FEF2C0
+- name: area/plugin/destination/mssql
+  color: FEF2C0
+- name: area/plugin/destination/mysql
+  color: FEF2C0
+- name: area/plugin/destination/neo4j
+  color: FEF2C0
+- name: area/plugin/destination/postgresql
+  color: FEF2C0
+- name: area/plugin/destination/s3
+  color: FEF2C0
+- name: area/plugin/destination/snowflake
+  color: FEF2C0
+- name: area/plugin/destination/sqlite
+  color: FEF2C0
+
+
 
 - name: area/policy/aws
   color: FBCA04
