@@ -16,4 +16,6 @@ jobs:
           manifest: .github/labels.yml
           repository: |
               cloudquery/cloud
+              cloudquery/cloudquery
+              cloudquery/cloudquery-issues
           token: ${{ secrets.GH_CQ_BOT }}
