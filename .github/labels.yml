@@ -1,0 +1,90 @@
+- name: automerge
+  color: 0E8A16
+- name: good-first-issue
+  color: 7057ff
+- name: needs-triage
+  description: Needs triage
+  color: 5319E7
+- name: needs-rfc
+  description: Needs a more detailed RFC before implementation
+  color: D53802
+
+- name: kind/bug
+  color: 0052CC
+- name: kind/feat
+  color: 0052CC
+- name: kind/ci
+  color: 0052CC
+- name: kind/cleanup
+  color: 0052CC
+- name: kind/refactor
+  color: 0052CC
+- name: kind/security
+  color: 0052CC
+- name: kind/docs
+  color: 0052CC
+- name: kind/regression
+  color: 0052CC
+- name: kind/sentry
+  color: 0052CC
+
+- name: size/xs
+  color: 2C8604
+- name: size/s
+  color: 2C8604
+- name: size/m
+  color: 2C8604
+- name: size/l
+  color: 2C8604
+- name: size/xl
+  color: 2C8604
+
+- name: priority/p2
+  description: Low priority awaits more user feedback
+  color: FBCA04
+- name: priority/p1
+  description: Regular issue. Prioritized per sprint
+  color: FBCA04
+- name: priority/p0
+  description: Critical issue
+  color: FBCA04
+
+- name: triage/needs-information
+  color: 5319E7
+- name: triage/not-reproducible
+  color: 5319E7
+- name: triage/unresolved
+  color: 5319E7
+
+- name: area/plugin-pb
+  color: d73a4a
+- name: area/plugin-sdk/go
+  color: d73a4a
+- name: area/plugin-sdk/python
+  color: d73a4a
+- name: area/plugin-sdk/javascript
+  color: d73a4a
+- name: area/plugin-sdk/java
+  color: d73a4a
+- name: area/cli
+  color: d73a4a
+
+- name: area/hub/infra
+  color: F9D0C4
+- name: area/hub/backend
+  color: F9D0C4
+- name: area/hub/frontend
+  color: F9D0C4
+- name: area/cloud/infra
+  color: F9D0C4
+- name: area/cloud/backend
+  color: F9D0C4
+- name: area/cloud/frontend
+  color: F9D0C4
+
+- name: area/plugin/aws
+  color: 006B75
+- name: area/plugin/gcp
+  color: 006B75
+- name: area/plugin/azure
+  color: 006B75
