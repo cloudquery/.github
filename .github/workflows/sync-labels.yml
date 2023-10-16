@@ -20,3 +20,4 @@ jobs:
               cloudquery/cloudquery
               cloudquery/cloudquery-issues
           token: ${{ secrets.GH_CQ_BOT }}
+          prune: false
