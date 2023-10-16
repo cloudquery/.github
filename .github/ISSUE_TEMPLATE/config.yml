@@ -1,8 +1,8 @@
-blank_issues_enabled: true
+blank_issues_enabled: false
 contact_links:
   - name: Ask a Question on Discord
     url: https://cloudquery.io/discord
     about: Ask questions and discuss with other community members.
   - name: CloudQuery Main Repository
     url: https://github.com/cloudquery/cloudquery
-    about: Most CloudQuery features requests or bugs should be reported on the main repository.
+    about: Public CloudQuery features requests or bugs should be reported on the main repository.
