@@ -17,6 +17,7 @@ jobs:
           repository: |
               cloudquery/plugin-sdk
               cloudquery/cloud
+              cloudquery/frontend
               cloudquery/cloudquery
               cloudquery/cloudquery-issues
           token: ${{ secrets.GH_CQ_BOT }}
