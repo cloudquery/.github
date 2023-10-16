@@ -19,6 +19,7 @@ jobs:
               cloudquery/cloud
               cloudquery/frontend
               cloudquery/cloudquery
+              cloudquery/cloudquery-private
               cloudquery/cloudquery-issues
           token: ${{ secrets.GH_CQ_BOT }}
           prune: false
