@@ -15,11 +15,8 @@ jobs:
         with:
           manifest: .github/labels.yml
           repository: |
-              cloudquery/plugin-sdk
-              cloudquery/cloud
-              cloudquery/frontend
               cloudquery/cloudquery
-              cloudquery/cloudquery-private
               cloudquery/cloudquery-issues
+              cloudquery/policies-premium
           token: ${{ secrets.GH_CQ_BOT }}
           prune: false
