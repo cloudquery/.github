@@ -77,11 +77,15 @@
   color: F9D0C4
 - name: area/hub/frontend
   color: F9D0C4
+- name: area/hub/design
+  color: F9D0C4
 - name: area/cloud/infra
   color: F9D0C4
 - name: area/cloud/backend
   color: F9D0C4
 - name: area/cloud/frontend
+  color: F9D0C4
+- name: area/cloud/design
   color: F9D0C4
 
 - name: area/new-plugin
