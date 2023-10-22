@@ -13,8 +13,6 @@
   color: 0052CC
 - name: kind/feat
   color: 0052CC
-- name: kind/ci
-  color: 0052CC
 - name: kind/cleanup
   color: 0052CC
 - name: kind/refactor
@@ -58,6 +56,8 @@
 - name: triage/unresolved
   color: 5319E7
 
+- name: area/ci
+  color: d73a4a
 - name: area/plugin-pb
   color: d73a4a
 - name: area/plugin-sdk/go
