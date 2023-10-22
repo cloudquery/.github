@@ -71,6 +71,8 @@
 - name: area/cli
   color: d73a4a
 
+- name: area/website/frontend
+  color: F9D0C4
 - name: area/hub/infra
   color: F9D0C4
 - name: area/hub/backend
