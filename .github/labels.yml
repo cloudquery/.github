@@ -8,7 +8,10 @@
 - name: needs-rfc
   description: Needs a more detailed RFC before implementation
   color: D53802
-
+- name: blocked
+  description: Completion of issue is blocked by some other work
+  color: d52202
+  
 - name: kind/bug
   color: 0052CC
 - name: kind/feat
