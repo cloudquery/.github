@@ -4,6 +4,9 @@
 - name: no automerge
   description: Block automatic merging
   color: F0F008
+- name: wip
+  description: Work in progress
+  color: 80FFFF
 - name: good-first-issue
   color: 7057ff
 - name: needs-triage
