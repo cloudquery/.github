@@ -1,5 +1,9 @@
 - name: automerge
+  description: Automatically merge once required checks pass
   color: 0E8A16
+- name: no automerge
+  description: Block automatic merging
+  color: F0F008
 - name: good-first-issue
   color: 7057ff
 - name: needs-triage
