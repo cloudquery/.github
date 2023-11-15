@@ -188,6 +188,8 @@
   color: 006B75
 - name: area/plugin/source/postgresql
   color: 006B75
+- name: area/plugin/source/render
+  color: 006B75
 - name: area/plugin/source/square
   color: 006B75
 - name: area/plugin/source/stripe
