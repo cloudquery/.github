@@ -18,6 +18,12 @@
       additionalBranchPrefix: "{{parentDir}}-",
     },
     {
+      matchPackagePatterns: ["github.com/Azure/azure-sdk-for-go/*"],
+      schedule: ["before 3am on Saturday"],
+      groupName: "Azure modules",
+      additionalBranchPrefix: "{{parentDir}}-",
+    },
+    {
       matchPackagePatterns: ["github.com/marcboeker/go-duckdb"],
       schedule: null,
     },
