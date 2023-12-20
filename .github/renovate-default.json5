@@ -135,5 +135,9 @@
       matchSourceUrls: ["https://github.com/cloudquery/cloudquery"],
       groupName: "CloudQuery monorepo modules",
     },
+    {
+      matchPackagePatterns: ["github.com/apache/arrow/*"],
+      schedule: ["before 3am on Monday"],
+    },
   ],
 }
