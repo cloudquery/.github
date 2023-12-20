@@ -128,7 +128,7 @@
       schedule: ["at any time"],
     },
     {
-      matchPackagePatterns: ["github.com/cloudquery/arrow/*"],
+      matchPackagePatterns: ["github.com/apache/arrow/*"],
       schedule: ["before 3am on Monday"],
     },
     {
