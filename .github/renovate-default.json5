@@ -53,7 +53,6 @@
       packageNameTemplate: "cloudquery/source/aws",
       depNameTemplate: "source-aws",
       datasourceTemplate: "custom.cloudquery",
-      extractVersionTemplate: "^plugins-source-aws-(?<version>.+)$",
     },
     {
       customType: "regex",
@@ -64,7 +63,6 @@
       packageNameTemplate: "cloudquery/source/azure",
       depNameTemplate: "source-azure",
       datasourceTemplate: "custom.cloudquery",
-      extractVersionTemplate: "^plugins-source-azure-(?<version>.+)$",
     },
     {
       customType: "regex",
@@ -75,7 +73,6 @@
       packageNameTemplate: "cloudquery/source/gcp",
       depNameTemplate: "source-gcp",
       datasourceTemplate: "custom.cloudquery",
-      extractVersionTemplate: "^plugins-source-gcp-(?<version>.+)$",
     },
     {
       customType: "regex",
@@ -86,7 +83,6 @@
       packageNameTemplate: "cloudquery/destination/postgresql",
       depNameTemplate: "destination-postgresql",
       datasourceTemplate: "custom.cloudquery",
-      extractVersionTemplate: "^plugins-destination-postgresql-(?<version>.+)$",
     },
     {
       customType: "regex",
@@ -97,7 +93,6 @@
       packageNameTemplate: "cloudquery/destination/sqlite",
       depNameTemplate: "destination-sqlite",
       datasourceTemplate: "custom.cloudquery",
-      extractVersionTemplate: "^plugins-destination-sqlite-(?<version>.+)$",
     },
     {
       customType: "regex",
@@ -108,7 +103,6 @@
       packageNameTemplate: "cloudquery/{{{ type }}}/{{{ name }}}",
       depNameTemplate: "{{{ type }}}-{{{ name }}}",
       datasourceTemplate: "custom.cloudquery",
-      extractVersionTemplate: "^plugins-{{{ type }}}-{{{ name }}}-(?<version>.+)$",
     },
   ],
   customDatasources: {
