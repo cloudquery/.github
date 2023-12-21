@@ -11,8 +11,9 @@
     labels: ["security"],
     schedule: ["at any time"],
   },
-  regexManagers: [
+  customManagers: [
     {
+      customType: "regex",
       fileMatch: ["^.github/workflows/.+.ya?ml$"],
       matchStrings: [
         "golangci\\-lint\\-action[\\s\\S]+?version\\: (?<currentValue>.*)",
@@ -21,9 +22,10 @@
       datasourceTemplate: "github-releases",
     },
     {
+      customType: "regex",
       fileMatch: ["^.github/workflows/.+.ya?ml$"],
       matchStrings: [
-        'cloudquery/setup\\-cloudquery[\\s\\S]+?version\\:\\s?(?<currentValue>.*)',
+        "cloudquery/setup\\-cloudquery[\\s\\S]+?version\\:\\s?(?<currentValue>.*)",
       ],
       packageNameTemplate: "cloudquery/cloudquery",
       depNameTemplate: "cli",
@@ -31,6 +33,7 @@
       extractVersionTemplate: "^cli-(?<version>.+)$",
     },
     {
+      customType: "regex",
       fileMatch: ["^.github/workflows/.+.ya?ml$"],
       matchStrings: [
         "setup\\-go[\\s\\S]+?go-version\\: \\^?(?<currentValue>[^$].*)",
@@ -42,66 +45,80 @@
       versioningTemplate: "loose",
     },
     {
+      customType: "regex",
       fileMatch: ["\\.ya?ml$$"],
       matchStrings: [
         "version: [\"'](?<currentValue>.*)[\"'] # latest version of aws plugin",
       ],
-      packageNameTemplate: "cloudquery/cloudquery",
+      packageNameTemplate: "cloudquery/source/aws",
       depNameTemplate: "source-aws",
-      datasourceTemplate: "github-releases",
+      datasourceTemplate: "custom.cloudquery",
       extractVersionTemplate: "^plugins-source-aws-(?<version>.+)$",
     },
     {
+      customType: "regex",
       fileMatch: ["\\.ya?ml$$"],
       matchStrings: [
         "version: [\"'](?<currentValue>.*)[\"'] # latest version of azure plugin",
       ],
-      packageNameTemplate: "cloudquery/cloudquery",
+      packageNameTemplate: "cloudquery/source/azure",
       depNameTemplate: "source-azure",
-      datasourceTemplate: "github-releases",
+      datasourceTemplate: "custom.cloudquery",
       extractVersionTemplate: "^plugins-source-azure-(?<version>.+)$",
     },
     {
+      customType: "regex",
       fileMatch: ["\\.ya?ml$$"],
       matchStrings: [
         "version: [\"'](?<currentValue>.*)[\"'] # latest version of gcp plugin",
       ],
-      packageNameTemplate: "cloudquery/cloudquery",
+      packageNameTemplate: "cloudquery/source/gcp",
       depNameTemplate: "source-gcp",
-      datasourceTemplate: "github-releases",
+      datasourceTemplate: "custom.cloudquery",
       extractVersionTemplate: "^plugins-source-gcp-(?<version>.+)$",
     },
     {
+      customType: "regex",
       fileMatch: ["\\.ya?ml$$"],
       matchStrings: [
         "version: [\"'](?<currentValue>.*)[\"'] # latest version of postgresql plugin",
       ],
-      packageNameTemplate: "cloudquery/cloudquery",
+      packageNameTemplate: "cloudquery/destination/postgresql",
       depNameTemplate: "destination-postgresql",
-      datasourceTemplate: "github-releases",
+      datasourceTemplate: "custom.cloudquery",
       extractVersionTemplate: "^plugins-destination-postgresql-(?<version>.+)$",
     },
     {
+      customType: "regex",
       fileMatch: ["\\.ya?ml$$"],
       matchStrings: [
         "version: [\"'](?<currentValue>.*)[\"'] # latest version of sqlite plugin",
       ],
-      packageNameTemplate: "cloudquery/cloudquery",
+      packageNameTemplate: "cloudquery/destination/sqlite",
       depNameTemplate: "destination-sqlite",
-      datasourceTemplate: "github-releases",
+      datasourceTemplate: "custom.cloudquery",
       extractVersionTemplate: "^plugins-destination-sqlite-(?<version>.+)$",
     },
     {
+      customType: "regex",
       fileMatch: ["\\.ya?ml$$"],
       matchStrings: [
         "version: [\"'](?<currentValue>.*)[\"'] # latest version of (?<type>.*) (?<name>.*) plugin",
       ],
-      packageNameTemplate: "cloudquery/cloudquery",
+      packageNameTemplate: "cloudquery/{{{ type }}}/{{{ name }}}",
       depNameTemplate: "{{{ type }}}-{{{ name }}}",
-      datasourceTemplate: "github-releases",
+      datasourceTemplate: "custom.cloudquery",
       extractVersionTemplate: "^plugins-{{{ type }}}-{{{ name }}}-(?<version>.+)$",
     },
   ],
+  customDatasources: {
+    cloudquery: {
+      defaultRegistryUrlTemplate: "https://api.cloudquery.io/plugins/{{packageName}}/versions",
+      transformTemplates: [
+        '{ "releases": $map($.items, function($v) { { "version": $v.name, "releaseTimestamp": $v.published_at, "isDeprecated": $v.retracted } }), "homepage": "https://hub.cloudquery.io" }',
+      ],
+    },
+  },
   packageRules: [
     {
       matchUpdateTypes: ["minor", "patch", "digest"],
@@ -123,6 +140,11 @@
       allowedVersions: ["11"],
     },
     {
+      matchDatasources: ["custom.cloudquery"],
+      enabled: true,
+      schedule: ["at any time"],
+    },
+    {
       matchSourceUrlPrefixes: ["https://github.com/cloudquery/"],
       enabled: true,
       schedule: ["at any time"],
@@ -130,6 +152,10 @@
     {
       matchPackagePatterns: ["github.com/apache/arrow/*"],
       schedule: ["before 3am on Monday"],
+    },
+    {
+      matchDatasources: ["custom.cloudquery"],
+      groupName: "CloudQuery monorepo modules",
     },
     {
       matchSourceUrls: ["https://github.com/cloudquery/cloudquery"],
