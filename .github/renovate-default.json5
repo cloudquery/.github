@@ -109,7 +109,7 @@
     cloudquery: {
       defaultRegistryUrlTemplate: "https://api.cloudquery.io/plugins/{{packageName}}/versions",
       transformTemplates: [
-        '{ "releases": $map($.items, function($v) { { "version": $v.name, "releaseTimestamp": $v.published_at, "isDeprecated": $v.retracted } }), "homepage": "https://hub.cloudquery.io" }',
+        '{ "releases": $map($.items, function($v) { { "version": $v.name, "releaseTimestamp": $v.published_at, "isDeprecated": $v.retracted, "changelogUrl": $join(["https://hub.cloudquery.io/plugins/", $replace("{{packageName}}", /(.+?)\\/(.+?)\\/(.+)/, "$2/$1/$3/"), $v.name, "/versions"]) } }), "homepage": "https://hub.cloudquery.io" }',
       ],
     },
   },
