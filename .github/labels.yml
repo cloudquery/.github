@@ -104,21 +104,19 @@
   color: d73a4a
 - name: area/plugin/source/other
   color: 006B75
-- name: area/plugin/source/aws
-  color: 006B75
-- name: area/plugin/source/gcp
-  color: 006B75
-- name: area/plugin/source/azure
-  color: 006B75
-- name: area/plugin/source/k8s
-  color: 006B75
 - name: area/plugin/source/airtable
   color: 006B75
 - name: area/plugin/source/alicloud
   color: 006B75
+- name: area/plugin/source/aws
+  color: 006B75
 - name: area/plugin/source/awspricing
   color: 006B75
+- name: area/plugin/source/azure
+  color: 006B75
 - name: area/plugin/source/azuredevops
+  color: 006B75
+- name: area/plugin/source/backstage
   color: 006B75
 - name: area/plugin/source/bitbucket
   color: 006B75
@@ -132,13 +130,13 @@
   color: 006B75
 - name: area/plugin/source/fastly
   color: 006B75
+- name: area/plugin/source/file
+  color: 006B75
 - name: area/plugin/source/firestore
   color: 006B75
 - name: area/plugin/source/gandi
   color: 006B75
 - name: area/plugin/source/gcp
-  color: 006B75
-- name: area/plugin/source/github
   color: 006B75
 - name: area/plugin/source/github
   color: 006B75
@@ -158,13 +156,15 @@
   color: 006B75
 - name: area/plugin/source/jira
   color: 006B75
-- name: area/plugin/source/launchdarkly
+- name: area/plugin/source/k8s
   color: 006B75
-- name: area/plugin/source/meilisearch
+- name: area/plugin/source/launchdarkly
   color: 006B75
 - name: area/plugin/source/mixpanel
   color: 006B75
-- name: area/plugin/source/mongodb
+- name: area/plugin/source/mongodbatlas
+  color: 006B75
+- name: area/plugin/source/mysql
   color: 006B75
 - name: area/plugin/source/notion
   color: 006B75
@@ -172,9 +172,15 @@
   color: 006B75
 - name: area/plugin/source/oracle
   color: 006B75
+- name: area/plugin/source/oracledb
+  color: 006B75
 - name: area/plugin/source/pagerduty
   color: 006B75
 - name: area/plugin/source/plausible
+  color: 006B75
+- name: area/plugin/source/postgresql
+  color: 006B75
+- name: area/plugin/source/render
   color: 006B75
 - name: area/plugin/source/salesforce
   color: 006B75
@@ -184,12 +190,6 @@
   color: 006B75
 - name: area/plugin/source/snyk
   color: 006B75
-- name: area/plugin/source/mysql
-  color: 006B75
-- name: area/plugin/source/postgresql
-  color: 006B75
-- name: area/plugin/source/render
-  color: 006B75
 - name: area/plugin/source/square
   color: 006B75
 - name: area/plugin/source/stripe
@@ -198,18 +198,36 @@
   color: 006B75
 - name: area/plugin/source/terraform
   color: 006B75
+- name: area/plugin/source/test
+  color: 006B75
 - name: area/plugin/source/typeform
   color: 006B75
 - name: area/plugin/source/vault
   color: 006B75
+- name: area/plugin/source/vercel
+  color: 006B75
 
+- name: area/plugin/destination/azblob
+  color: FEF2C0
+- name: area/plugin/destination/bigquery
+  color: FEF2C0
+- name: area/plugin/destination/clickhouse
+  color: FEF2C0
+- name: area/plugin/destination/duckdb
+  color: FEF2C0
+- name: area/plugin/destination/elasticsearch
+  color: FEF2C0
+- name: area/plugin/destination/file
+  color: FEF2C0
+- name: area/plugin/destination/firehose
+  color: FEF2C0
 - name: area/plugin/destination/gcs
   color: FEF2C0
 - name: area/plugin/destination/gremlin
   color: FEF2C0
 - name: area/plugin/destination/kafka
   color: FEF2C0
-- name: area/plugin/destination/meilsearch
+- name: area/plugin/destination/meilisearch
   color: FEF2C0
 - name: area/plugin/destination/mongodb
   color: FEF2C0
@@ -227,8 +245,8 @@
   color: FEF2C0
 - name: area/plugin/destination/sqlite
   color: FEF2C0
-
-
+- name: area/plugin/destination/test
+  color: FEF2C0
 
 - name: area/policy/aws
   color: FBCA04
