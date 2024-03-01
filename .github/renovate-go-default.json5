@@ -18,6 +18,18 @@
       additionalBranchPrefix: "{{parentDir}}-",
     },
     {
+      matchPackagePatterns: ["cloud.google.com/*"],
+      schedule: ["before 3am on Saturday"],
+      groupName: "Google Cloud modules",
+      additionalBranchPrefix: "{{parentDir}}-",
+    },
+    {
+      matchPackagePatterns: ["google.golang.org/*"],
+      schedule: ["before 3am on Saturday"],
+      groupName: "Google Golang modules",
+      additionalBranchPrefix: "{{parentDir}}-",
+    },
+    {
       matchPackagePatterns: ["github.com/Azure/azure-sdk-for-go/*"],
       schedule: ["before 3am on Saturday"],
       groupName: "Azure modules",
