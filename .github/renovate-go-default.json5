@@ -3,7 +3,7 @@
   postUpdateOptions: ["gomodTidy", "gomodUpdateImportPaths"],
   packageRules: [
     { matchManagers: ["gomod"], enabled: true },
-    { "matchManagers": ["gomod"], "matchDepTypes": ["indirect"], "enabled": false },
+    { matchManagers: ["gomod"], matchDepTypes: ["indirect"], enabled: false },
     {
       matchDatasources: ["golang-version"],
       rangeStrategy: "bump",
