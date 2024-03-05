@@ -3,4 +3,7 @@
   java: {
     enabled: true,
   },
+  packageRules: [
+    { matchPackagePatterns: ["^io.cloudquery"], schedule: ["at any time"] },
+  ],
 }
