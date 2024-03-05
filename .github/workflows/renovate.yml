@@ -22,6 +22,5 @@ jobs:
           configurationFile: .github/self-hosted-renovate.js
           token: ${{ secrets.GH_CQ_BOT }}
         env:
-          LOG_LEVEL: "debug"
           RENOVATE_GITHUB_ACTOR: ${{ github.actor }}
           RENOVATE_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
