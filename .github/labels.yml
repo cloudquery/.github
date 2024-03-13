@@ -120,6 +120,8 @@
   color: 006B75
 - name: area/plugin/source/bitbucket
   color: 006B75
+- name: area/plugin/source/bitly
+  color: 006B75
 - name: area/plugin/source/cloudflare
   color: 006B75
 - name: area/plugin/source/datadog
@@ -182,11 +184,15 @@
   color: 006B75
 - name: area/plugin/source/render
   color: 006B75
+- name: area/plugin/source/s3
+  color: 006B75
 - name: area/plugin/source/salesforce
   color: 006B75
 - name: area/plugin/source/shopify
   color: 006B75
 - name: area/plugin/source/slack
+  color: 006B75
+- name: area/plugin/source/snowflake-config
   color: 006B75
 - name: area/plugin/source/snyk
   color: 006B75
@@ -200,6 +206,8 @@
   color: 006B75
 - name: area/plugin/source/test
   color: 006B75
+- name: area/plugin/source/trello
+  color: 006B75
 - name: area/plugin/source/typeform
   color: 006B75
 - name: area/plugin/source/vault
@@ -212,6 +220,8 @@
 - name: area/plugin/destination/bigquery
   color: FEF2C0
 - name: area/plugin/destination/clickhouse
+  color: FEF2C0
+- name: area/plugin/destination/databricks
   color: FEF2C0
 - name: area/plugin/destination/duckdb
   color: FEF2C0
@@ -231,11 +241,15 @@
   color: FEF2C0
 - name: area/plugin/destination/mongodb
   color: FEF2C0
+- name: area/plugin/destination/motherduck
+  color: FEF2C0
 - name: area/plugin/destination/mssql
   color: FEF2C0
 - name: area/plugin/destination/mysql
   color: FEF2C0
 - name: area/plugin/destination/neo4j
+  color: FEF2C0
+- name: area/plugin/destination/opensearch
   color: FEF2C0
 - name: area/plugin/destination/postgresql
   color: FEF2C0
