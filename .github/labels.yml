@@ -102,6 +102,12 @@
 
 - name: area/new-plugin
   color: d73a4a
+- name: area/plugins
+  color: d73a4a
+- name: area/plugins/sources
+  color: d73a4a
+- name: area/plugins/destinations
+  color: d73a4a
 - name: area/plugin/source/other
   color: 006B75
 - name: area/plugin/source/airtable
