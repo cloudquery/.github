@@ -18,6 +18,8 @@
 - name: blocked
   description: Completion of issue is blocked by some other work
   color: d52202
+- name: wontfix
+  color: d52202
   
 - name: kind/bug
   color: 0052CC
