@@ -104,6 +104,8 @@
 
 - name: area/new-plugin
   color: d73a4a
+- name: area/new-resource
+  color: d73a4a
 - name: area/plugins
   color: d73a4a
 - name: area/plugins/sources
