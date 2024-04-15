@@ -104,6 +104,10 @@
 
 - name: area/new-plugin
   color: d73a4a
+- name: area/new-destination-plugin
+  color: d73a4a
+- name: area/new-source-plugin
+  color: d73a4a
 - name: area/new-resource
   color: d73a4a
 - name: area/plugins
