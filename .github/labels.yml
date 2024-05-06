@@ -228,6 +228,8 @@
   color: 006B75
 - name: area/plugin/source/vercel
   color: 006B75
+- name: area/plugin/source/wiz
+  color: 006B75
 
 - name: area/plugin/destination/azblob
   color: FEF2C0
