@@ -216,6 +216,8 @@
   color: 006B75
 - name: area/plugin/source/tailscale
   color: 006B75
+- name: area/plugin/source/tempo-io
+  color: 006B75
 - name: area/plugin/source/terraform
   color: 006B75
 - name: area/plugin/source/test
