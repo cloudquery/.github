@@ -130,6 +130,8 @@
   color: 006B75
 - name: area/plugin/source/azuredevops
   color: 006B75
+- name: area/plugin/source/bamboo-hr
+  color: 006B75
 - name: area/plugin/source/backstage
   color: 006B75
 - name: area/plugin/source/bitbucket
