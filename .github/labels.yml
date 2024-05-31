@@ -138,6 +138,8 @@
   color: 006B75
 - name: area/plugin/source/bitly
   color: 006B75
+- name: area/plugin/source/clickhouse
+  color: 006B75
 - name: area/plugin/source/cloudflare
   color: 006B75
 - name: area/plugin/source/datadog
