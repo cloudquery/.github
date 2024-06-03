@@ -148,6 +148,8 @@
   color: 006B75
 - name: area/plugin/source/facebookmarketing
   color: 006B75
+- name: area/plugin/source/entraid
+  color: 006B75
 - name: area/plugin/source/fastly
   color: 006B75
 - name: area/plugin/source/file
