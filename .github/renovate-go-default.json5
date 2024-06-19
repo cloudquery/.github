@@ -8,7 +8,6 @@
       matchDatasources: ["golang-version"],
       rangeStrategy: "bump",
       addLabels: ["no automerge"],
-      stabilityDays: 30,
       allowedVersions: ">=1.20.2",
       schedule: "every 6 months on the first day of the month",
     },
