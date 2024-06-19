@@ -10,7 +10,7 @@
       addLabels: ["no automerge"],
       stabilityDays: 30,
       allowedVersions: ">=1.21.11",
-      schedule: "every 3 months on the first day of the month,
+      schedule: "every 3 months on the first day of the month",
     },
     {
       matchPackagePatterns: ["github.com/aws/*"],
