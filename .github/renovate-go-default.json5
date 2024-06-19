@@ -9,7 +9,7 @@
       rangeStrategy: "bump",
       addLabels: ["no automerge"],
       allowedVersions: "<1.22.0",
-      schedule: "every 6 months on the first day of the month",
+      schedule: null,
     },
     {
       matchPackagePatterns: ["github.com/aws/*"],
