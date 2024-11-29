@@ -5,7 +5,7 @@
     { matchPackagePatterns: ["^@cloudquery/"], schedule: ["at any time"] },
     {
       matchManagers: ["npm"],
-      matchPackagePatterns: ["eslint"],
+      matchPackagePatterns: ["/eslint/i"],
       groupName: "eslint packages",
       additionalBranchPrefix: "{{parentDir}}-",
     },
