@@ -3,5 +3,11 @@
   packageRules: [
     { matchManagers: ["npm"], enabled: true },
     { matchPackagePatterns: ["^@cloudquery/"], schedule: ["at any time"] },
+    {
+      matchManagers: ["npm"],
+      matchPackagePatterns: ["eslint"],
+      groupName: "eslint packages",
+      additionalBranchPrefix: "{{parentDir}}-",
+    },
   ],
 }
