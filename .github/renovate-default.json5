@@ -11,6 +11,7 @@
     enabled: true,
     labels: ["security"],
     schedule: ["at any time"],
+    minimumReleaseAge: null,
   },
   customManagers: [
     {
@@ -138,11 +139,13 @@
       matchDatasources: ["custom.cloudquery"],
       enabled: true,
       schedule: ["at any time"],
+      minimumReleaseAge: null,
     },
     {
       matchSourceUrlPrefixes: ["https://github.com/cloudquery/"],
       enabled: true,
       schedule: ["at any time"],
+      minimumReleaseAge: null,
     },
     {
       matchPackagePatterns: ["github.com/apache/arrow/*"],
