@@ -4,6 +4,6 @@
     enabled: true,
   },
   packageRules: [
-    { matchPackagePatterns: ["^io.cloudquery"], schedule: ["at any time"] },
+    { matchPackagePatterns: ["^io.cloudquery"], schedule: ["at any time"], minimumReleaseAge: null },
   ],
 }
