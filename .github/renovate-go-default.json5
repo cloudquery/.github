@@ -45,7 +45,7 @@
       schedule: null,
     },
     {
-      matchSourceUrls: ["github.com/open-telemetry/opentelemetry-collector"],
+      matchPackagePatterns: ["go.opentelemetry.io/collector/*"],
       groupName: "opentelemetry-collector monorepo",
     },
   ],
