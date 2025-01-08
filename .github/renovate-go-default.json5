@@ -44,5 +44,9 @@
       matchPackagePatterns: ["github.com/marcboeker/go-duckdb"],
       schedule: null,
     },
+    {
+      matchSourceUrls: ["github.com/open-telemetry/opentelemetry-collector"],
+      groupName: "opentelemetry-collector monorepo",
+    },
   ],
 }
