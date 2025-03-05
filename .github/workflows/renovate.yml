@@ -24,3 +24,4 @@ jobs:
         env:
           RENOVATE_GITHUB_ACTOR: ${{ github.actor }}
           RENOVATE_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LOG_LEVEL: 'debug'
