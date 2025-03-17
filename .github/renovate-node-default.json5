@@ -9,5 +9,6 @@
       groupName: "eslint packages",
       additionalBranchPrefix: "{{parentDir}}-",
     },
+    { matchPackagePatterns: ["^@cloudquery/plugin-config-ui"], matchUpdateTypes: ["major"], enabled: false },
   ],
 }
