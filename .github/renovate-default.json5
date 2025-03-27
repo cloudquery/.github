@@ -155,9 +155,5 @@
       matchDatasources: ["custom.cloudquery"],
       groupName: "CloudQuery monorepo modules",
     },
-    {
-      matchSourceUrls: ["https://github.com/cloudquery/cloudquery"],
-      groupName: "CloudQuery monorepo modules",
-    },
   ],
 }
