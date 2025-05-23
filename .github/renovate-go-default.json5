@@ -47,5 +47,9 @@
       matchPackagePatterns: ["go.opentelemetry.io/collector/*"],
       groupName: "opentelemetry-collector monorepo",
     },
+    {
+      matchPackageNames: ["opentelemetry"],
+      minimumReleaseAge: null,
+    },
   ],
 }
