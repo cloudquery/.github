@@ -16,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Self-hosted Renovate
-        uses: renovatebot/github-action@v42.0.6
+        uses: renovatebot/github-action@v43.0.1
         with:
           renovate-version: "40.22.1"
           configurationFile: .github/self-hosted-renovate.js
