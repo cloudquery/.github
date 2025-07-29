@@ -36,10 +36,6 @@
       additionalBranchPrefix: "{{parentDir}}-",
     },
     {
-      matchPackageNames: ["github.com/docker/docker"],
-      allowedVersions: "<27",
-    },
-    {
       matchPackagePatterns: ["github.com/marcboeker/go-duckdb"],
       schedule: null,
     },
