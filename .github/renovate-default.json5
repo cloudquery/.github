@@ -16,7 +16,7 @@
   customManagers: [
     {
       customType: "regex",
-      fileMatch: ["^.github/workflows/.+.ya?ml$"],
+      fileMatch: ["^.github/workflows/.+.ya?ml$", "^scripts/scaffold/workflow/source_workflow.tpl$", "^scaffold/sourcetpl/templates/source/.github/workflows/test.yaml.tpl$"],
       matchStrings: [
         "golangci\\-lint\\-action[\\s\\S]+?version\\: (?<currentValue>.*)",
       ],
