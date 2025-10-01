@@ -6,7 +6,7 @@
   packageRules: [
     {
       matchPackageNames: ["^grpcio"],
-      groupName: "grpcio,
+      groupName: "grpcio",
     },
   ],
 }
