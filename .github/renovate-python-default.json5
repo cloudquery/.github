@@ -3,4 +3,10 @@
   python: {
     enabled: true,
   },
+  packageRules: [
+    {
+      matchPackageNames: ["^grpcio"],
+      groupName: "grpcio,
+    },
+  ],
 }
