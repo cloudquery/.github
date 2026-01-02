@@ -5,6 +5,7 @@
   automerge: false,
   semanticCommits: false,
   commitMessagePrefix: "fix(deps): ",
+  prHourlyLimit: 50,
   prConcurrentLimit: 500,
   minimumReleaseAge: "7 days",
   vulnerabilityAlerts: {
