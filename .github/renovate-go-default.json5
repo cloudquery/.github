@@ -8,8 +8,7 @@
       matchDatasources: ["golang-version"],
       rangeStrategy: "bump",
       addLabels: ["no automerge"],
-      minimumReleaseAge: "7 days",
-      schedule: "every 3 months on the first day of the month",
+      minimumReleaseAge: "21 days",
     },
     {
       matchPackagePatterns: ["github.com/aws/*"],
