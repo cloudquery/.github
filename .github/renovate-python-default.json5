@@ -8,5 +8,9 @@
       matchPackageNames: ["^grpcio"],
       groupName: "grpcio",
     },
+    {
+      "matchPackageNames": ["python"],
+      "allowedVersions": "<3.14"
+    }
   ],
 }
