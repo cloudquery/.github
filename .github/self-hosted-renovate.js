@@ -1,6 +1,7 @@
 module.exports = {
   autodiscover: true,
   onboarding: false,
+  repositoryCache: "enabled",
   hostRules: [
     {
       matchHost: "maven.pkg.github.com",
