@@ -1,3 +1,14 @@
 {
   extends: ["github>cloudquery/.github//.github/renovate-default.json5"],
+  customManagers: [
+    {
+      customType: "regex",
+      fileMatch: ["^.github/workflows/.+.ya?ml$"],
+      matchStrings: [
+        "RENOVATE_VERSION\\: [\"'](?<currentValue>.*)[\"']",
+      ],
+      depNameTemplate: "renovatebot/renovate",
+      datasourceTemplate: "github-releases",
+    },
+  ],
 }

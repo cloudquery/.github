@@ -29,15 +29,6 @@
       customType: "regex",
       fileMatch: ["^.github/workflows/.+.ya?ml$"],
       matchStrings: [
-        "RENOVATE_VERSION\\: [\"'](?<currentValue>.*)[\"']",
-      ],
-      depNameTemplate: "renovatebot/renovate",
-      datasourceTemplate: "github-releases",
-    },
-    {
-      customType: "regex",
-      fileMatch: ["^.github/workflows/.+.ya?ml$"],
-      matchStrings: [
         "cloudquery/setup\\-cloudquery[\\s\\S]+?version\\:\\s?(?<currentValue>.*)",
       ],
       packageNameTemplate: "cloudquery/cloudquery",
