@@ -37,13 +37,11 @@ jobs:
           RENOVATE_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LOG_LEVEL: 'debug'
       - name: Delete previous Renovate cache
-        if: always()
         run: |
           gh cache delete "renovate-cache-${{ env.RENOVATE_VERSION }}" --repo "${{ github.repository }}" || true
         env:
           GH_TOKEN: ${{ secrets.GH_CQ_BOT }}
       - name: Save Renovate cache
-        if: always()
         uses: actions/cache/save@v4
         with:
           path: /tmp/renovate/cache
