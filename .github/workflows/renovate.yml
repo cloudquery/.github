@@ -25,9 +25,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: /tmp/renovate/cache
-          key: renovate-cache-${{ env.RENOVATE_VERSION }}-${{ github.run_id }}
-          restore-keys: |
-            renovate-cache-${{ env.RENOVATE_VERSION }}-
+          key: renovate-cache-${{ env.RENOVATE_VERSION }}
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v46.1.2
         with:
@@ -38,9 +36,15 @@ jobs:
           RENOVATE_GITHUB_ACTOR: ${{ github.actor }}
           RENOVATE_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LOG_LEVEL: 'debug'
+      - name: Delete previous Renovate cache
+        if: always()
+        run: |
+          gh cache delete "renovate-cache-${{ env.RENOVATE_VERSION }}" --repo "${{ github.repository }}" || true
+        env:
+          GH_TOKEN: ${{ secrets.GH_CQ_BOT }}
       - name: Save Renovate cache
         if: always()
         uses: actions/cache/save@v4
         with:
           path: /tmp/renovate/cache
-          key: renovate-cache-${{ env.RENOVATE_VERSION }}-${{ github.run_id }}
+          key: renovate-cache-${{ env.RENOVATE_VERSION }}
