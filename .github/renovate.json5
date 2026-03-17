@@ -3,9 +3,9 @@
   customManagers: [
     {
       customType: "regex",
-      fileMatch: ["^.github/workflows/renovate\\.yml$"],
+      fileMatch: ["^\\.github/workflows/renovate\\.yml$"],
       matchStrings: [
-        "RENOVATE_VERSION\\: [\"'](?<currentValue>.*)[\"']",
+        "RENOVATE_VERSION\\: [\"'](?<currentValue>[^\"']+)[\"']",
       ],
       depNameTemplate: "renovatebot/renovate",
       datasourceTemplate: "github-releases",
