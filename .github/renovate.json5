@@ -3,7 +3,7 @@
   customManagers: [
     {
       customType: "regex",
-      fileMatch: ["^.github/workflows/.+.ya?ml$"],
+      fileMatch: ["^.github/workflows/renovate\\.yml$"],
       matchStrings: [
         "RENOVATE_VERSION\\: [\"'](?<currentValue>.*)[\"']",
       ],
