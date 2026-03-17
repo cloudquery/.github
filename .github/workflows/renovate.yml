@@ -22,6 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
       - name: Restore Renovate cache
+        id: cache-restore
         uses: actions/cache/restore@v4
         with:
           path: /tmp/renovate/cache
@@ -37,6 +38,7 @@ jobs:
           RENOVATE_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LOG_LEVEL: 'debug'
       - name: Delete previous Renovate cache
+        if: steps.cache-restore.outputs.cache-hit == 'true'
         run: |
           gh cache delete "renovate-cache-${{ env.RENOVATE_VERSION }}" --repo "${{ github.repository }}" || true
         env:
