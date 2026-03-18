@@ -24,7 +24,7 @@ jobs:
       - name: Renovate cache
         uses: actions/cache@v5
         with:
-          path: /tmp/renovate/cache
+          path: ${{ github.workspace }}/.renovate-cache
           key: renovate-cache-${{ env.RENOVATE_VERSION }}-${{ github.run_id }}
           restore-keys: |
             renovate-cache-${{ env.RENOVATE_VERSION }}-
@@ -37,4 +37,5 @@ jobs:
         env:
           RENOVATE_GITHUB_ACTOR: ${{ github.actor }}
           RENOVATE_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RENOVATE_CACHE_DIR: ${{ github.workspace }}/.renovate-cache
           LOG_LEVEL: 'debug'
