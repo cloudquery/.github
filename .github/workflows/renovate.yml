@@ -11,6 +11,9 @@ concurrency:
 permissions:
   contents: read
 
+env:
+  RENOVATE_VERSION: "43.46.6"
+
 jobs:
   renovate:
     runs-on: ubicloud-standard-4
@@ -18,10 +21,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+      - name: Renovate cache
+        uses: actions/cache@v4
+        with:
+          path: /tmp/renovate/cache
+          key: renovate-cache-${{ env.RENOVATE_VERSION }}-${{ github.run_id }}
+          restore-keys: |
+            renovate-cache-${{ env.RENOVATE_VERSION }}-
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v46.1.2
         with:
-          renovate-version: "43.46.6"
+          renovate-version: ${{ env.RENOVATE_VERSION }}
           configurationFile: .github/self-hosted-renovate.js
           token: ${{ secrets.GH_CQ_BOT }}
         env:
