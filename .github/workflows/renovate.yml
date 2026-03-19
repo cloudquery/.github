@@ -21,13 +21,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      # - name: Renovate cache
-      #   uses: actions/cache@v5
-      #   with:
-      #     path: ${{ github.workspace }}/.renovate-cache
-      #     key: renovate-cache-${{ env.RENOVATE_VERSION }}-${{ github.run_id }}
-      #     restore-keys: |
-      #       renovate-cache-${{ env.RENOVATE_VERSION }}-
+      - name: Renovate cache
+        uses: actions/cache@v5
+        with:
+          path: /tmp/renovate/cache/renovate/repository
+          key: renovate-cache-${{ env.RENOVATE_VERSION }}-${{ github.run_id }}
+          restore-keys: |
+            renovate-cache-${{ env.RENOVATE_VERSION }}-
+      - name: Fix cache permissions
+        run: |
+          # The permissions expected within renovate's docker container (uid 12021)
+          # are different than the ones given after the cache is restored.
+          # See https://github.com/renovatebot/github-action#persisting-the-repository-cache
+          sudo mkdir -p /tmp/renovate/cache/renovate/repository
+          sudo chown -R 12021:0 /tmp/renovate/
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v46.1.4
         with:
@@ -37,5 +44,4 @@ jobs:
         env:
           RENOVATE_GITHUB_ACTOR: ${{ github.actor }}
           RENOVATE_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # RENOVATE_CACHE_DIR: ${{ github.workspace }}/.renovate-cache
           LOG_LEVEL: 'debug'
