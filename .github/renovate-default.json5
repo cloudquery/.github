@@ -1,5 +1,5 @@
 {
-  extends: ["config:recommended", "schedule:monthly"],
+  extends: ["config:recommended", "schedule:monthly", "helpers:pinGitHubActionDigests"],
   rebaseWhen: "conflicted",
   ignorePresets: [":prHourlyLimit2", ":ignoreModulesAndTests"],
   automerge: false,
