@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 env:
-  RENOVATE_VERSION: "43.63.0"
+  RENOVATE_VERSION: "43.89.4"
 
 jobs:
   renovate:
