@@ -1,7 +1,7 @@
 {
   extends: ["github>cloudquery/.github//.github/renovate-default.json5"],
   python: {
-    enabled: false,
+    enabled: true,
   },
   packageRules: [
     {
