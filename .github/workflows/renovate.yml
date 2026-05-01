@@ -51,7 +51,7 @@ jobs:
           sudo mkdir -p /tmp/renovate/cache/renovate/repository
           sudo chown -R 12021:0 /tmp/renovate/
       - name: Self-hosted Renovate
-        uses: renovatebot/github-action@b67590ea780158ccd13192c22a3655a5231f869d # v46.1.8
+        uses: renovatebot/github-action@83ec54fee49ab67d9cd201084c1ff325b4b462e4 # v46.1.10
         with:
           renovate-version: ${{ env.RENOVATE_VERSION }}
           configurationFile: .github/self-hosted-renovate.js
