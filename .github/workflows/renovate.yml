@@ -21,7 +21,7 @@ jobs:
     steps:
       - name: Generate GitHub App token
         id: app-token
-        uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3
         with:
           app-id: ${{ secrets.CQ_APP_ID }}
           private-key: ${{ secrets.CQ_APP_PRIVATE_KEY }}
@@ -51,7 +51,7 @@ jobs:
           sudo mkdir -p /tmp/renovate/cache/renovate/repository
           sudo chown -R 12021:0 /tmp/renovate/
       - name: Self-hosted Renovate
-        uses: renovatebot/github-action@83ec54fee49ab67d9cd201084c1ff325b4b462e4 # v46.1.10
+        uses: renovatebot/github-action@693b9ef15eec82123529a37c782242f091365961 # v46.1.14
         with:
           renovate-version: ${{ env.RENOVATE_VERSION }}
           configurationFile: .github/self-hosted-renovate.js
