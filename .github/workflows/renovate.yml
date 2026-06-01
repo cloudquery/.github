@@ -1,6 +1,11 @@
 name: Renovate
 on:
   workflow_dispatch:
+    inputs:
+      repositories:
+        description: "Optional repo(s) to target, e.g. cloudquery/helm-charts-private (comma-separated). Blank = full org autodiscovery."
+        required: false
+        default: ""
   schedule:
     - cron: "0 */2 * * *"
 
@@ -36,6 +41,11 @@ jobs:
           permission-vulnerability-alerts: read
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - name: Configure targeted run
+        if: inputs.repositories != ''
+        run: |
+          echo "RENOVATE_AUTODISCOVER=false" >> "$GITHUB_ENV"
+          echo "RENOVATE_REPOSITORIES=${{ inputs.repositories }}" >> "$GITHUB_ENV"
       - name: Renovate cache
         uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
         with:
