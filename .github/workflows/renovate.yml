@@ -20,7 +20,67 @@ env:
   RENOVATE_VERSION: "43.195.2"
 
 jobs:
-  renovate:
+  renovate-sharded:
+    if: inputs.repositories == ''
+    runs-on: ubicloud-standard-4
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        shard:
+          - id: a-e
+            filter: "cloudquery/[a-e]*"
+          - id: f-m
+            filter: "cloudquery/[f-m]*"
+          - id: n-r
+            filter: "cloudquery/[n-r]*"
+          - id: s-z
+            filter: "cloudquery/[s-z0-9]*"
+    steps:
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3
+        with:
+          app-id: ${{ secrets.CQ_APP_ID }}
+          private-key: ${{ secrets.CQ_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          permission-contents: write
+          permission-pull-requests: write
+          permission-checks: write
+          permission-statuses: write
+          permission-issues: write
+          permission-workflows: write
+          permission-administration: read
+          permission-vulnerability-alerts: read
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - name: Renovate cache
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
+        with:
+          path: /tmp/renovate/cache/renovate/repository
+          key: renovate-cache-${{ env.RENOVATE_VERSION }}-${{ matrix.shard.id }}-${{ github.run_id }}
+          restore-keys: |
+            renovate-cache-${{ env.RENOVATE_VERSION }}-${{ matrix.shard.id }}-
+      - name: Fix cache permissions
+        run: |
+          # The permissions expected within renovate's docker container (uid 12021)
+          # are different than the ones given after the cache is restored.
+          # See https://github.com/renovatebot/github-action#persisting-the-repository-cache
+          sudo mkdir -p /tmp/renovate/cache/renovate/repository
+          sudo chown -R 12021:0 /tmp/renovate/
+      - name: Self-hosted Renovate
+        uses: renovatebot/github-action@693b9ef15eec82123529a37c782242f091365961 # v46.1.14
+        with:
+          renovate-version: ${{ env.RENOVATE_VERSION }}
+          configurationFile: .github/self-hosted-renovate.js
+          token: ${{ steps.app-token.outputs.token }}
+        env:
+          RENOVATE_GITHUB_ACTOR: ${{ github.actor }}
+          RENOVATE_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RENOVATE_AUTODISCOVER_FILTER: ${{ matrix.shard.filter }}
+
+  renovate-targeted:
+    if: inputs.repositories != ''
     runs-on: ubicloud-standard-4
     timeout-minutes: 180
     steps:
@@ -42,7 +102,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - name: Configure targeted run
-        if: inputs.repositories != ''
         run: |
           echo "RENOVATE_AUTODISCOVER=false" >> "$GITHUB_ENV"
           echo "RENOVATE_REPOSITORIES=${{ inputs.repositories }}" >> "$GITHUB_ENV"
@@ -50,9 +109,9 @@ jobs:
         uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
         with:
           path: /tmp/renovate/cache/renovate/repository
-          key: renovate-cache-${{ env.RENOVATE_VERSION }}-${{ github.run_id }}
+          key: renovate-cache-${{ env.RENOVATE_VERSION }}-targeted-${{ github.run_id }}
           restore-keys: |
-            renovate-cache-${{ env.RENOVATE_VERSION }}-
+            renovate-cache-${{ env.RENOVATE_VERSION }}-targeted-
       - name: Fix cache permissions
         run: |
           # The permissions expected within renovate's docker container (uid 12021)
