@@ -6,6 +6,10 @@ on:
         description: "Optional repo(s) to target, e.g. cloudquery/helm-charts-private (comma-separated). Blank = full org autodiscovery."
         required: false
         default: ""
+      repos_per_shard:
+        description: "Max repos processed per parallel shard. Lower = shorter per-shard runtime (each shard must finish within its 1h app token)."
+        required: false
+        default: "4"
   schedule:
     - cron: "0 */2 * * *"
 
@@ -18,11 +22,69 @@ permissions:
 
 env:
   RENOVATE_VERSION: "43.195.2"
+  # Default for scheduled runs; overridden by the workflow_dispatch input when provided.
+  REPOS_PER_SHARD: "4"
 
 jobs:
+  # Discover the repos Renovate would process and split them into shards. Each shard runs as
+  # its own parallel job with a freshly minted GitHub App token, so no single Renovate process
+  # has to outlive the 1-hour token lifetime.
+  discover:
+    runs-on: ubicloud-standard-2
+    timeout-minutes: 10
+    outputs:
+      matrix: ${{ steps.shard.outputs.matrix }}
+    steps:
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3
+        with:
+          app-id: ${{ secrets.CQ_APP_ID }}
+          private-key: ${{ secrets.CQ_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+      - name: Build shard matrix
+        id: shard
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          TARGET_REPOSITORIES: ${{ inputs.repositories }}
+          REPOS_PER_SHARD: ${{ inputs.repos_per_shard || env.REPOS_PER_SHARD }}
+        run: |
+          set -euo pipefail
+
+          if [ -n "${TARGET_REPOSITORIES}" ]; then
+            # Targeted run: use the explicit list as-is (newline-separated for chunking).
+            repos="$(printf '%s' "${TARGET_REPOSITORIES}" | tr ',' '\n' | sed '/^[[:space:]]*$/d' | tr -d '[:blank:]')"
+          else
+            # Full org run: list the repos this installation can access (== what autodiscover
+            # would process), excluding archived repos.
+            repos="$(gh api /installation/repositories --paginate \
+              -q '.repositories[] | select(.archived==false) | .full_name')"
+          fi
+
+          if [ -z "${repos}" ]; then
+            echo "No repositories discovered." >&2
+            exit 1
+          fi
+
+          # Chunk into shards of at most REPOS_PER_SHARD repos and emit a JSON matrix of
+          # objects: [{ "id": 0, "repos": "owner/a,owner/b" }, ...].
+          matrix="$(printf '%s\n' "${repos}" | jq -R . | jq -s \
+            --argjson size "${REPOS_PER_SHARD}" \
+            '[ _nwise($size) | join(",") ] | to_entries | map({ id: .key, repos: .value })')"
+
+          echo "Discovered $(printf '%s\n' "${repos}" | wc -l | tr -d ' ') repos across $(echo "${matrix}" | jq 'length') shard(s)."
+          echo "matrix=$(echo "${matrix}" | jq -c .)" >> "$GITHUB_OUTPUT"
+
   renovate:
+    needs: discover
     runs-on: ubicloud-standard-4
-    timeout-minutes: 180
+    # Fail fast instead of churning against an expired token; each shard holds a fresh 1h token.
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        shard: ${{ fromJson(needs.discover.outputs.matrix) }}
     steps:
       - name: Generate GitHub App token
         id: app-token
@@ -41,18 +103,17 @@ jobs:
           permission-vulnerability-alerts: read
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-      - name: Configure targeted run
-        if: inputs.repositories != ''
+      - name: Configure shard
         run: |
           echo "RENOVATE_AUTODISCOVER=false" >> "$GITHUB_ENV"
-          echo "RENOVATE_REPOSITORIES=${{ inputs.repositories }}" >> "$GITHUB_ENV"
+          echo "RENOVATE_REPOSITORIES=${{ matrix.shard.repos }}" >> "$GITHUB_ENV"
       - name: Renovate cache
         uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
         with:
           path: /tmp/renovate/cache/renovate/repository
-          key: renovate-cache-${{ env.RENOVATE_VERSION }}-${{ github.run_id }}
+          key: renovate-cache-${{ env.RENOVATE_VERSION }}-shard${{ matrix.shard.id }}-${{ github.run_id }}
           restore-keys: |
-            renovate-cache-${{ env.RENOVATE_VERSION }}-
+            renovate-cache-${{ env.RENOVATE_VERSION }}-shard${{ matrix.shard.id }}-
       - name: Fix cache permissions
         run: |
           # The permissions expected within renovate's docker container (uid 12021)
