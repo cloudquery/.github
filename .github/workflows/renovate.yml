@@ -28,12 +28,18 @@ jobs:
       fail-fast: false
       matrix:
         shard:
+          - id: cloudquery-private
+            filter: "cloudquery/cloudquery-private"
+          - id: plugin-sdk
+            filter: "cloudquery/plugin-sdk"
+          - id: cloudquery-and-cloud
+            filter: "cloudquery/cloudquery,cloudquery/cloud"
           - id: a-e
-            filter: "cloudquery/[a-e]*"
+            filter: "cloudquery/[a-e]*,!cloudquery/cloudquery-private,!cloudquery/cloudquery,!cloudquery/cloud"
           - id: f-m
             filter: "cloudquery/[f-m]*"
           - id: n-r
-            filter: "cloudquery/[n-r]*"
+            filter: "cloudquery/[n-r]*,!cloudquery/plugin-sdk"
           - id: s-z
             filter: "cloudquery/[s-z0-9]*"
     steps:
