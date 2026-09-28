@@ -143,6 +143,12 @@
       allowedVersions: ["11"],
     },
     {
+      // env0/gh-workflows is internal to env0, so the cloudquery app token cannot read it.
+      // ai-review.yml tracks its router at @main on purpose, so there is nothing to update.
+      matchPackageNames: ["env0/gh-workflows"],
+      enabled: false,
+    },
+    {
       matchDatasources: ["custom.cloudquery"],
       enabled: true,
       schedule: ["at any time"],
