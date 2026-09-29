@@ -22,7 +22,7 @@ env:
 jobs:
   renovate-sharded:
     if: inputs.repositories == ''
-    runs-on: ubicloud-standard-4
+    runs-on: ubuntu-latest
     timeout-minutes: 180
     strategy:
       fail-fast: false
@@ -87,7 +87,7 @@ jobs:
 
   renovate-targeted:
     if: inputs.repositories != ''
-    runs-on: ubicloud-standard-4
+    runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
       - name: Generate GitHub App token
