@@ -38,6 +38,15 @@
     },
     {
       customType: "regex",
+      fileMatch: ["^.github/cloudquery-cli-version$"],
+      matchStrings: ["^(?<currentValue>\\S+)"],
+      packageNameTemplate: "cloudquery/cloudquery",
+      depNameTemplate: "cli",
+      datasourceTemplate: "github-releases",
+      extractVersionTemplate: "^cli-(?<version>.+)$",
+    },
+    {
+      customType: "regex",
       fileMatch: ["^.github/workflows/.+.ya?ml$"],
       matchStrings: [
         "setup\\-go[\\s\\S]+?go-version\\: \\^?(?<currentValue>[^$].*)",
