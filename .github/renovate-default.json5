@@ -164,6 +164,12 @@
       minimumReleaseAge: null,
     },
     {
+      matchDatasources: ["docker"],
+      matchPackageNames: ["eclipse-temurin"],
+      schedule: ["at any time"],
+      minimumReleaseAge: null,
+    },
+    {
       matchPackagePatterns: ["github.com/apache/arrow/*"],
       schedule: ["before 3am on Monday"],
     },
