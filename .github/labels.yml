@@ -12,6 +12,9 @@
 - name: needs-triage
   description: Needs triage
   color: 5319E7
+- name: needs-reproduction
+  description: Needs a minimal reproduction before we can triage it
+  color: 5319E7
 - name: needs-rfc
   description: Needs a more detailed RFC before implementation
   color: D53802
