@@ -11,8 +11,9 @@ on:
         type: string
         default: wip,no automerge
       merge-method:
+        description: MERGE, SQUASH or REBASE
         type: string
-        default: squash
+        default: SQUASH
     secrets:
       app-id:
         required: true
@@ -43,77 +44,97 @@ jobs:
           permission-pull-requests: write
 
       - name: Enable or disable auto-merge
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         env:
-          GH_TOKEN: ${{ steps.app-token.outputs.token }}
-          OWNER: ${{ github.repository_owner }}
-          REPO: ${{ github.event.repository.name }}
-          PR: ${{ github.event.pull_request.number }}
-          ACTION: ${{ github.event.action }}
-          EVENT_LABEL: ${{ github.event.label.name }}
           AUTOMERGE_LABEL: ${{ inputs.automerge-label }}
           BLOCKING_LABELS: ${{ inputs.blocking-labels }}
           MERGE_METHOD: ${{ inputs.merge-method }}
-          PR_STATE_QUERY: |
-            query($owner: String!, $repo: String!, $number: Int!) {
-              repository(owner: $owner, name: $repo) {
-                pullRequest(number: $number) {
-                  id
-                  state
-                  isDraft
-                  isInMergeQueue
-                  autoMergeRequest { enabledAt }
-                  labels(first: 100) { nodes { name } }
+        with:
+          github-token: ${{ steps.app-token.outputs.token }}
+          script: |
+            const { owner, repo } = context.repo;
+            const { action, label, pull_request: event } = context.payload;
+            const automergeLabel = process.env.AUTOMERGE_LABEL;
+            const blockingLabels = process.env.BLOCKING_LABELS.split(',').map((name) => name.trim()).filter(Boolean);
+            const mergeMethod = process.env.MERGE_METHOD.toUpperCase();
+
+            const { repository: { pullRequest: pr } } = await github.graphql(
+              `query($owner: String!, $repo: String!, $number: Int!) {
+                repository(owner: $owner, name: $repo) {
+                  pullRequest(number: $number) {
+                    id
+                    state
+                    isDraft
+                    isInMergeQueue
+                    autoMergeRequest { enabledAt }
+                    labels(first: 100) { nodes { name } }
+                  }
                 }
+              }`,
+              { owner, repo, number: event.number },
+            );
+
+            const labels = pr.labels.nodes.map(({ name }) => name);
+            const autoMergeEnabled = pr.autoMergeRequest !== null;
+
+            const stop = async (reason) => {
+              if (autoMergeEnabled) {
+                core.info(`Disabling auto-merge: ${reason}`);
+                await github.graphql(
+                  `mutation($id: ID!) { disablePullRequestAutoMerge(input: { pullRequestId: $id }) { clientMutationId } }`,
+                  { id: pr.id },
+                );
               }
+              if (pr.isInMergeQueue) {
+                core.info(`Removing from merge queue: ${reason}`);
+                await github.graphql(
+                  `mutation($id: ID!) { dequeuePullRequest(input: { id: $id }) { clientMutationId } }`,
+                  { id: pr.id },
+                );
+              }
+            };
+
+            const mergeNow = async () => {
+              try {
+                await github.graphql(
+                  `mutation($id: ID!) { enqueuePullRequest(input: { pullRequestId: $id }) { clientMutationId } }`,
+                  { id: pr.id },
+                );
+                core.info('Added to merge queue');
+              } catch (error) {
+                core.info(`Merge queue not available (${error.message}), merging directly`);
+                await github.rest.pulls.merge({ owner, repo, pull_number: event.number, merge_method: mergeMethod.toLowerCase() });
+              }
+            };
+
+            const enable = async () => {
+              try {
+                await github.graphql(
+                  `mutation($id: ID!, $method: PullRequestMergeMethod!) {
+                    enablePullRequestAutoMerge(input: { pullRequestId: $id, mergeMethod: $method }) { clientMutationId }
+                  }`,
+                  { id: pr.id, method: mergeMethod },
+                );
+                core.info(`Enabled auto-merge (${mergeMethod})`);
+              } catch (error) {
+                if (!/clean status/i.test(error.message)) throw error;
+                core.info('Pull request is ready to merge');
+                await mergeNow();
+              }
+            };
+
+            if (pr.state !== 'OPEN') {
+              core.info('Pull request is not open');
+            } else if (labels.some((name) => blockingLabels.includes(name))) {
+              await stop('blocking label present');
+            } else if (pr.isDraft) {
+              await stop('pull request is a draft');
+            } else if (action === 'unlabeled' && label?.name === automergeLabel) {
+              await stop(`'${automergeLabel}' label removed`);
+            } else if (!labels.includes(automergeLabel)) {
+              core.info(`No '${automergeLabel}' label`);
+            } else if (autoMergeEnabled || pr.isInMergeQueue) {
+              core.info('Auto-merge already enabled');
+            } else {
+              await enable();
             }
-          DEQUEUE_MUTATION: |
-            mutation($id: ID!) { dequeuePullRequest(input: { id: $id }) { clientMutationId } }
-        run: |
-          set -euo pipefail
-
-          state=$(gh api graphql \
-            -F owner="$OWNER" -F repo="$REPO" -F number="$PR" \
-            -f query="$PR_STATE_QUERY" --jq '.data.repository.pullRequest')
-
-          pr_id=$(jq -r '.id' <<<"$state")
-          is_open=$(jq -r '.state == "OPEN"' <<<"$state")
-          is_draft=$(jq -r '.isDraft' <<<"$state")
-          in_queue=$(jq -r '.isInMergeQueue' <<<"$state")
-          auto_merge_on=$(jq -r '.autoMergeRequest != null' <<<"$state")
-          has_automerge=$(jq -r --arg l "$AUTOMERGE_LABEL" '[.labels.nodes[].name] | index($l) != null' <<<"$state")
-          has_blocking=$(jq -r --arg b "$BLOCKING_LABELS" \
-            '($b | split(",") | map(gsub("^\\s+|\\s+$"; ""))) as $blocking
-             | [.labels.nodes[].name] | any(. as $n | $blocking | index($n) != null)' <<<"$state")
-
-          automerge_removed=false
-          if [[ "$ACTION" == "unlabeled" && "$EVENT_LABEL" == "$AUTOMERGE_LABEL" ]]; then
-            automerge_removed=true
-          fi
-
-          stop() {
-            if [[ "$auto_merge_on" == "true" ]]; then
-              echo "Disabling auto-merge: $1"
-              gh pr merge "$PR" --repo "$OWNER/$REPO" --disable-auto
-            fi
-            if [[ "$in_queue" == "true" ]]; then
-              echo "Removing from merge queue: $1"
-              gh api graphql -F id="$pr_id" -f query="$DEQUEUE_MUTATION" >/dev/null
-            fi
-          }
-
-          if [[ "$is_open" != "true" ]]; then
-            echo "Pull request is not open"
-          elif [[ "$has_blocking" == "true" ]]; then
-            stop "blocking label present"
-          elif [[ "$is_draft" == "true" ]]; then
-            stop "pull request is a draft"
-          elif [[ "$automerge_removed" == "true" ]]; then
-            stop "'$AUTOMERGE_LABEL' label removed"
-          elif [[ "$has_automerge" != "true" ]]; then
-            echo "No '$AUTOMERGE_LABEL' label"
-          elif [[ "$auto_merge_on" == "true" || "$in_queue" == "true" ]]; then
-            echo "Auto-merge already enabled"
-          else
-            echo "Enabling auto-merge ($MERGE_METHOD)"
-            gh pr merge "$PR" --repo "$OWNER/$REPO" --auto "--$MERGE_METHOD"
-          fi

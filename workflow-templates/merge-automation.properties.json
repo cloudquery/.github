@@ -1,6 +1,0 @@
-{
-  "name": "Merge automation",
-  "description": "Merge pull requests labelled automerge with native auto-merge and the merge queue, approve bot pull requests, and support the priority merge label.",
-  "iconName": "octicon git-merge-queue",
-  "categories": ["Automation"]
-}

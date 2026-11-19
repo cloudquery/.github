@@ -16,7 +16,7 @@ We have [a few base configurations](./.github) that repositories extend from.
 
 ## Merge automation
 
-Reusable workflows that replace Kodiak. Add [the caller workflow](./workflow-templates/merge-automation.yml) to a repository (also available from **Actions → New workflow**), pinned to a commit SHA.
+Reusable workflows that replace Kodiak. Call them from a `pull_request_target` workflow, pinned to a commit SHA.
 
 | Workflow | What it does |
 | --- | --- |

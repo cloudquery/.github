@@ -31,28 +31,19 @@ jobs:
     steps:
       - name: Check author and sender
         id: check
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         env:
           BOT_LOGINS: ${{ inputs.bot-logins }}
-          AUTHOR: ${{ github.event.pull_request.user.login }}
-          SENDER: ${{ github.event.sender.login }}
-        run: |
-          set -euo pipefail
-          is_bot() {
-            local login="$1" bot
-            IFS=',' read -ra bots <<<"$BOT_LOGINS"
-            for bot in "${bots[@]}"; do
-              bot="${bot#"${bot%%[![:space:]]*}"}"
-              bot="${bot%"${bot##*[![:space:]]}"}"
-              [[ "$login" == "$bot" ]] && return 0
-            done
-            return 1
-          }
-          if is_bot "$AUTHOR" && is_bot "$SENDER"; then
-            echo "approve=true" >>"$GITHUB_OUTPUT"
-          else
-            echo "Skipping: author '$AUTHOR' or sender '$SENDER' is not an allowed bot"
-            echo "approve=false" >>"$GITHUB_OUTPUT"
-          fi
+        with:
+          script: |
+            const bots = process.env.BOT_LOGINS.split(',').map((login) => login.trim()).filter(Boolean);
+            const author = context.payload.pull_request.user.login;
+            const sender = context.payload.sender.login;
+            const approve = bots.includes(author) && bots.includes(sender);
+            if (!approve) {
+              core.info(`Skipping: author '${author}' or sender '${sender}' is not an allowed bot`);
+            }
+            core.setOutput('approve', approve);
 
       - name: Generate GitHub App token
         if: steps.check.outputs.approve == 'true'
@@ -67,21 +58,21 @@ jobs:
 
       - name: Approve
         if: steps.check.outputs.approve == 'true'
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         env:
-          GH_TOKEN: ${{ steps.app-token.outputs.token }}
-          REPOSITORY: ${{ github.repository }}
-          PR: ${{ github.event.pull_request.number }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           APPROVER: ${{ steps.app-token.outputs.app-slug }}[bot]
-        run: |
-          set -euo pipefail
-          already_approved=$(gh api --paginate "repos/$REPOSITORY/pulls/$PR/reviews" \
-            | jq -s --arg user "$APPROVER" --arg sha "$HEAD_SHA" \
-              '[.[][] | select(.user.login == $user and .state == "APPROVED" and .commit_id == $sha)] | length')
-          if [[ "$already_approved" -gt 0 ]]; then
-            echo "Already approved at $HEAD_SHA"
-            exit 0
-          fi
-          gh api --method POST "repos/$REPOSITORY/pulls/$PR/reviews" \
-            -f commit_id="$HEAD_SHA" -f event=APPROVE >/dev/null
-          echo "Approved at $HEAD_SHA"
+        with:
+          github-token: ${{ steps.app-token.outputs.token }}
+          script: |
+            const { owner, repo } = context.repo;
+            const { number, head } = context.payload.pull_request;
+            const reviews = await github.paginate(github.rest.pulls.listReviews, { owner, repo, pull_number: number });
+            const alreadyApproved = reviews.some(
+              (review) => review.user?.login === process.env.APPROVER && review.state === 'APPROVED' && review.commit_id === head.sha,
+            );
+            if (alreadyApproved) {
+              core.info(`Already approved at ${head.sha}`);
+              return;
+            }
+            await github.rest.pulls.createReview({ owner, repo, pull_number: number, commit_id: head.sha, event: 'APPROVE' });
+            core.info(`Approved at ${head.sha}`);

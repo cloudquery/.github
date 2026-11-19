@@ -39,23 +39,29 @@ jobs:
           permission-pull-requests: write
 
       - name: Move to the front of the merge queue
-        env:
-          GH_TOKEN: ${{ steps.app-token.outputs.token }}
-          PR_ID: ${{ github.event.pull_request.node_id }}
-          IN_QUEUE_QUERY: |
-            query($id: ID!) { node(id: $id) { ... on PullRequest { isInMergeQueue } } }
-          DEQUEUE_MUTATION: |
-            mutation($id: ID!) { dequeuePullRequest(input: { id: $id }) { clientMutationId } }
-          ENQUEUE_JUMP_MUTATION: |
-            mutation($id: ID!) { enqueuePullRequest(input: { pullRequestId: $id, jump: true }) { mergeQueueEntry { position } } }
-        run: |
-          set -euo pipefail
-          in_queue=$(gh api graphql -F id="$PR_ID" -f query="$IN_QUEUE_QUERY" --jq '.data.node.isInMergeQueue')
-          if [[ "$in_queue" == "true" ]]; then
-            gh api graphql -F id="$PR_ID" -f query="$DEQUEUE_MUTATION" >/dev/null
-          fi
-          if ! gh api graphql -F id="$PR_ID" -f query="$ENQUEUE_JUMP_MUTATION" \
-            --jq '"Queue position: \(.data.enqueuePullRequest.mergeQueueEntry.position)"'; then
-            echo "::error::Could not add the pull request to the front of the merge queue. Add the label again when required checks and reviews pass."
-            exit 1
-          fi
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
+        with:
+          github-token: ${{ steps.app-token.outputs.token }}
+          script: |
+            const id = context.payload.pull_request.node_id;
+            const { node } = await github.graphql(
+              `query($id: ID!) { node(id: $id) { ... on PullRequest { isInMergeQueue } } }`,
+              { id },
+            );
+            if (node.isInMergeQueue) {
+              await github.graphql(
+                `mutation($id: ID!) { dequeuePullRequest(input: { id: $id }) { clientMutationId } }`,
+                { id },
+              );
+            }
+            try {
+              const { enqueuePullRequest } = await github.graphql(
+                `mutation($id: ID!) { enqueuePullRequest(input: { pullRequestId: $id, jump: true }) { mergeQueueEntry { position } } }`,
+                { id },
+              );
+              core.info(`Queue position: ${enqueuePullRequest.mergeQueueEntry.position}`);
+            } catch (error) {
+              core.setFailed(
+                `Could not add the pull request to the front of the merge queue: ${error.message}. Add the label again when required checks and reviews pass.`,
+              );
+            }
