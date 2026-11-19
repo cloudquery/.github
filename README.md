@@ -21,11 +21,11 @@ Reusable workflows that replace Kodiak. Call them from a `pull_request_target` w
 | Workflow | What it does |
 | --- | --- |
 | [`merge-label-bridge.yml`](./.github/workflows/merge-label-bridge.yml) | Enables native auto-merge (or the merge queue, when the branch requires it) for pull requests labelled `automerge`. Disables it and removes the pull request from the queue when `wip` or `no automerge` is added, the `automerge` label is removed, or the pull request becomes a draft. |
-| [`approve-bot-prs.yml`](./.github/workflows/approve-bot-prs.yml) | Approves pull requests that `cloudquery-ci[bot]` opens and pushes to, with a separate approver GitHub App. Pushes from anyone else are not approved. |
 | [`priority-merge.yml`](./.github/workflows/priority-merge.yml) | Moves a pull request labelled `priority merge` to the front of the merge queue. |
 
 Requirements in each repository:
 
 - **Settings → General → Allow auto-merge** is on.
-- The `CQ_APP_ID`, `CQ_APP_PRIVATE_KEY`, `APPROVER_APP_ID` and `APPROVER_APP_PRIVATE_KEY` secrets are available.
+- The `CQ_APP_ID` and `CQ_APP_PRIVATE_KEY` secrets are available.
+- The `envzero-approver` GitHub App is installed. It approves `cloudquery-ci` pull requests from a webhook, not from a workflow.
 - `.kodiak.toml` is deleted, so Kodiak stops acting on the repository.
