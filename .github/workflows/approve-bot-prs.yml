@@ -1,0 +1,87 @@
+name: Approve bot pull requests
+
+on:
+  workflow_call:
+    inputs:
+      bot-logins:
+        description: Comma-separated logins whose pull requests are approved, e.g. cloudquery-ci[bot]
+        type: string
+        default: cloudquery-ci[bot]
+    secrets:
+      approver-app-id:
+        required: true
+      approver-app-private-key:
+        required: true
+
+permissions: {}
+
+concurrency:
+  group: approve-bot-prs-${{ github.repository }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  approve:
+    if: >-
+      github.event.pull_request.state == 'open' &&
+      !github.event.pull_request.draft &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      contains(fromJSON('["opened", "reopened", "synchronize", "ready_for_review"]'), github.event.action)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check author and sender
+        id: check
+        env:
+          BOT_LOGINS: ${{ inputs.bot-logins }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+          SENDER: ${{ github.event.sender.login }}
+        run: |
+          set -euo pipefail
+          is_bot() {
+            local login="$1" bot
+            IFS=',' read -ra bots <<<"$BOT_LOGINS"
+            for bot in "${bots[@]}"; do
+              bot="${bot#"${bot%%[![:space:]]*}"}"
+              bot="${bot%"${bot##*[![:space:]]}"}"
+              [[ "$login" == "$bot" ]] && return 0
+            done
+            return 1
+          }
+          if is_bot "$AUTHOR" && is_bot "$SENDER"; then
+            echo "approve=true" >>"$GITHUB_OUTPUT"
+          else
+            echo "Skipping: author '$AUTHOR' or sender '$SENDER' is not an allowed bot"
+            echo "approve=false" >>"$GITHUB_OUTPUT"
+          fi
+
+      - name: Generate GitHub App token
+        if: steps.check.outputs.approve == 'true'
+        id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3
+        with:
+          app-id: ${{ secrets.approver-app-id }}
+          private-key: ${{ secrets.approver-app-private-key }}
+          owner: ${{ github.repository_owner }}
+          repositories: ${{ github.event.repository.name }}
+          permission-pull-requests: write
+
+      - name: Approve
+        if: steps.check.outputs.approve == 'true'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          REPOSITORY: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          APPROVER: ${{ steps.app-token.outputs.app-slug }}[bot]
+        run: |
+          set -euo pipefail
+          already_approved=$(gh api --paginate "repos/$REPOSITORY/pulls/$PR/reviews" \
+            | jq -s --arg user "$APPROVER" --arg sha "$HEAD_SHA" \
+              '[.[][] | select(.user.login == $user and .state == "APPROVED" and .commit_id == $sha)] | length')
+          if [[ "$already_approved" -gt 0 ]]; then
+            echo "Already approved at $HEAD_SHA"
+            exit 0
+          fi
+          gh api --method POST "repos/$REPOSITORY/pulls/$PR/reviews" \
+            -f commit_id="$HEAD_SHA" -f event=APPROVE >/dev/null
+          echo "Approved at $HEAD_SHA"

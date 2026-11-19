@@ -13,3 +13,19 @@ This repository contains templates and [renovate](https://github.com/renovatebot
 We use [renovate](https://github.com/renovatebot/renovate) for dependency updates via a [GitHub Action](./.github/workflows/renovate.yml).
 As renovate runs in the context of this repository, it uses a [self hosted renovate configuration](./.github/self-hosted-renovate.json5) file to generate dependencies updates.
 We have [a few base configurations](./.github) that repositories extend from.
+
+## Merge automation
+
+Reusable workflows that replace Kodiak. Add [the caller workflow](./workflow-templates/merge-automation.yml) to a repository (also available from **Actions → New workflow**), pinned to a commit SHA.
+
+| Workflow | What it does |
+| --- | --- |
+| [`merge-label-bridge.yml`](./.github/workflows/merge-label-bridge.yml) | Enables native auto-merge (or the merge queue, when the branch requires it) for pull requests labelled `automerge`. Disables it and removes the pull request from the queue when `wip` or `no automerge` is added, the `automerge` label is removed, or the pull request becomes a draft. |
+| [`approve-bot-prs.yml`](./.github/workflows/approve-bot-prs.yml) | Approves pull requests that `cloudquery-ci[bot]` opens and pushes to, with a separate approver GitHub App. Pushes from anyone else are not approved. |
+| [`priority-merge.yml`](./.github/workflows/priority-merge.yml) | Moves a pull request labelled `priority merge` to the front of the merge queue. |
+
+Requirements in each repository:
+
+- **Settings → General → Allow auto-merge** is on.
+- The `CQ_APP_ID`, `CQ_APP_PRIVATE_KEY`, `APPROVER_APP_ID` and `APPROVER_APP_PRIVATE_KEY` secrets are available.
+- `.kodiak.toml` is deleted, so Kodiak stops acting on the repository.

@@ -1,0 +1,61 @@
+name: Priority merge
+
+on:
+  workflow_call:
+    inputs:
+      priority-label:
+        type: string
+        default: priority merge
+    secrets:
+      app-id:
+        required: true
+      app-private-key:
+        required: true
+
+permissions: {}
+
+concurrency:
+  group: priority-merge-${{ github.repository }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  jump-queue:
+    if: >-
+      github.event.pull_request.state == 'open' &&
+      github.event.action == 'labeled' &&
+      github.event.label.name == inputs.priority-label
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3
+        with:
+          app-id: ${{ secrets.app-id }}
+          private-key: ${{ secrets.app-private-key }}
+          owner: ${{ github.repository_owner }}
+          repositories: ${{ github.event.repository.name }}
+          permission-contents: write
+          permission-pull-requests: write
+
+      - name: Move to the front of the merge queue
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          PR_ID: ${{ github.event.pull_request.node_id }}
+          IN_QUEUE_QUERY: |
+            query($id: ID!) { node(id: $id) { ... on PullRequest { isInMergeQueue } } }
+          DEQUEUE_MUTATION: |
+            mutation($id: ID!) { dequeuePullRequest(input: { id: $id }) { clientMutationId } }
+          ENQUEUE_JUMP_MUTATION: |
+            mutation($id: ID!) { enqueuePullRequest(input: { pullRequestId: $id, jump: true }) { mergeQueueEntry { position } } }
+        run: |
+          set -euo pipefail
+          in_queue=$(gh api graphql -F id="$PR_ID" -f query="$IN_QUEUE_QUERY" --jq '.data.node.isInMergeQueue')
+          if [[ "$in_queue" == "true" ]]; then
+            gh api graphql -F id="$PR_ID" -f query="$DEQUEUE_MUTATION" >/dev/null
+          fi
+          if ! gh api graphql -F id="$PR_ID" -f query="$ENQUEUE_JUMP_MUTATION" \
+            --jq '"Queue position: \(.data.enqueuePullRequest.mergeQueueEntry.position)"'; then
+            echo "::error::Could not add the pull request to the front of the merge queue. Add the label again when required checks and reviews pass."
+            exit 1
+          fi
