@@ -130,6 +130,7 @@
     {
       matchUpdateTypes: ["minor", "patch", "digest"],
       addLabels: ["automerge"],
+      automerge: true,
     },
     {
       matchManagers: ["regex"],
