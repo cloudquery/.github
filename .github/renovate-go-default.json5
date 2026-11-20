@@ -8,6 +8,7 @@
       matchDatasources: ["golang-version"],
       rangeStrategy: "bump",
       addLabels: ["no automerge"],
+      automerge: false,
       minimumReleaseAge: "21 days",
     },
     {
